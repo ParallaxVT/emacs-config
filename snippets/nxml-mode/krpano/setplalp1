@@ -1,0 +1,6 @@
+# contributor: Rafaelguerrapaz
+# name: 
+# key: 
+# -- 
+ 
+set(plugin[$1].alpha,1);

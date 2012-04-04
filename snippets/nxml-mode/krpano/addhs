@@ -1,0 +1,24 @@
+# contributor: Rafaelguerrapaz
+# name: 
+# key: 
+# -- 
+ 
+addhotspot(${1:var});
+    set(hotspot[$1].align,);
+    set(hotspot[$1].alpha,);
+    set(hotspot[$1].ath,);
+    set(hotspot[$1].atv,);
+    set(hotspot[$1].children,);
+    set(hotspot[$1].edge,);
+    set(hotspot[$1].handcursor,);
+    set(hotspot[$1].height,);
+    set(hotspot[$1].keep,);
+    set(hotspot[$1].onclick,);
+    set(hotspot[$1].onhover,);
+    set(hotspot[$1].ox,);
+    set(hotspot[$1].oy,);
+    set(hotspot[$1].url,%HTMLPATH%/files/images/);
+    set(hotspot[$1].visible,);
+    set(hotspot[$1].width,);
+    set(hotspot[$1].zorder,);
+$0

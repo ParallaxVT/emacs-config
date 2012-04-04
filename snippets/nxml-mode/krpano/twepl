@@ -1,0 +1,6 @@
+# contributor: Rafaelguerrapaz
+# name: 
+# key: 
+# -- 
+ 
+tween(plugin[$1].$2,0,0.3,easeoutquad);

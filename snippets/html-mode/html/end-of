@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: end-of
+# key: endof
+# --
+<!-- end of $1 -->$0

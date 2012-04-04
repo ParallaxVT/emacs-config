@@ -1,0 +1,7 @@
+# contributor: Rafaelguerrapaz
+# name: 
+# key: 
+# -- 
+ 
+<!--for(set(i,0), i LE 'number', 'loop action separated by comas');-->
+for(set(i,0), i LE $1, $2);

@@ -1,0 +1,6 @@
+# contributor: Rafaelguerrapaz
+# name: 
+# key: 
+# -- 
+ 
+get(hotspot[$1].$2,visible)

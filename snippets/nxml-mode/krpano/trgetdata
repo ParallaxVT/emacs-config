@@ -1,0 +1,7 @@
+# contributor: Rafaelguerrapaz
+# name: 
+# key: 
+# -- 
+ 
+trace(get(data[$1].content));
+$2
