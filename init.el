@@ -17,7 +17,7 @@
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 ;; I use a different directory because elpa is stuffed of Emacs-prelude packages
-(setq package-user-dir "~\\.emacs.d\\elpa")
+(setq package-user-dir "~/.emacs.d/elpa")
 (package-initialize)
 
 
@@ -104,7 +104,7 @@
 
 (message "GUI options loaded...")
 
-;; =========== Functions ===========
+;; ========== Functions ==========
 
 ;; Seach in Google
 (defun google-is-your-friend ()
@@ -196,5 +196,13 @@ there's a region, all lines that region covers will be duplicated."
         (insert region)
         (setq end (point)))
       (goto-char (+ origin (* (length region) arg) arg)))))
+
+; =========== EDITOR ==========
+
+;; Put all backup and autosave files in ~/tmp dirirectory
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
 
 (message "Emacs Loaded!")
