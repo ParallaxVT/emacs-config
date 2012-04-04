@@ -106,6 +106,12 @@
 
 ;; ========== Functions ==========
 
+(defun visit-init ()
+  "as in Load Custom"
+  (interactive)
+  (find-file "~/.emacs.d/init.el")
+  )
+
 ;; Seach in Google
 (defun google-is-your-friend ()
   "Search the text in a region in google."
@@ -204,5 +210,9 @@ there's a region, all lines that region covers will be duplicated."
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
+
+;; ========== KEYBINDINGS ==========
+
+(define-key global-map (kbd "C-c m") 'visit-init)
 
 (message "Emacs Loaded!")
