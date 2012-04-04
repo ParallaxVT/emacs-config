@@ -215,4 +215,9 @@ there's a region, all lines that region covers will be duplicated."
 
 (define-key global-map (kbd "C-c m") 'visit-init)
 
+;; ========== PACKAGES ==========
+
+(require 'evil)  
+(evil-mode 1)
+
 (message "Emacs Loaded!")
