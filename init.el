@@ -104,7 +104,7 @@
 
 (load-theme 'wombat t)
 
-(message "GUI options loaded...")
+(message "Interface options loaded...")
 
 ;; ========== EDITOR ==========
 
@@ -120,6 +120,7 @@
 (setq auto-save-file-name-transforms
       '((".*" ,temporary-file-directory t)))
 
+(message "Editor options loaded...")
 
 ;; ========== FUNCTIONS ==========
 
@@ -228,19 +229,25 @@ there's a region, all lines that region covers will be duplicated."
     (when file
       (find-file file))))
 
+(message "Functions loaded...")
+
 ;; =========== HOOKS ==========
 
 (add-hook 'before-save-hook 'whitespace-cleanup nil t)
 
+(message "Hooks loaded...")
+
 ;; ========== KEYBINDINGS ==========
 
 (define-key global-map (kbd "C-c n")            'cleanup-buffer)
-(define-key global-map (kbd "C-c g")		'google-is-your-friend)
-(define-key global-map (kbd "C-M-\\")		'indent-region-or-buffer)
-(define-key global-map [(control shift up)]	'move-line-up)
-(define-key global-map [(control shift down)]	'move-line-down)
+(define-key global-map (kbd "C-c g")            'google-is-your-friend)
+(define-key global-map (kbd "C-M-\\")           'indent-region-or-buffer)
+(define-key global-map [(control shift up)]     'move-line-up)
+(define-key global-map [(control shift down)]   'move-line-down)
 (define-key global-map (kbd "C-c f")            'recentf-ido-find-file)
-(define-key global-map (kbd "C-c m")		'visit-init)
+(define-key global-map (kbd "C-c m")            'visit-init)
+
+(message "Keybindings loaded...")
 
 ;; ==============================
 ;;            PACKAGES
@@ -251,7 +258,6 @@ there's a region, all lines that region covers will be duplicated."
 (require 'evil)
 (evil-mode 1)
 
-(message "Emacs Loaded!")
 
 ;; ========== IDO ==========
 
@@ -270,3 +276,10 @@ there's a region, all lines that region covers will be duplicated."
 (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
 (defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
 (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
+
+(message "Pacakges options loaded...")
+
+;; ========== END ==========
+
+(message "Emacs Loaded!")
+
