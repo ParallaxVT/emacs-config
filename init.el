@@ -5,7 +5,7 @@
 (defvar root-dir (file-name-directory load-file-name)
   "The root dir of Emacs")
 (defvar vendor-dir (concat root-dir "vendor/")
-  "Directory with the packages not available in ELPA, Marmalado or el-get")
+  "Directory with the packages not available in ELPA, Marmalade or el-get")
 (add-to-list 'load-path vendor-dir)
 ;; Add vendor folder and its subdirectories to path  
 (let ((default-directory "~/.emacs.d/vendor/"))
@@ -62,6 +62,7 @@
 (when win32p
   (setq vsc-little-font "Bitstream Vera Sans Mono-10"))
 
+;; new frame appearance
 (add-to-list 'default-frame-alist (cons 'font vsc-little-font))
 (add-to-list 'initial-frame-alist (cons 'font vsc-little-font))
 
