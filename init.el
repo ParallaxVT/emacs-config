@@ -155,12 +155,6 @@
      (list (line-beginning-position)
            (line-beginning-position 2)))))
 
-;; Indent the buffer
-(defun indent-buffer ()
-  "Indents the entire buffer."
-  (interactive)
-  (indent-region (point-min) (point-max)))
-
 ;; Indent a region or the entire buffer
 (defun indent-region-or-buffer ()
   "Indents a region if selected, otherwise the whole buffer."
@@ -195,6 +189,27 @@ there's a region, all lines that region covers will be duplicated."
         (setq end (point)))
       (goto-char (+ origin (* (length region) arg) arg)))))
 
+;; indent current buffer
+(defun indent-buffer ()
+  "Indents the entire buffer."
+  (interactive)
+  (indent-region (point-min) (point-max)))
+;; replace tabs with spaces
+(defun prelude-untabify-buffer ()
+  (interactive)
+  (untabify (point-min) (point-max)))
+
+(defun cleanup-buffer ()
+  "Perform a bunch of operations on the whitespace content of a buffer."
+  (interactive)
+  (indent-buffer)
+  (untabify-buffer)
+  (whitespace-cleanup))
+
+;; =========== HOOKS ==========
+
+(add-hook 'before-save-hook 'whitespace-cleanup nil t))
+
 ;; =========== EDITOR ==========
 
 ;; Put all backup and autosave files in ~/tmp dirirectory
@@ -205,6 +220,7 @@ there's a region, all lines that region covers will be duplicated."
 
 ;; ========== KEYBINDINGS ==========
 
+(define-key global-map (kbd "C-c n")            'cleanup-buffer)
 (define-key global-map (kbd "C-c g")		'google-is-your-friend)
 (define-key global-map (kbd "C-M-\\")		'indent-region-or-buffer)
 (define-key global-map [(control shift up)]	'move-line-up)
