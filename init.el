@@ -125,16 +125,6 @@
         (buffer-substring (region-beginning) (region-end))
       (read-string "Google: ")))))
 
-;; The equivalent of 'o' in Vim 
-(defun insert-empty-line ()
-  "Insert an empty line after the current line and positon
-the curson at its beginning, according to the current mode."
-  (interactive)
-  (move-end-of-line nil)
-  (open-line 1)
-  (next-line 1)
-  (indent-according-to-mode))
-
 (defun move-line-up ()
   "Move up the current line."
   (interactive)
@@ -215,9 +205,11 @@ there's a region, all lines that region covers will be duplicated."
 
 ;; ========== KEYBINDINGS ==========
 
-(define-key global-map (kbd "C-c m") 'visit-init)
-(define-key global-map (kbd "C-M-\\") 'indent-region-or-buffer)
-(define-key global-map (kbd "C-c g") 'google-is-your-friend)
+(define-key global-map (kbd "C-c g")		'google-is-your-friend)
+(define-key global-map (kbd "C-M-\\")		'indent-region-or-buffer)
+(define-key global-map [(control shift up)]	'move-line-up)
+(define-key global-map [(control shift down)]	'move-line-down)
+(define-key global-map (kbd "C-c m")		'visit-init)
 
 ;; ========== PACKAGES ==========
 
