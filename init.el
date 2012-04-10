@@ -210,7 +210,7 @@ there's a region, all lines that region covers will be duplicated."
   (interactive)
   (indent-region (point-min) (point-max)))
 ;; replace tabs with spaces
-(defun prelude-untabify-buffer ()
+(defun untabify-buffer ()
   (interactive)
   (untabify (point-min) (point-max)))
 
