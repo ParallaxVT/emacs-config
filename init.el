@@ -122,8 +122,6 @@
 ;; revert buffers every 5 seconds just in case the file has been changed externally
 (global-auto-revert-mode t)
 
-
-
 (message "Editor options loaded...")
 
 ;; ========== FUNCTIONS ==========
@@ -243,13 +241,14 @@ there's a region, all lines that region covers will be duplicated."
 
 ;; ========== KEYBINDINGS ==========
 
-(define-key global-map (kbd "C-c n")            'cleanup-buffer)
-(define-key global-map (kbd "C-c g")            'google-is-your-friend)
-(define-key global-map (kbd "C-M-\\")           'indent-region-or-buffer)
-(define-key global-map [(control shift up)]     'move-line-up)
-(define-key global-map [(control shift down)]   'move-line-down)
-(define-key global-map (kbd "C-c f")            'recentf-ido-find-file)
-(define-key global-map (kbd "C-c m")            'visit-init)
+(global-set-key (kbd "C-c n")            'cleanup-buffer)
+(global-set-key (kbd "C-c g")            'google-is-your-friend)
+(global-set-key (kbd "M-/")              'hippie-expand)
+(global-set-key (kbd "C-M-\\")           'indent-region-or-buffer)
+(global-set-key [(control shift up)]     'move-line-up)
+(global-set-key [(control shift down)]   'move-line-down)
+(global-set-key (kbd "C-c f")            'recentf-ido-find-file)
+(global-set-key (kbd "C-c m")            'visit-init)
 
 (message "Keybindings loaded...")
 
