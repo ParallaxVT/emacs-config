@@ -11,7 +11,7 @@
 (let ((default-directory "~/.emacs.d/vendor/"))
   (normal-top-level-add-subdirs-to-load-path))
 
-;; =========== Packages ===========
+;; =========== PACKAGES ===========
 
 (require 'package)
 (add-to-list 'package-archives
@@ -44,7 +44,7 @@
 
 (message "Packages options loaded...")
 
-;; =========== Interface ===========
+;; =========== INTERFACE ===========
 
 ;; Font
 (defconst win32p  (eq system-type 'windows-nt))
@@ -106,7 +106,22 @@
 
 (message "GUI options loaded...")
 
-;; ========== Functions ==========
+;; ========== EDITOR ==========
+
+;; don't use tabs to indent
+(setq-default indent-tabs-mode nil)
+;; but maintain correct appearance
+(setq-default tab-width 8)
+;; delete the selection with a keypress
+(delete-selection-mode t)
+;; Put all backup and autosave files in ~/tmp dirirectory
+(setq backup-directory-alist
+      '((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      '((".*" ,temporary-file-directory t)))
+
+
+;; ========== FUNCTIONS ==========
 
 (defun visit-init ()
   "as in Load Custom"
@@ -217,14 +232,6 @@ there's a region, all lines that region covers will be duplicated."
 
 (add-hook 'before-save-hook 'whitespace-cleanup nil t)
 
-;; =========== EDITOR ==========
-
-;; Put all backup and autosave files in ~/tmp dirirectory
-(setq backup-directory-alist
-      '((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      '((".*" ,temporary-file-directory t)))
-
 ;; ========== KEYBINDINGS ==========
 
 (define-key global-map (kbd "C-c n")            'cleanup-buffer)
@@ -259,7 +266,7 @@ there's a region, all lines that region covers will be duplicated."
 ;; auto-completion in minibuffer
 (icomplete-mode +1)
 
- ;; Display ido results vertically, rather than horizontally
-  (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
-  (defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
-  (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
+;; Display ido results vertically, rather than horizontally
+(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
+(defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
+(add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
