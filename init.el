@@ -7,9 +7,9 @@
 (defvar vendor-dir (concat root-dir "vendor/")
   "Directory with the packages not available in ELPA, Marmalade or el-get")
 (add-to-list 'load-path vendor-dir)
-;; Add vendor folder and its subdirectories to path  
+;; Add vendor folder and its subdirectories to path
 (let ((default-directory "~/.emacs.d/vendor/"))
-  (normal-top-level-add-subdirs-to-load-path))  
+  (normal-top-level-add-subdirs-to-load-path))
 
 ;; =========== Packages ===========
 
@@ -89,15 +89,15 @@
 (if (fboundp 'fringe-mode)
     (fringe-mode 1))
 ;; Why the scratch buffer needs 3 lines?
-(setq initial-scratch-message "Scratch Buffer") 
+(setq initial-scratch-message "Scratch Buffer")
 ;; Switch between buffers using shift + arrows
 (windmove-default-keybindings)
 ;; No bells and whistles
-(setq visible-bell t)                           
+(setq visible-bell t)
 ;; Something to do with the margins (white-space-line-column)
-(setq whitespace-style '(face trailing tabs))  
-;; Deactivate justification. It drives me mad when the code splited 
-(setq-default default-justification 'none)    
+(setq whitespace-style '(face trailing tabs))
+;; Deactivate justification. It drives me mad when the code splited
+(setq-default default-justification 'none)
 
 ;; use 'y' and 'n' instoad 'Yes' and 'No'
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -206,9 +206,16 @@ there's a region, all lines that region covers will be duplicated."
   (untabify-buffer)
   (whitespace-cleanup))
 
+(defun recentf-ido-find-file ()
+  "Find a recent file using ido."
+  (interactive)
+  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
+    (when file
+      (find-file file))))
+
 ;; =========== HOOKS ==========
 
-(add-hook 'before-save-hook 'whitespace-cleanup nil t))
+(add-hook 'before-save-hook 'whitespace-cleanup nil t)
 
 ;; =========== EDITOR ==========
 
@@ -225,11 +232,31 @@ there's a region, all lines that region covers will be duplicated."
 (define-key global-map (kbd "C-M-\\")		'indent-region-or-buffer)
 (define-key global-map [(control shift up)]	'move-line-up)
 (define-key global-map [(control shift down)]	'move-line-down)
+(define-key global-map (kbd "C-c f")            'recentf-ido-find-file)
 (define-key global-map (kbd "C-c m")		'visit-init)
 
-;; ========== PACKAGES ==========
+;; ==============================
+;;            PACKAGES
+;; ==============================
 
-(require 'evil)  
+;; ========== EVIL ==========
+
+(require 'evil)
 (evil-mode 1)
 
 (message "Emacs Loaded!")
+
+;; ========== IDO ==========
+
+(ido-mode t)
+(setq ido-enable-prefix nil
+      ido-enable-flex-matching t
+      ido-create-new-buffer 'always
+      ido-use-filename-at-point 'guess
+      ido-max-prospects 10
+      ido-default-file-method 'selected-window)
+
+;; auto-completion in minibuffer
+(icomplete-mode +1)
+
+
