@@ -62,8 +62,9 @@
 (when win32p
   (setq vsc-little-font "Bitstream Vera Sans Mono-10"))
 
-;; new frame appearance
+;; basic deffault appearance
 (add-to-list 'default-frame-alist (cons 'font vsc-little-font))
+;; new frame appearance; overides default-frame-alist
 (add-to-list 'initial-frame-alist (cons 'font vsc-little-font))
 
 ;; Get rid of the toolbar
