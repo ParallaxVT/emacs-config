@@ -119,6 +119,10 @@
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
+;; revert buffers every 5 seconds just in case the file has been changed externally
+(global-auto-revert-mode t)
+
+
 
 (message "Editor options loaded...")
 
