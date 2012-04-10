@@ -280,6 +280,19 @@ there's a region, all lines that region covers will be duplicated."
 (defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
 (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
 
+;; ========== HIPPIE EXPAND ==========
+
+(setq hippie-expand-try-functions-list '(try-complete-file-name
+                                         try-complete-file-name-partially
+                                         try-complete-lisp-symbol
+                                         try-complete-lisp-symbol-partially
+                                         try-expand-all-abbrevs
+                                         try-expand-dabbrev
+                                         try-expand-dabbrev-all-buffers
+                                         try-expand-dabbrev-from-kill
+                                         try-expand-line
+                                         try-expand-list))
+
 (message "Pacakges options loaded...")
 
 ;; ========== END ==========
