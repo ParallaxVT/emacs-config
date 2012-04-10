@@ -181,7 +181,7 @@ the curson at its beginning, according to the current mode."
           (indent-region (region-beginning) (region-end))
           (message "Indented selected region."))
       (progn
-        (prelude-indent-buffer)
+        (indent-buffer)
         (message "Indented buffer.")))))
 
 ;; The equivalent of 'yy pp' in Vim
@@ -205,7 +205,7 @@ there's a region, all lines that region covers will be duplicated."
         (setq end (point)))
       (goto-char (+ origin (* (length region) arg) arg)))))
 
-; =========== EDITOR ==========
+;; =========== EDITOR ==========
 
 ;; Put all backup and autosave files in ~/tmp dirirectory
 (setq backup-directory-alist
@@ -216,6 +216,7 @@ there's a region, all lines that region covers will be duplicated."
 ;; ========== KEYBINDINGS ==========
 
 (define-key global-map (kbd "C-c m") 'visit-init)
+(define-key global-map (kbd "C-M-\\") 'indent-region-or-buffer)
 
 ;; ========== PACKAGES ==========
 
