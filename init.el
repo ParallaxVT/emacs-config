@@ -221,9 +221,9 @@ there's a region, all lines that region covers will be duplicated."
 
 ;; Put all backup and autosave files in ~/tmp dirirectory
 (setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
+      '((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
+      '((".*" ,temporary-file-directory t)))
 
 ;; ========== KEYBINDINGS ==========
 
@@ -259,4 +259,7 @@ there's a region, all lines that region covers will be duplicated."
 ;; auto-completion in minibuffer
 (icomplete-mode +1)
 
-
+ ;; Display ido results vertically, rather than horizontally
+  (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
+  (defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
+  (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
