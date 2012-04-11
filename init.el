@@ -121,6 +121,17 @@
       `((".*" ,temporary-file-directory t)))
 ;; revert buffers every 5 seconds just in case the file has been changed externally
 (global-auto-revert-mode t)
+;; Use hippie-expand
+(setq hippie-expand-try-functions-list '(try-complete-file-name
+                                         try-complete-file-name-partially
+                                         try-complete-lisp-symbol
+                                         try-complete-lisp-symbol-partially
+                                         try-expand-all-abbrevs
+                                         try-expand-dabbrev
+                                         try-expand-dabbrev-all-buffers
+                                         try-expand-dabbrev-from-kill
+                                         try-expand-line
+                                         try-expand-list))
 
 (message "Editor options loaded...")
 
@@ -255,19 +266,6 @@ there's a region, all lines that region covers will be duplicated."
 
 (require 'evil)
 (evil-mode 1)
-
-;; ========== HIPPIE EXPAND ==========
-
-(setq hippie-expand-try-functions-list '(try-complete-file-name
-                                         try-complete-file-name-partially
-                                         try-complete-lisp-symbol
-                                         try-complete-lisp-symbol-partially
-                                         try-expand-all-abbrevs
-                                         try-expand-dabbrev
-                                         try-expand-dabbrev-all-buffers
-                                         try-expand-dabbrev-from-kill
-                                         try-expand-line
-                                         try-expand-list))
 
 ;; ========== EL-GET ==========
 
