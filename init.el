@@ -60,7 +60,7 @@
   (setq vsc-little-font "Bitstream Vera Sans Mono-11"))
 
 (when win32p
-  (setq vsc-little-font "Bitstream Vera Sans Mono-11"))
+  (setq vsc-little-font "Bitstream Vera Sans Mono-10.5"))
 
 ;; basic deffault appearance
 (add-to-list 'default-frame-alist (cons 'font vsc-little-font))
