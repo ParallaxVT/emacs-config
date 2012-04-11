@@ -224,13 +224,6 @@ there's a region, all lines that region covers will be duplicated."
   (untabify-buffer)
   (whitespace-cleanup))
 
-(defun recentf-ido-find-file ()
-  "Find a recent file using ido."
-  (interactive)
-  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
-    (when file
-      (find-file file))))
-
 (message "Functions loaded...")
 
 ;; =========== HOOKS ==========
@@ -243,11 +236,12 @@ there's a region, all lines that region covers will be duplicated."
 
 (global-set-key (kbd "C-c n")            'cleanup-buffer)
 (global-set-key (kbd "C-c g")            'google-is-your-friend)
+(global-set-key (kbd "C-c h")            'helm-mini)
+(global-set-key (kbd "C-c C-f")          'helm-recentf)
 (global-set-key (kbd "M-/")              'hippie-expand)
 (global-set-key (kbd "C-M-\\")           'indent-region-or-buffer)
 (global-set-key [(control shift up)]     'move-line-up)
 (global-set-key [(control shift down)]   'move-line-down)
-(global-set-key (kbd "C-c f")            'recentf-ido-find-file)
 (global-set-key (kbd "C-c m")            'visit-init)
 
 (message "Keybindings loaded...")
@@ -260,25 +254,6 @@ there's a region, all lines that region covers will be duplicated."
 
 (require 'evil)
 (evil-mode 1)
-
-
-;; ========== IDO ==========
-
-(ido-mode t)
-(setq ido-enable-prefix nil
-      ido-enable-flex-matching t
-      ido-create-new-buffer 'always
-      ido-use-filename-at-point 'guess
-      ido-max-prospects 10
-      ido-default-file-method 'selected-window)
-
-;; auto-completion in minibuffer
-(icomplete-mode +1)
-
-;; Display ido results vertically, rather than horizontally
-(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
-(defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
-(add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
 
 ;; ========== HIPPIE EXPAND ==========
 
@@ -298,6 +273,11 @@ there's a region, all lines that region covers will be duplicated."
 ;; Downlead el-get if it's not installed
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get") (unless (require 'el-get nil t) (url-retrieve "https://raw.github.com/dimitri/el-get/master/el-get-install.el" (lambda (s) (end-of-buffer) (eval-print-last-sexp))))
 
+;; ========== HELM ==========
+
+(require 'helm-config)
+;; Use helm completion it M-x, C-x C-f, etc...
+(helm-mode 1)
 
 (message "Pacakges options loaded...")
 
