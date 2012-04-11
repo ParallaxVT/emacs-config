@@ -239,6 +239,7 @@ there's a region, all lines that region covers will be duplicated."
 (global-set-key (kbd "C-c h")            'helm-mini)
 (global-set-key (kbd "C-c C-f")          'helm-recentf)
 (global-set-key (kbd "M-/")              'hippie-expand)
+(global-set-key (kbd "C-x C-b")          'ibuffer)
 (global-set-key (kbd "C-M-\\")           'indent-region-or-buffer)
 (global-set-key [(control shift up)]     'move-line-up)
 (global-set-key [(control shift down)]   'move-line-down)
