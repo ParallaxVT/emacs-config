@@ -145,7 +145,8 @@
 (setq uniquify-separator "/")
 (setq uniquify-after-kill-buffer-p t)    ; rename after killing uniquified
 (setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
-
+;; remember my location in a file when saving files
+(setq save-place-file (concat user-emacs-directory "saveplace"))
 (message "Editor options loaded...")
 
 ;; ========== FUNCTIONS ==========
