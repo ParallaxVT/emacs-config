@@ -89,7 +89,7 @@
 (if (fboundp 'fringe-mode)
     (fringe-mode 1))
 ;; Why the scratch buffer needs 3 lines?
-(setq initial-scratch-message "Scratch Buffer")
+(setq initial-scratch-message ";; Scratch Buffer")
 ;; Switch between buffers using shift + arrows
 (windmove-default-keybindings)
 ;; No bells and whistles
