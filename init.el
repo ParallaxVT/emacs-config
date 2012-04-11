@@ -132,6 +132,13 @@
                                          try-expand-dabbrev-from-kill
                                          try-expand-line
                                          try-expand-list))
+;; close autematically parenthesis and double quotes
+(electric-pair-mode t)
+;; indent a line after pressing return
+(electric-indent-mode t)
+;; highlight matching parenthesis
+(show-paren-mode t)
+(setq show-paren-style 'parenthesis)
 
 (message "Editor options loaded...")
 
