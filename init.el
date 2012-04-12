@@ -349,11 +349,8 @@ there's a region, all lines that region covers will be duplicated."
 ;;}}}
 ;;{{{ PHP MODE
 
-(require 'php-mode)
-(add-to-list 'auto-mode-alist
-             '("\\.php[34]?\\'\\|\\.phtml\\'" . php-mode))
-
-(message "Pacakges options loaded...")
+(autoload 'php-mode "php-mode")
+(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 
 ;;}}}
 ;;{{{ KEYBINDINGS
