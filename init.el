@@ -375,7 +375,20 @@ there's a region, all lines that region covers will be duplicated."
 (message "Keybindings loaded...")
 ;;}}}
 
+;;{{{ YASNIPPET
 
+;;(add-to-list 'load-path  "~/.emacs.d/elpa/yasnippet-0.6.1/")
+(require 'yasnippet)
+(yas/global-mode 1)
+
+(setq yas/root-directory "~/.emacs.d/snippets/")
+
+(yas/load-directory yas/root-directory)
+
+(require 'dropdown-list)
+(setq yas/prompt-functions '(yas/dropdown-prompt))
+
+;;}}}
 ;;}}}
 
 
