@@ -161,6 +161,9 @@
       recentf-max-saved-items 200
       recentf-max-menu-items 15)
 (recentf-mode t)
+;; highlight the current line
+(global-hl-line-mode +1)
+
 
 (message "Editor options loaded...")
 
