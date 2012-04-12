@@ -279,16 +279,17 @@ there's a region, all lines that region covers will be duplicated."
 
 ;; ========== KEYBINDINGS ==========
 
-(global-set-key (kbd "C-c n")            'cleanup-buffer)
-(global-set-key (kbd "C-c g")            'google-is-your-friend)
-(global-set-key (kbd "C-c h")            'helm-mini)
-(global-set-key (kbd "C-c C-f")          'helm-recentf)
-(global-set-key (kbd "M-/")              'hippie-expand)
-(global-set-key (kbd "C-x C-b")          'ibuffer)
-(global-set-key (kbd "C-M-\\")           'indent-region-or-buffer)
-(global-set-key [(control shift up)]     'move-line-up)
-(global-set-key [(control shift down)]   'move-line-down)
-(global-set-key (kbd "C-c m")            'visit-init)
+(global-set-key (kbd "C-c n")                 'cleanup-buffer)
+(global-set-key (kbd "C-c g")                 'google-is-your-friend)
+(global-set-key (kbd "C-c h")                 'helm-mini)
+(global-set-key (kbd "C-c C-f")               'helm-recentf)
+(global-set-key (kbd "M-/")                   'hippie-expand)
+(global-set-key (kbd "C-x C-b")               'ibuffer)
+(global-set-key (kbd "C-M-\\")                'indent-region-or-buffer)
+(global-set-key [(control shift up)]          'move-line-up)
+(global-set-key [(control shift down)]        'move-line-down)
+(global-set-key (kbd "C-c m")                 'visit-init)
+(define-key emacs-lisp-mode-map (kbd "C-c v") 'eval-current-buffer)
 
 (message "Keybindings loaded...")
 
