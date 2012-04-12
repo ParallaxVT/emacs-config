@@ -290,6 +290,8 @@ there's a region, all lines that region covers will be duplicated."
 (global-set-key [(control shift down)]        'move-line-down)
 (global-set-key (kbd "C-c m")                 'visit-init)
 (define-key emacs-lisp-mode-map (kbd "C-c v") 'eval-current-buffer)
+(define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
+(define-key evil-normal-state-map (kbd "C-;") 'evil-numbers/dec-at-pt)
 
 (message "Keybindings loaded...")
 
@@ -319,6 +321,10 @@ there's a region, all lines that region covers will be duplicated."
 (autoload 'css-mode "css-mode" "" t)
 (autoload  'css-color-mode "mon-css-color" "" t)
 (add-to-list 'auto-mode-alist '("\\.css\\'" . css-mode))
+
+;; ========== EVIL NUMBERS ==========
+
+(require 'evil-numbers)
 
 (message "Pacakges options loaded...")
 
