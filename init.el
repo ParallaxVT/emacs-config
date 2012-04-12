@@ -14,15 +14,14 @@
   (normal-top-level-add-subdirs-to-load-path))
 
 ;;}}}
-;;{{{ PACKAGES 
+;;{{{ PACKAGES
 
 (require 'package)
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
-;; I use a different directory because elpa is stuffed of Emacs-prelude packages
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;;           '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (setq package-user-dir "~/.emacs.d/elpa")
 (package-initialize)
-
 
 (defvar packages-list
   '(expand-region magit magithub rainbow-mode undo-tree volatile-highlights)
