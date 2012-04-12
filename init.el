@@ -146,7 +146,7 @@
 (setq uniquify-after-kill-buffer-p t)    ; rename after killing uniquified
 (setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
 ;; remember my location in a file when saving files
-(setq save-place-file (concat user-emacs-directory "/auto-save-list/saveplace"))
+(setq save-place-file (concat user-emacs-directory "auto-save-list/saveplace"))
 ;; savehist keeps track of some history
 (setq savehist-additional-variables
       ;; search entries
@@ -154,7 +154,7 @@
       ;; save every minute
       savehist-autosave-interval 60
       ;; keep the home clean
-      savehist-file (concat user-emacs-directory "/auto-save-list/savehist"))
+      savehist-file (concat user-emacs-directory "auto-save-list/savehist"))
 (savehist-mode t)
 ;; save recent files
 (setq recentf-save-file (concat user-emacs-directory "auto-save-list/recentf")
