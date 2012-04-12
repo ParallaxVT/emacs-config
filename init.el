@@ -1,5 +1,7 @@
 (message "Loading Emacs!")
 
+;;{{{ DIRECTORIES
+
 (require 'cl)
 
 (defvar root-dir (file-name-directory load-file-name)
@@ -11,7 +13,8 @@
 (let ((default-directory "~/.emacs.d/vendor/"))
   (normal-top-level-add-subdirs-to-load-path))
 
-;; =========== PACKAGES ===========
+;;}}}
+;;{{{ PACKAGES 
 
 (require 'package)
 (add-to-list 'package-archives
@@ -44,7 +47,9 @@
 
 (message "Packages options loaded...")
 
-;; =========== INTERFACE ===========
+;;}}}
+
+;;{{{ INTERFACE 
 
 ;; Font
 (defconst win32p  (eq system-type 'windows-nt))
@@ -108,7 +113,9 @@
 
 (message "Interface options loaded...")
 
-;; ========== EDITOR ==========
+;;}}}
+
+;;{{{ EDITOR 
 
 ;; don't use tabs to indent
 (setq-default indent-tabs-mode nil)
@@ -169,7 +176,9 @@
 
 (message "Editor options loaded...")
 
-;; ========== FUNCTIONS ==========
+;;}}}
+
+;;{{{ FUNCTIONS 
 
 (defun visit-init ()
   "as in Load Custom"
@@ -271,13 +280,80 @@ there's a region, all lines that region covers will be duplicated."
 
 (message "Functions loaded...")
 
-;; =========== HOOKS ==========
+;;}}}
+
+;;{{{ HOOKS
 
 (add-hook 'before-save-hook 'whitespace-cleanup nil t)
 
 (message "Hooks loaded...")
 
-;; ========== KEYBINDINGS ==========
+;;}}}
+;;{{{ PACKAGES
+
+;;{{{ EVIL
+
+(require 'evil)
+(evil-mode 1)
+;;}}}
+;;{{{ EL-GET
+
+;; Downlead el-get if it's not installed
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get") (unless (require 'el-get nil t) (url-retrieve "https://raw.github.com/dimitri/el-get/master/el-get-install.el" (lambda (s) (end-of-buffer) (eval-print-last-sexp))))
+
+;;}}}
+;;{{{ HELM
+
+(require 'helm-config)
+;; Use helm completion it M-x, C-x C-f, etc...
+(helm-mode 1)
+
+;;}}}
+;;{{{ MOM-CSS-COLOR
+
+(add-hook 'css-mode-hook 'css-color-mode)
+(autoload 'css-mode "css-mode" "" t)
+(autoload  'css-color-mode "mon-css-color" "" t)
+(add-to-list 'auto-mode-alist '("\\.css\\'" . css-mode))
+
+;;}}}
+;;{{{ EVIL NUMBERS
+
+(require 'evil-numbers)
+
+;;}}}
+;;{{{ FOLDING
+
+(require 'folding)
+(add-hook 'sgml-mode-hook 'folding-mode)
+(add-hook 'nxml-mode-hook 'folding-mode)
+(add-hook 'css-mode-hook 'folding-mode)
+(add-hook 'emacs-lisp-mode-hook 'folding-mode)
+(load "folding" 'nomessage 'noerror)
+(folding-mode-add-find-file-hook)
+(folding-add-to-marks-list 'nxml-mode "<!-- {{{ " "<!-- }}} -->" " -->")
+(folding-add-to-marks-list 'css-mode "/* {{{ " "/* }}} */" " */")
+(folding-add-to-marks-list 'emacs-lisp-mode ";;{{{" ";;}}}" nil t)
+
+;;}}}
+;;{{{ UNBOUND KEYS
+
+;; shows keys available to bind
+;; M-x load-library unbound
+;; M-x describe-unbound-keys
+
+;;}}}
+;;{{{ PHP MODE
+
+(add-to-list 'load-path "~/.emacs.d/vendor/php-mode/")
+(load "php-mode")
+(add-to-list 'auto-mode-alist
+             '("\\.php[34]?\\'\\|\\.phtml\\'" . php-mode))
+
+(message "Pacakges options loaded...")
+
+;;}}}
+;;{{{ KEYBINDINGS
 
 (global-set-key (kbd "C-c n")                 'cleanup-buffer)
 (global-set-key (kbd "C-c g")                 'google-is-your-friend)
@@ -296,66 +372,9 @@ there's a region, all lines that region covers will be duplicated."
 (define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
 (define-key evil-normal-state-map (kbd "C-;") 'evil-numbers/dec-at-pt)
 
+
 (message "Keybindings loaded...")
+;;}}}
 
-;; ==============================
-;;            PACKAGES
-;; ==============================
-
-;; ========== EVIL ==========
-
-(require 'evil)
-(evil-mode 1)
-
-;; ========== EL-GET ==========
-
-;; Downlead el-get if it's not installed
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get") (unless (require 'el-get nil t) (url-retrieve "https://raw.github.com/dimitri/el-get/master/el-get-install.el" (lambda (s) (end-of-buffer) (eval-print-last-sexp))))
-
-;; ========== HELM ==========
-
-(require 'helm-config)
-;; Use helm completion it M-x, C-x C-f, etc...
-(helm-mode 1)
-
-;; ========== MOM-CSS-COLOR ==========
-
-(add-hook 'css-mode-hook 'css-color-mode)
-(autoload 'css-mode "css-mode" "" t)
-(autoload  'css-color-mode "mon-css-color" "" t)
-(add-to-list 'auto-mode-alist '("\\.css\\'" . css-mode))
-
-;; ========== EVIL NUMBERS ==========
-
-(require 'evil-numbers)
-
-;; ========== FOLDING ==========
-
-(require 'folding)
-(add-hook 'sgml-mode-hook 'folding-mode)
-(add-hook 'nxml-mode-hook 'folding-mode)
-(add-hook 'css-mode-hook 'folding-mode)
-(load "folding" 'nomessage 'noerror)
-(folding-mode-add-find-file-hook)
-(folding-add-to-marks-list 'nxml-mode "<!-- {{{ " "<!-- }}} -->" " -->")
-(folding-add-to-marks-list 'css-mode "/* {{{ " "/* }}} */" " */")
-
-;; ========== UNBOUND KEYS ==========
-
-;; shows keys available to bind
-;; M-x load-library unbound
-;; M-x describe-unbound-keys
-
-;; ========== PHP MODE ==========
-
-(add-to-list 'load-path "~/.emacs.d/vendor/php-mode/")
-(load "php-mode")
-(add-to-list 'auto-mode-alist
-             '("\\.php[34]?\\'\\|\\.phtml\\'" . php-mode))
-
-(message "Pacakges options loaded...")
-
-;; ========== END ==========
 
 (message "Emacs Loaded!")
-
