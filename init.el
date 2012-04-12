@@ -344,8 +344,7 @@ there's a region, all lines that region covers will be duplicated."
 ;;}}}
 ;;{{{ PHP MODE
 
-(add-to-list 'load-path "~/.emacs.d/vendor/php-mode/")
-(load "php-mode")
+(require 'php-mode)
 (add-to-list 'auto-mode-alist
              '("\\.php[34]?\\'\\|\\.phtml\\'" . php-mode))
 
