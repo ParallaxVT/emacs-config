@@ -346,6 +346,13 @@ there's a region, all lines that region covers will be duplicated."
 ;; M-x load-library unbound
 ;; M-x describe-unbound-keys
 
+;; ========== PHP MODE ==========
+
+(add-to-list 'load-path "~/.emacs.d/vendor/php-mode/")
+(load "php-mode")
+(add-to-list 'auto-mode-alist
+             '("\\.php[34]?\\'\\|\\.phtml\\'" . php-mode))
+
 (message "Pacakges options loaded...")
 
 ;; ========== END ==========
