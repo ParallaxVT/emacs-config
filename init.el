@@ -1,5 +1,10 @@
 (message "Loading Emacs!")
 
+;;{{{ FIRST
+;; Turn off mouse interface early in startup to avoid momentary display
+(dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
+  (when (fboundp mode) (funcall mode -1)))
+;;}}}
 ;;{{{ DIRECTORIES
 
 (require 'cl)
@@ -392,6 +397,7 @@ there's a region, all lines that region covers will be duplicated."
 (setq yas/prompt-functions '(yas/dropdown-prompt))
 
 ;;}}}
+
 ;;}}}
 
 
