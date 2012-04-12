@@ -340,6 +340,12 @@ there's a region, all lines that region covers will be duplicated."
 (folding-add-to-marks-list 'nxml-mode "<!-- {{{ " "<!-- }}} -->" " -->")
 (folding-add-to-marks-list 'css-mode "/* {{{ " "/* }}} */" " */")
 
+;; ========== UNBOUND KEYS ==========
+
+;; shows keys available to bind
+;; M-x load-library unbound
+;; M-x describe-unbound-keys
+
 (message "Pacakges options loaded...")
 
 ;; ========== END ==========
