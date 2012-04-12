@@ -395,6 +395,8 @@ there's a region, all lines that region covers will be duplicated."
 
 ;;}}}
 
+(message "Pacakges options loaded...")
+
 ;;}}}
 
 ;;{{{ LAST
