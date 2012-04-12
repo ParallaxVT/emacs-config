@@ -1,9 +1,11 @@
 (message "Loading Emacs!")
 
 ;;{{{ FIRST
+
 ;; Turn off mouse interface early in startup to avoid momentary display
 (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
   (when (fboundp mode) (funcall mode -1)))
+
 ;;}}}
 ;;{{{ DIRECTORIES
 
@@ -76,8 +78,6 @@
 ;; new frame appearance; overides default-frame-alist
 (add-to-list 'initial-frame-alist (cons 'font vsc-little-font))
 
-;; Get rid of the toolbar
-(tool-bar-mode -1)
 ;; Cursor, stop blinking!
 (blink-cursor-mode -1)
 ;; Start up screen is not cool
@@ -400,5 +400,9 @@ there's a region, all lines that region covers will be duplicated."
 
 ;;}}}
 
+;;{{{ LAST
+(menu-bar-mode +1)
+(scroll-bar-mode +1)
+;;}}}
 
 (message "Emacs Loaded!")
