@@ -378,7 +378,11 @@ there's a region, all lines that region covers will be duplicated."
 
 ;;(add-to-list 'load-path  "~/.emacs.d/elpa/yasnippet-0.6.1/")
 (require 'yasnippet)
-(yas/global-mode 1)
+
+(add-hook 'html-mode-hook 'yas/minor-mode-on)
+(add-hook 'css-mode-hook 'yas/minor-mode-on)
+(add-hook 'php-mode-hook 'yas/minor-mode-on)
+(add-hook 'xml-mode-hook 'yas/minor-mode-on)
 
 (setq yas/root-directory "~/.emacs.d/snippets/")
 
