@@ -102,7 +102,9 @@
 ;; use 'y' and 'n' instoad 'Yes' and 'No'
 (fset 'yes-or-no-p 'y-or-n-p)
 
-(load-theme 'wombat t)
+(require 'color-theme)
+(require 'color-theme-wombat)
+(color-theme-wombat)
 
 (message "Interface options loaded...")
 
