@@ -310,7 +310,7 @@ there's a region, all lines that region covers will be duplicated."
 
 (require 'helm-config)
 ;; Use helm completion it M-x, C-x C-f, etc...
-(helm-mode 1)
+;; (helm-mode 1)
 
 ;;}}}
 ;;{{{ MOM-CSS-COLOR
@@ -358,7 +358,8 @@ there's a region, all lines that region covers will be duplicated."
 (global-set-key (kbd "C-c n")                 'cleanup-buffer)
 (global-set-key (kbd "C-c g")                 'google-is-your-friend)
 (global-set-key (kbd "C-c h")                 'helm-mini)
-(global-set-key (kbd "C-c C-f")               'helm-recentf)
+(global-set-key (kbd "C-x C-f")               'helm-find-files)
+(global-set-key (kbd "C-x f")                 'helm-recentf)
 (global-set-key (kbd "M-/")                   'hippie-expand)
 (global-set-key (kbd "C-x C-b")               'ibuffer)
 (global-set-key (kbd "C-M-\\")                'indent-region-or-buffer)
