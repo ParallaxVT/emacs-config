@@ -282,6 +282,14 @@ there's a region, all lines that region covers will be duplicated."
   (untabify-buffer)
   (whitespace-cleanup))
 
+(defun autocompile nil
+  "compile itself if ~/.emacs.d/init.el is newer than init.elc"
+  (interactive)
+  (require 'bytecomp)
+  (let ((dotemacs (expand-file-name "~/.emacs.d/init.el")))
+    (if (string= (buffer-file-name) (file-chase-links dotemacs))
+      (byte-compile-file dotemacs))))
+
 (message "Functions loaded...")
 
 ;;}}}
@@ -289,6 +297,7 @@ there's a region, all lines that region covers will be duplicated."
 ;;{{{ HOOKS
 
 (add-hook 'before-save-hook 'whitespace-cleanup nil t)
+(add-hook 'after-save-hook 'autocompile)
 
 (message "Hooks loaded...")
 
