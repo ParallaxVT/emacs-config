@@ -12,11 +12,6 @@
 ;;Use eval-when-compile to avoid warning about require 'cl
 (eval-when-compile (require 'cl))
 
-(defvar root-dir (file-name-directory load-file-name)
-  "The root dir of Emacs")
-(defvar vendor-dir (concat root-dir "vendor/")
-  "Directory with the packages not available in ELPA, Marmalade or el-get")
-(add-to-list 'load-path vendor-dir)
 ;; Add vendor folder and its subdirectories to path
 (let ((default-directory "~/.emacs.d/vendor/"))
   (normal-top-level-add-subdirs-to-load-path))
@@ -121,7 +116,7 @@
 
 ;;}}}
 
-;;{{{ EDITOR 
+;;{{{ EDITOR
 
 ;; don't use tabs to indent
 (setq-default indent-tabs-mode nil)
@@ -184,7 +179,7 @@
 
 ;;}}}
 
-;;{{{ FUNCTIONS 
+;;{{{ FUNCTIONS
 
 (defun visit-init ()
   "as in Load Custom"
@@ -290,7 +285,7 @@ there's a region, all lines that region covers will be duplicated."
   (require 'bytecomp)
   (let ((dotemacs (expand-file-name "~/.emacs.d/init.el")))
     (if (string= (buffer-file-name) (file-chase-links dotemacs))
-      (byte-compile-file dotemacs))))
+        (byte-compile-file dotemacs))))
 
 (message "Functions loaded...")
 
