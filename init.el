@@ -9,7 +9,8 @@
 ;;}}}
 ;;{{{ DIRECTORIES
 
-(require 'cl)
+;;Use eval-when-compile to avoid warning about require 'cl
+(eval-when-compile (require 'cl))
 
 (defvar root-dir (file-name-directory load-file-name)
   "The root dir of Emacs")
@@ -52,25 +53,26 @@
 (provide 'packages-list)
 
 (message "Packages options loaded...")
+(setq max-specpdl-size 6000)
 
 ;;}}}
 
-;;{{{ INTERFACE 
+;;{{{ INTERFACE
 
 ;; Font
-(defconst win32p  (eq system-type 'windows-nt))
-(defconst cygwinp (eq system-type 'cygwin))
-(defconst linuxp  (or (eq system-type 'gnu/linux)  (eq system-type 'linux)))
+(defconst win32-p (eq system-type 'windows-nt) "Windows OS.")
+(defconst cygwin-p (eq system-type 'cygwin))
+(defconst linux-p  (or (eq system-type 'gnu/linux)  (eq system-type 'linux)))
 
 (defvar vsc-little-font "")
 
-(when linuxp
+(when linux-p
   (setq vsc-little-font "Bitstream Vera Sans Mono-11"))
 
-(when cygwinp
+(when cygwin-p
   (setq vsc-little-font "Bitstream Vera Sans Mono-11"))
 
-(when win32p
+(when win32-p
   (setq vsc-little-font "Bitstream Vera Sans Mono-10.5"))
 
 ;; basic deffault appearance
@@ -205,14 +207,14 @@
   "Move up the current line."
   (interactive)
   (transpose-lines 1)
-  (previous-line 2))
+  (forward-line -2))
 
 (defun move-line-down ()
   "Move down the current line."
   (interactive)
-  (next-line 1)
+  (forward-line 1)
   (transpose-lines 1)
-  (previous-line 1))
+  (forward-line -1))
 
 ;; The equivalent of 'yy' or 'Y' in Vim
 (defadvice kill-ring-save (before slick-copy activate compile)
