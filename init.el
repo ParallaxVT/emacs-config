@@ -314,7 +314,7 @@ there's a region, all lines that region covers will be duplicated."
 ;;{{{ EL-GET
 
 ;; Downlead el-get if it's not installed
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get") (unless (require 'el-get nil t) (url-retrieve "https://raw.github.com/dimitri/el-get/master/el-get-install.el" (lambda (s) (end-of-buffer) (eval-print-last-sexp))))
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get") (unless (require 'el-get nil t) (url-retrieve "https://raw.github.com/dimitri/el-get/master/el-get-install.el" (lambda (s) (goto-char (point-max)) (eval-print-last-sexp))))
 
 ;;}}}
 ;;{{{ HELM
