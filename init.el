@@ -337,16 +337,11 @@ there's a region, all lines that region covers will be duplicated."
 ;;}}}
 ;;{{{ FOLDING
 
-(require 'folding)
-(add-hook 'sgml-mode-hook 'folding-mode)
-(add-hook 'nxml-mode-hook 'folding-mode)
-(add-hook 'css-mode-hook 'folding-mode)
-(add-hook 'emacs-lisp-mode-hook 'folding-mode)
-(load "folding" 'nomessage 'noerror)
-(folding-mode-add-find-file-hook)
-(folding-add-to-marks-list 'nxml-mode "<!-- {{{ " "<!-- }}} -->" " -->")
-(folding-add-to-marks-list 'css-mode "/* {{{ " "/* }}} */" " */")
-(folding-add-to-marks-list 'emacs-lisp-mode ";;{{{" ";;}}}" nil t)
+(require 'fold)
+(add-hook 'sgml-mode-hook 'fold-mode)
+(add-hook 'nxml-mode-hook 'fold-mode)
+(add-hook 'css-mode-hook 'fold-mode)
+(add-hook 'emacs-lisp-mode-hook 'fold-mode)
 
 ;;}}}
 ;;{{{ UNBOUND KEYS
@@ -375,13 +370,14 @@ there's a region, all lines that region covers will be duplicated."
 (global-set-key [(control shift up)]          'move-line-up)
 (global-set-key [(control shift down)]        'move-line-down)
 (global-set-key (kbd "C-c m")                 'visit-init)
-(global-set-key (kbd "\C-cc")                 'folding-toggle-show-hide)   ;; open current fold
-(global-set-key (kbd "\C-ch")                 'folding-open-buffer)        ;; open all folds
-(global-set-key (kbd "\C-ct")                 'folding-whole-buffer)       ;; close all folds
+(global-set-key (kbd "\C-cw")                 'fold-whole-buffer)  ;; close all folds
+(global-set-key (kbd "\C-ca")                 'fold-show-all)      ;; open all folds
+(global-set-key (kbd "\C-cs")                 'fold-show)          ;; open current fold
+(global-set-key (kbd "\C-ch")                 'fold-hide)          ;; close current fold
+(global-set-key (kbd "\C-cf")                 'fold-region)        ;; fold current region
 (define-key emacs-lisp-mode-map (kbd "C-c v") 'eval-current-buffer)
 (define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
 (define-key evil-normal-state-map (kbd "C-;") 'evil-numbers/dec-at-pt)
-
 
 (message "Keybindings loaded...")
 ;;}}}
