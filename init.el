@@ -78,7 +78,7 @@
 ;; Cursor, stop blinking!
 (blink-cursor-mode -1)
 ;; Start up screen is not cool
-(setq inhibit-startup-screen t)
+(setq inhibit-startup-screen (user-login-name))
 ;; Sweet scrolling
 (setq scroll-margin 0
       scroll-conservatively 100000
