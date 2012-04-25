@@ -16,6 +16,10 @@
 (let ((default-directory "~/.emacs.d/vendor/"))
   (normal-top-level-add-subdirs-to-load-path))
 
+;; Save customizations in this file and load it
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
+
 ;;}}}
 ;;{{{ PACKAGES
 
