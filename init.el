@@ -51,7 +51,6 @@
 (setq max-specpdl-size 6000)
 
 ;;}}}
-
 ;;{{{ INTERFACE
 
 ;; Font
@@ -115,7 +114,6 @@
 (message "Interface options loaded...")
 
 ;;}}}
-
 ;;{{{ EDITOR
 
 ;; don't use tabs to indent
@@ -178,7 +176,6 @@
 (message "Editor options loaded...")
 
 ;;}}}
-
 ;;{{{ FUNCTIONS
 
 (defun visit-init ()
@@ -290,7 +287,6 @@ there's a region, all lines that region covers will be duplicated."
 (message "Functions loaded...")
 
 ;;}}}
-
 ;;{{{ HOOKS
 
 (add-hook 'before-save-hook 'whitespace-cleanup nil t)
@@ -366,6 +362,7 @@ there's a region, all lines that region covers will be duplicated."
 (global-set-key (kbd "C-M-\\")                'indent-region-or-buffer)
 (global-set-key [(control shift up)]          'move-line-up)
 (global-set-key [(control shift down)]        'move-line-down)
+(global-set-key (kbd "C-c C-c")               'rotate-text)
 (global-set-key (kbd "C-c m")                 'visit-init)
 (global-set-key (kbd "\C-cw")                 'fold-whole-buffer)  ;; close all folds
 (global-set-key (kbd "\C-ca")                 'fold-show-all)      ;; open all folds
@@ -378,7 +375,6 @@ there's a region, all lines that region covers will be duplicated."
 
 (message "Keybindings loaded...")
 ;;}}}
-
 ;;{{{ YASNIPPET
 
 ;;(add-to-list 'load-path  "~/.emacs.d/elpa/yasnippet-0.6.1/")
@@ -398,6 +394,7 @@ there's a region, all lines that region covers will be duplicated."
 
 ;;}}}
 ;;{{{ ESHELL
+
 
 (setq eshell-ask-to-save-history (quote always))
 (setq eshell-history-size 1000)
@@ -419,11 +416,29 @@ there's a region, all lines that region covers will be duplicated."
     (erase-buffer)))
 
 ;;}}}
+;;{{{ ROTOTE TEXT
 
+(autoload 'rotate-text "rotate-text" nil t)
+(autoload 'rotate-text-backward "rotate-text" nil t)
+
+(defcustom rotate-text-words '(("width" "height")
+                               ("plugin" "hotspot")
+                               ("yes" "no")
+                               ("true" "false")
+                               ("left" "right" "top" "bottom"))
+  "*List of words to rotate.
+Each element is a list of words that should be cycled through.  Individual
+segments in symbol names are recognized as words, i.e. windowWidth can be
+replaced with windowHeight.
+All entries must be in lower case. The case is determined by the rotated
+text."
+  :group 'rotate-text
+  :type '(repeat (repeat :tag "Rotation group" (string :tag "Word"))))
+
+;; }}}
 
 (message "Pacakges options loaded...")
 
-;;}}}
 
 ;;{{{ LAST
 (menu-bar-mode +1)
@@ -431,3 +446,4 @@ there's a region, all lines that region covers will be duplicated."
 ;;}}}
 
 (message "Emacs Loaded!")
+
