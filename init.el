@@ -305,6 +305,32 @@ there's a region, all lines that region covers will be duplicated."
 (message "Hooks loaded...")
 
 ;;}}}
+;;{{{ KEYBINDINGS
+
+(global-set-key (kbd "C-c n")                 'cleanup-buffer)
+(define-key emacs-lisp-mode-map (kbd "C-c v") 'eval-current-buffer)
+(define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
+(define-key evil-normal-state-map (kbd "C-;") 'evil-numbers/dec-at-pt)
+(global-set-key (kbd "\C-cw")                 'fold-whole-buffer)  ;; close all folds
+(global-set-key (kbd "\C-ca")                 'fold-show-all)      ;; open all folds
+(global-set-key (kbd "\C-cs")                 'fold-show)          ;; open current fold
+(global-set-key (kbd "\C-ch")                 'fold-hide)          ;; close current fold
+(global-set-key (kbd "\C-cf")                 'fold-region)        ;; fold current region
+(global-set-key (kbd "C-c g")                 'google-is-your-friend)
+(global-set-key (kbd "C-c h")                 'helm-mini)
+(global-set-key (kbd "C-x C-f")               'helm-find-files)
+(global-set-key (kbd "C-x f")                 'helm-recentf)
+(global-set-key (kbd "M-/")                   'hippie-expand)
+(global-set-key (kbd "C-x C-b")               'ibuffer)
+(global-set-key (kbd "C-M-\\")                'indent-region-or-buffer)
+(global-set-key [(control shift up)]          'move-line-up)
+(global-set-key [(control shift down)]        'move-line-down)
+(global-set-key (kbd "C-c C-c")               'rotate-text)
+(global-set-key (kbd "C-c m")                 'visit-init)
+(global-set-key (kbd "C-c C-m")               'visit-bashrc)
+
+(message "Keybindings loaded...")
+;;}}}
 ;;{{{ PACKAGES
 
 ;;{{{ EVIL
@@ -359,31 +385,6 @@ there's a region, all lines that region covers will be duplicated."
 (autoload 'php-mode "php-mode")
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 
-;;}}}
-;;{{{ KEYBINDINGS
-
-(global-set-key (kbd "C-c n")                 'cleanup-buffer)
-(global-set-key (kbd "C-c g")                 'google-is-your-friend)
-(global-set-key (kbd "C-c h")                 'helm-mini)
-(global-set-key (kbd "C-x C-f")               'helm-find-files)
-(global-set-key (kbd "C-x f")                 'helm-recentf)
-(global-set-key (kbd "M-/")                   'hippie-expand)
-(global-set-key (kbd "C-x C-b")               'ibuffer)
-(global-set-key (kbd "C-M-\\")                'indent-region-or-buffer)
-(global-set-key [(control shift up)]          'move-line-up)
-(global-set-key [(control shift down)]        'move-line-down)
-(global-set-key (kbd "C-c C-c")               'rotate-text)
-(global-set-key (kbd "C-c m")                 'visit-init)
-(global-set-key (kbd "\C-cw")                 'fold-whole-buffer)  ;; close all folds
-(global-set-key (kbd "\C-ca")                 'fold-show-all)      ;; open all folds
-(global-set-key (kbd "\C-cs")                 'fold-show)          ;; open current fold
-(global-set-key (kbd "\C-ch")                 'fold-hide)          ;; close current fold
-(global-set-key (kbd "\C-cf")                 'fold-region)        ;; fold current region
-(define-key emacs-lisp-mode-map (kbd "C-c v") 'eval-current-buffer)
-(define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
-(define-key evil-normal-state-map (kbd "C-;") 'evil-numbers/dec-at-pt)
-
-(message "Keybindings loaded...")
 ;;}}}
 ;;{{{ YASNIPPET
 
