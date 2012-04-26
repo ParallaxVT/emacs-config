@@ -188,6 +188,12 @@
   (find-file "~/.emacs.d/init.el")
   )
 
+(defun visit-bashrc ()
+  "as in Load Custom"
+  (interactive)
+  (find-file "~/.bashrc")
+  )
+
 ;; Seach in Google
 (defun google-is-your-friend ()
   "Search the text in a region in google."
