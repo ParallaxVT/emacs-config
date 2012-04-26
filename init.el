@@ -134,16 +134,16 @@
 ;; revert buffers every 5 seconds just in case the file has been changed externally
 (global-auto-revert-mode t)
 ;; Use hippie-expand
-(setq hippie-expand-try-functions-list '(try-complete-file-name
-                                         try-complete-file-name-partially
-                                         try-complete-lisp-symbol
-                                         try-complete-lisp-symbol-partially
-                                         try-expand-all-abbrevs
-                                         try-expand-dabbrev
+(setq hippie-expand-try-functions-list '(try-expand-dabbrev
                                          try-expand-dabbrev-all-buffers
                                          try-expand-dabbrev-from-kill
+                                         try-complete-file-name-partially
+                                         try-complete-file-name
+                                         try-expand-all-abbrevs
+                                         try-expand-list
                                          try-expand-line
-                                         try-expand-list))
+                                         try-complete-lisp-symbol-partially
+                                         try-complete-lisp-symbol))
 ;; close autematically parenthesis and double quotes
 (electric-pair-mode t)
 ;; indent a line after pressing return
