@@ -331,7 +331,7 @@ there's a region, all lines that region covers will be duplicated."
 
 (message "Keybindings loaded...")
 ;;}}}
-;;{{{ PACKAGES  
+;;{{{ PACKAGES
 
 ;;{{{ EVIL
 
@@ -394,7 +394,7 @@ there's a region, all lines that region covers will be duplicated."
 (add-hook 'html-mode-hook 'yas/minor-mode-on)
 (add-hook 'css-mode-hook 'yas/minor-mode-on)
 (add-hook 'php-mode-hook 'yas/minor-mode-on)
-(add-hook 'xml-mode-hook 'yas/minor-mode-on)
+(add-hook 'nxml-mode-hook 'yas/minor-mode-on)
 
 (setq yas/root-directory "~/.emacs.d/snippets/")
 
