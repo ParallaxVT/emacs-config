@@ -331,7 +331,7 @@ there's a region, all lines that region covers will be duplicated."
 
 (message "Keybindings loaded...")
 ;;}}}
-;;{{{ PACKAGES
+;;{{{ PACKAGES  
 
 ;;{{{ EVIL
 
@@ -449,8 +449,7 @@ text."
 ;; }}}
 
 (message "Pacakges options loaded...")
-
-
+;;}}}
 ;;{{{ LAST
 (menu-bar-mode +1)
 (scroll-bar-mode +1)
