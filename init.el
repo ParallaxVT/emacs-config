@@ -285,7 +285,9 @@ there's a region, all lines that region covers will be duplicated."
   (interactive)
   (indent-buffer)
   (untabify-buffer)
-  (whitespace-cleanup))
+  (whitespace-cleanup)
+  (message "Buffer cleaned")
+  )
 
 (defun autocompile nil
   "compile itself if ~/.emacs.d/init.el is newer than init.elc"
