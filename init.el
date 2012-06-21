@@ -107,10 +107,11 @@
 (setq whitespace-style '(face trailing tabs))
 ;; Deactivate justification. It drives me mad when the code splited
 (setq-default default-justification 'none)
-
 ;; use 'y' and 'n' instoad 'Yes' and 'No'
 (fset 'yes-or-no-p 'y-or-n-p)
-
+;; Prevent a new line is added at the end of a snippet
+(setq-default mode-require-final-newline nil)
+;; Theme
 (require 'color-theme)
 (require 'color-theme-wombat)
 (color-theme-wombat)
