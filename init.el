@@ -297,6 +297,25 @@ there's a region, all lines that region covers will be duplicated."
     (if (string= (buffer-file-name) (file-chase-links dotemacs))
         (byte-compile-file dotemacs))))
 
+;; Center screen when perform a search
+(defadvice
+  evil-search-forward
+  (after evil-search-forward-recenter activate)
+  (recenter))
+(ad-activate 'evil-search-forward)
+
+(defadvice
+  evil-search-next
+  (after evil-search-next-recenter activate)
+  (recenter))
+(ad-activate 'evil-search-next)
+
+(defadvice
+  evil-search-previous
+  (after evil-search-previous-recenter activate)
+  (recenter))
+(ad-activate 'evil-search-previous)
+
 (message "Functions loaded...")
 
 ;;}}}
