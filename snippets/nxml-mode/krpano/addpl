@@ -1,8 +1,7 @@
 # contributor: Rafaelguerrapaz
-# name: 
-# key: 
-# -- 
- 
+# name: addplugin
+# key: addpl
+# --
 addplugin(${1:var});
     set(plugin[$1].align,);
     set(plugin[$1].alpha,);

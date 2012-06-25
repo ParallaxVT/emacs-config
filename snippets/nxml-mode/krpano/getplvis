@@ -1,6 +1,5 @@
 # contributor: Rafaelguerrapaz
-# name: 
-# key: 
-# -- 
- 
-get(plugin[$1].$2,visible)
+# name: get plugin visible
+# key: getplvis
+# --
+get(plugin[$1].visible)$0

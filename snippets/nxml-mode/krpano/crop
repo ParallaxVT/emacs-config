@@ -1,0 +1,5 @@
+# contributor: Rafaelguerrapaz
+# name: crop
+# key: crop
+# --
+crop($1|$2|$3|$4);$0

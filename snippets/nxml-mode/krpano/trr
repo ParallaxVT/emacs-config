@@ -1,6 +1,5 @@
 # contributor: Rafaelguerrapaz
-# name: 
-# key: 
-# -- 
- 
-trace(Trace this);
+# name: trace(Trace this)
+# key:  trr
+# --
+trace(Trace this);$0

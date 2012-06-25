@@ -1,6 +1,5 @@
 # contributor: Rafaelguerrapaz
-# name: 
-# key: 
-# -- 
- 
-get($1)
+# name: get 
+# key: get
+# --
+get($0)

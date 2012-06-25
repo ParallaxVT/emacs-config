@@ -1,6 +1,5 @@
 # contributor: Rafaelguerrapaz
-# name: 
-# key: 
-# -- 
- 
-trace($1);
+# name: trace();
+# key: tr
+# --
+trace($1);$0

@@ -1,8 +1,7 @@
 # contributor: Rafaelguerrapaz
-# name: 
-# key: 
-# -- 
- 
+# name: addhotspot
+# key:  addhs
+# --
 addhotspot(${1:var});
     set(hotspot[$1].align,);
     set(hotspot[$1].alpha,);

@@ -1,6 +1,0 @@
-# contributor: Rafaelguerrapaz
-# name: 
-# key: 
-# -- 
- 
-if(plugin[$1].visible==false,$2);

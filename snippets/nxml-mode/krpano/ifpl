@@ -1,6 +1,0 @@
-# contributor: Rafaelguerrapaz
-# name: 
-# key: 
-# -- 
- 
-if(plugin[$1].$2==$3,$4);

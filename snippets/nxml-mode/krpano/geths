@@ -1,6 +1,5 @@
 # contributor: Rafaelguerrapaz
-# name: 
-# key: 
-# -- 
- 
-get(hotspot[$1].$2,$3)
+# name: get hotspot
+# key: geths
+# --
+get(hotspot[$1].$2)$0

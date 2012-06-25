@@ -1,6 +1,5 @@
 # contributor: Rafaelguerrapaz
-# name: set 
+# name: set()
 # key: set
-# -- 
- 
-set();
+# --
+set($1);$0

@@ -1,6 +1,5 @@
 # contributor: Rafaelguerrapaz
-# name: 
-# key: 
-# -- 
- 
-get(hotspot[$1].$2,visible)
+# name: get hotspot visible
+# key: gethsvis
+# --
+get(hotspot[$1].visible)$0

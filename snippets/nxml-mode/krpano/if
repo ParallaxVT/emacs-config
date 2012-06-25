@@ -1,7 +1,8 @@
-
 # contributor: Rafaelguerrapaz
 # name: if
 # key: if
 # --
- 
-if($1);
+if(${1:$$(yas/choose-value '("plugin[" "hotspot[" "data[" "isflash[" "ishtml5[" "isphone[" "ispad[" "isandroid[" "isdesktop[" "ismobile[" "istablet[" "istouchdevice["))}].${2:$$(yas/choose-value '("alpha" "visible" "content" "x" "y"))} ${3:$$(yas/choose-value '("== " "!= " "GT " "LT " "GE " "LE "))} ${4:$$(yas/choose-value '(" " "true " "false "))},,
+$0
+);
+
