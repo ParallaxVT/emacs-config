@@ -316,6 +316,34 @@ there's a region, all lines that region covers will be duplicated."
   (recenter))
 (ad-activate 'evil-search-previous)
 
+;; Custom indentation for krpano language in xml files
+
+(define-derived-mode foo-mode text-mode "Foo"
+  "Mode for editing some kind of config files."
+  (make-local-variable 'foo-indent-offset)
+  (set (make-local-variable 'indent-line-function) 'foo-indent-line))
+
+(defvar foo-indent-offset 4
+  "*Indentation offset for `foo-mode'.")
+
+(defun foo-indent-line ()
+  "Indent current line for `foo-mode'."
+  (interactive)
+  (let ((indent-col 0))
+    (save-excursion
+      (beginning-of-line)
+      (condition-case nil
+          (while t
+            (backward-up-list 1)
+            (when (looking-at "[[if(]")
+              (setq indent-col (+ indent-col foo-indent-offset))))
+        (error nil)))
+    (save-excursion
+      (back-to-indentation)
+      (when (and (looking-at "[]);]") (>= indent-col foo-indent-offset))
+        (setq indent-col (- indent-col foo-indent-offset))))
+    (indent-line-to indent-col)))
+
 (message "Functions loaded...")
 
 ;;}}}
