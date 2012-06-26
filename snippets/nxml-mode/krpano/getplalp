@@ -1,5 +1,0 @@
-# contributor: Rafaelguerrapaz
-# name: get plugin alpha
-# key: getplalp
-# --
-get(plugin[$1].alpha)$0

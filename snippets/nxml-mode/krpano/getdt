@@ -1,5 +1,5 @@
 # contributor: Rafaelguerrapaz
 # name: get data
-# key: getdata
+# key: getdt
 # --
-get(data[$1].content);$0
+get(data[$0].content)

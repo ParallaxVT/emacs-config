@@ -2,4 +2,4 @@
 # name: get hotspot
 # key: geths
 # --
-get(hotspot[$1].$2)$0
+get(hotspot($1).$0)

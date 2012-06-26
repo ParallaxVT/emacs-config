@@ -1,7 +1,5 @@
 # contributor: Rafaelguerrapaz
-# name: 
-# key: 
-# -- 
- 
-<krpano version="1.0.8.14">
-$1
+# name: <krpano>
+# key: krp
+# --
+<krpano version="1.0.8.14">$0

@@ -1,5 +1,5 @@
 # contributor: Rafaelguerrapaz
-# name: action
+# name: <action>
 # key: act
 # --
 <action name="$1">

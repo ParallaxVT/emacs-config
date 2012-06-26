@@ -1,6 +1,0 @@
-# contributor: Rafaelguerrapaz
-# name: 
-# key: 
-# -- 
- 
-trace('value of 1 is: ', %1, ' value of 2: ', %2, ' value of 3: ', %3);"

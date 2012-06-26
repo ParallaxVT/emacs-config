@@ -1,5 +1,5 @@
 # contributor: Rafaelguerrapaz
 # name: crop
-# key: crop
+# key: cr
 # --
-crop($1|$2|$3|$4);$0
+crop($1|$2|$3|$0);

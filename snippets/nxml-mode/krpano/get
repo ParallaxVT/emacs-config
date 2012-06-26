@@ -1,5 +1,5 @@
 # contributor: Rafaelguerrapaz
-# name: get 
+# name: get
 # key: get
 # --
-get($0)
+get($0);

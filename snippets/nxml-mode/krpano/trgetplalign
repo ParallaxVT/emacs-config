@@ -1,5 +1,0 @@
-# contributor: Rafaelguerrapaz
-# name: trace get plugin align
-# key: trgetplalign
-# --
-trace(get(plugin[$1].align));$0

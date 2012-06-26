@@ -286,6 +286,7 @@ there's a region, all lines that region covers will be duplicated."
   (indent-buffer)
   (untabify-buffer)
   (whitespace-cleanup)
+  ;;(nxml-extra-space-indent)
   (message "Buffer cleaned")
   )
 
@@ -329,20 +330,35 @@ there's a region, all lines that region covers will be duplicated."
 (defun foo-indent-line ()
   "Indent current line for `foo-mode'."
   (interactive)
+  (make-local-variable 'foo-indent-offset)
+  (set (make-local-variable 'indent-line-function) 'foo-indent-line)
   (let ((indent-col 0))
     (save-excursion
       (beginning-of-line)
       (condition-case nil
           (while t
-            (backward-up-list 1)
-            (when (looking-at "[[if(]")
-              (setq indent-col (+ indent-col foo-indent-offset))))
+            ;;(backward-up-list 1)
+            (when (looking-at "if")
+            (message "hi")
+            (setq indent-col (+ indent-col foo-indent-offset)))
+            )
         (error nil)))
     (save-excursion
       (back-to-indentation)
-      (when (and (looking-at "[]);]") (>= indent-col foo-indent-offset))
+      (when (and (looking-at "[]}]") (>= indent-col foo-indent-offset))
         (setq indent-col (- indent-col foo-indent-offset))))
     (indent-line-to indent-col)))
+
+;; Another custom indentation for xml files
+
+(defun nxml-extra-space-indent ()
+  "Indent current line."
+  (interactive)
+  (nxml-indent-line)
+  (when (zerop (current-indentation))
+    (indent-line-to 4))
+  )
+(setq indent-line-function 'nxml-extra-space-indent)
 
 (message "Functions loaded...")
 

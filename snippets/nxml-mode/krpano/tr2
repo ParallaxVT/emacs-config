@@ -1,6 +1,5 @@
 # contributor: Rafaelguerrapaz
-# name: 
-# key: 
-# -- 
- 
-trace('value of 2 is: ', %2);"
+# name: trace(%2);
+# key: tr2
+# --
+trace('Value of 2 is: ', %2);$0

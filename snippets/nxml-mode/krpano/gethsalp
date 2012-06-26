@@ -1,5 +1,0 @@
-# contributor: Rafaelguerrapaz
-# name: get hotspot alpha
-# key: gethsalp
-# --
-get(hotspot[$1].alpha)$0

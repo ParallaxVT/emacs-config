@@ -1,9 +1,8 @@
 # contributor: Rafaelguerrapaz
-# name: 
-# key: 
-# -- 
- 
-<scene name="pano${1:var}">
+# name: <scene>
+# key: scn
+# --
+<scene name="pano${1:number}">
     <preview url="panos/pano$1/preview.jpg" />
     <image type="CUBE" multires="true" tilesize="902" progressive="false">
         <level tiledimagewidth="2706" tiledimageheight="2706">

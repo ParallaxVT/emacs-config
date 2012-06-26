@@ -1,7 +1,0 @@
-# contributor: Rafaelguerrapaz
-# name: fold 
-# key: fold
-# --
-<!-- {{{ $1 -->
-$2
-<!-- }}} -->

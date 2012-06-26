@@ -1,6 +1,0 @@
-# contributor: Rafaelguerrapaz
-# name: 
-# key: 
-# -- 
- 
-trace(get($1));

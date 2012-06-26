@@ -1,6 +1,0 @@
-# contributor: Rafaelguerrapaz
-# name: 
-# key: 
-# -- 
- 
-set(plugin[$1].visible,true);

@@ -1,6 +1,5 @@
 # contributor: Rafaelguerrapaz
-# name: 
-# key: 
-# -- 
- 
-tween(plugin[$1].$2,0,0.3,easeoutquad);
+# name: tween plugin;
+# key: twpl
+# --
+tween(plugin[$1].$2,$0,.3,easeoutquad);

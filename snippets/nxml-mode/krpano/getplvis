@@ -1,5 +1,0 @@
-# contributor: Rafaelguerrapaz
-# name: get plugin visible
-# key: getplvis
-# --
-get(plugin[$1].visible)$0

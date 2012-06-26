@@ -1,23 +1,6 @@
 # contributor: Rafaelguerrapaz
-# name: addplugin
+# name: add plugin
 # key: addpl
 # --
-addplugin(${1:var});
-    set(plugin[$1].align,);
-    set(plugin[$1].alpha,);
-    set(plugin[$1].crop,);
-    set(plugin[$1].children,);
-    set(plugin[$1].edge,);
-    set(plugin[$1].handcursor,);
-    set(plugin[$1].height,);
-    set(plugin[$1].keep,);
-    set(plugin[$1].onclick,);
-    set(plugin[$1].onover,);
-    set(plugin[$1].onout,);
-    set(plugin[$1].url,%HTMLPATH%/files/images/);
-    set(plugin[$1].visible,);
-    set(plugin[$1].width,);
-    set(plugin[$1].x,);
-    set(plugin[$1].y,);
-    set(plugin[$1].zorder,);
+addplugin($1);
 $0

@@ -1,6 +1,5 @@
 # contributor: Rafaelguerrapaz
-# name: 
-# key: 
-# -- 
- 
-trace('value of 3 is: ', %3);"
+# name: trace(%3);
+# key: tr3
+# --
+trace('Value of 3 is: ', %3);$0
