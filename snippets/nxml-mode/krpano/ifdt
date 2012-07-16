@@ -1,5 +1,5 @@
 # contributor: Rafaelguerrapaz
-# name: get
-# key: get
+# name: if
+# key: if
 # --
-get($0)
+if($0);

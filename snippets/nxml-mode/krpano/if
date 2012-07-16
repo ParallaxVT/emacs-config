@@ -1,5 +1,5 @@
 # contributor: Rafaelguerrapaz
-# name: if
-# key: if
+# name: if(data);
+# key: ifdt
 # --
-if($0);
+if(data[$1].content==$2,$0);

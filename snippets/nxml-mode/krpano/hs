@@ -2,4 +2,4 @@
 # name: hotspot
 # key: hs
 # --
-hotspot($1).$0
+hotspot[$1].$2,$0
