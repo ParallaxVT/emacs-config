@@ -317,6 +317,18 @@ there's a region, all lines that region covers will be duplicated."
   (recenter))
 (ad-activate 'evil-search-previous)
 
+(defadvice
+  evil-search-symbol-forward
+  (after evil-search-symbol-forward-recenter activate)
+  (recenter))
+(ad-activate 'evil-search-symbol-forward)
+
+(defadvice
+  evil-search-symbol-backward
+  (after evil-search-symbol-backward-recenter activate)
+  (recenter))
+(ad-activate 'evil-search-symbol-backward)
+
 ;; Custom indentation for krpano language in xml files
 
 (define-derived-mode foo-mode text-mode "Foo"
