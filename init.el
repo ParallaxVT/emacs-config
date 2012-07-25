@@ -374,6 +374,10 @@ there's a region, all lines that region covers will be duplicated."
 ;;}}}
 ;;{{{ PACKAGES
 
+;;{{{ auto highlight
+(require 'auto-highlight-symbol)
+(global-auto-highlight-symbol-mode t)
+;;}}}
 ;;{{{ EVIL
 
 (require 'evil)
