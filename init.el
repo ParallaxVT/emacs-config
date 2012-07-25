@@ -298,7 +298,7 @@ there's a region, all lines that region covers will be duplicated."
     (if (string= (buffer-file-name) (file-chase-links dotemacs))
         (byte-compile-file dotemacs))))
 
-;; Center screen when perform a search
+;; Center screen when perform a search in Evil-mode
 (defadvice
   evil-search-forward
   (after evil-search-forward-recenter activate)
@@ -323,11 +323,24 @@ there's a region, all lines that region covers will be duplicated."
   (recenter))
 (ad-activate 'evil-search-symbol-forward)
 
+;; Center screen when perform a search
 (defadvice
-  evil-search-symbol-backward
-  (after evil-search-symbol-backward-recenter activate)
+  isearch-forward
+  (after isearch-forward-recenter activate)
   (recenter))
-(ad-activate 'evil-search-symbol-backward)
+(ad-activate 'isearch-forward)
+
+(defadvice
+  isearch-repeat-forward
+  (after isearch-repeat-forward-recenter activate)
+  (recenter))
+(ad-activate 'isearch-repeat-forward)
+
+(defadvice
+  isearch-repeat-backward
+  (after isearch-repeat-backward-recenter activate)
+  (recenter))
+(ad-activate 'isearch-repeat-backward)
 
 ;; Custom indentation for krpano language in xml files
 
