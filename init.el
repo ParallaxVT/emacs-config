@@ -515,6 +515,7 @@ text."
 (global-set-key (kbd "C-c m")                 'visit-init)
 (global-set-key (kbd "C-c C-m")               'visit-bashrc)
 (global-set-key (kbd "C-c SPC")               'yas/expand)
+(global-set-key (kbd "C-c d")                 'duplicate-current-line-or-region)
 
 (message "Keybindings loaded...")
 ;;}}}
