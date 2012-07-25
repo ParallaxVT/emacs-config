@@ -497,6 +497,8 @@ text."
 (define-key emacs-lisp-mode-map (kbd "C-c v") 'eval-current-buffer)
 (define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
 (define-key evil-normal-state-map (kbd "C-;") 'evil-numbers/dec-at-pt)
+(global-set-key (kbd "C-c +")                 'evil-numbers/inc-at-pt)
+(global-set-key (kbd "C-c -")                 'evil-numbers/dec-at-pt)
 (global-set-key (kbd "\C-cw")                 'fold-whole-buffer)  ;; close all folds
 (global-set-key (kbd "\C-ca")                 'fold-show-all)      ;; open all folds
 (global-set-key (kbd "\C-cs")                 'fold-show)          ;; open current fold
