@@ -377,7 +377,7 @@ there's a region, all lines that region covers will be duplicated."
 ;;{{{ EVIL
 
 (require 'evil)
-(evil-mode 1)
+(evil-mode 0)
 ;;}}}
 ;;{{{ EL-GET
 
