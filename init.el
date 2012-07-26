@@ -354,6 +354,16 @@ there's a region, all lines that region covers will be duplicated."
     (comment-dwim arg)))
 (global-set-key "\M-;" 'comment-dwim-line)
 
+;; Select curret line
+
+(transient-mark-mode 1)
+
+(defun select-current-line ()
+  "Select the current line"
+  (interactive)
+  (end-of-line) ; move to end of line
+  (set-mark (line-beginning-position)))
+
 ;; Custom indentation for krpano language in xml files
 
 (define-derived-mode foo-mode text-mode "Foo"
@@ -548,6 +558,7 @@ text."
 (global-set-key (kbd "C-c SPC")               'yas/expand)
 (global-set-key (kbd "C-c d")                 'duplicate-current-line-or-region)
 (global-set-key (kbd "C-c C-k")               'kill-region)
+(global-set-key (kbd "C-c '")               'select-current-line)
 
 (message "Keybindings loaded...")
 ;;}}}
