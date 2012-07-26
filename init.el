@@ -535,6 +535,8 @@ text."
 (global-set-key (kbd "C-c C-m")               'visit-bashrc)
 (global-set-key (kbd "C-c SPC")               'yas/expand)
 (global-set-key (kbd "C-c d")                 'duplicate-current-line-or-region)
+(global-set-key (kbd "C-c C-k")               'kill-region)
+(global-set-key (kbd "C-c C-y")               'kill-ring-save)
 
 (message "Keybindings loaded...")
 ;;}}}
