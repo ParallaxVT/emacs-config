@@ -364,6 +364,24 @@ there's a region, all lines that region covers will be duplicated."
   (end-of-line) ; move to end of line
   (set-mark (line-beginning-position)))
 
+;; Toggle spaces/underscore
+
+(defun replace-underscore-space-toggle ()
+  "Replace underscore/space in the current region or line.
+If the current line contains more '_' char than space,
+then replace them to space, else replace space to _.
+If there's a text selection, work on the selected text."
+  (interactive)
+  (let (li bds)
+    (setq bds
+          (if (region-active-p)
+              (cons (region-beginning) (region-end))
+            (bounds-of-thing-at-point 'line)))
+    (setq li (buffer-substring-no-properties (car bds) (cdr bds)))
+    (if (> (count 32 li) (count 95 li))
+        (replace-string " " "_" nil (car bds) (cdr bds))
+      (replace-string "_" " " nil (car bds) (cdr bds)))))
+
 ;; Custom indentation for krpano language in xml files
 
 (define-derived-mode foo-mode text-mode "Foo"
