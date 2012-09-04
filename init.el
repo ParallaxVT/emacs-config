@@ -502,6 +502,12 @@ If there's a text selection, work on the selected text."
 (setq yas/prompt-functions '(yas/dropdown-prompt))
 
 ;;}}}
+;;{{{ org-mode
+
+;;; remove 'validate XHTML' link at the bottom
+(setq org-export-html-postamble nil)
+
+;;}}}
 ;;{{{ ESHELL
 
 
