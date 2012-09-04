@@ -531,7 +531,7 @@ If there's a text selection, work on the selected text."
     (erase-buffer)))
 
 ;;}}}
-;;{{{ ROTOTE TEXT
+;;{{{ ROTATE TEXT
 
 (autoload 'rotate-text "rotate-text" nil t)
 (autoload 'rotate-text-backward "rotate-text" nil t)
