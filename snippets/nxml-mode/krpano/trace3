@@ -2,4 +2,4 @@
 # name: trace(%3);
 # key: tr3
 # --
-trace('Value of 3 is: ', %3);$0
+trace('Value of 3 is: ', %3); showlog();$0

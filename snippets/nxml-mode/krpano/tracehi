@@ -2,4 +2,4 @@
 # name: trace(hi);
 # key: trh
 # --
-trace(hi);$0
+trace(hi); showlog();$0

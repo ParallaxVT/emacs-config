@@ -1,0 +1,23 @@
+# contributor: Rafaelguerrapaz
+# name: <style />
+# key: st
+# --
+<style name       ="$1"
+       align      ="$0"
+       alpha      ="1"
+       crop       ="|||"
+       children   ="false"
+       edge       =""
+       handcursor =""
+       height     =""
+       keep       ="true"
+       onclick    =""
+       onover     =""
+       onout      =""
+       url        ="%SWFPATH%/include/.png"
+       visible    =""
+       width      =""
+       x          =""
+       y          =""
+       zorder     ="10"
+/>
