@@ -33,3 +33,7 @@
 (add-subfolders-to-load-path ext-dir)
 
 (load "~/.emacs/conf/backup_and_autosave")
+;; set custom.el path and load it
+(setq custom-file (concat dotfiles-dir "conf/custom.el"))
+(load custom-file 'noerror)
+
