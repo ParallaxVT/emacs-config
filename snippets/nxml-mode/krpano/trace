@@ -1,5 +1,0 @@
-# contributor: Rafaelguerrapaz
-# name: trace
-# key: tr
-# --
-trace($0); showlog();

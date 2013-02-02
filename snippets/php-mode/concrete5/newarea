@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: area
-# key: area
-# --
-<\? $a = new Area('${1:$$(yas/choose-value '("" "Main" "Sidebar"))}'); $a->display($c); ?>$0

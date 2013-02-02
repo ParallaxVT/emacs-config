@@ -1,3 +1,0 @@
-#+OPTIONS: author:nil email:nil creator:nil timestamp:nil
-#+OPTIONS: ^:nil
-#+STYLE: <link rel="stylesheet" type="text/css" href="../../css/emacs.css" />
