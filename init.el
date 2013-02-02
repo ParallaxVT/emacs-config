@@ -36,6 +36,7 @@
 (setq custom-file (concat dotfiles-dir "conf/custom.el"))
 (load custom-file 'noerror)
 
+(load (concat dotfiles-dir "conf/conf_appearance"))
 (load (concat dotfiles-dir "conf/conf_autosave"))
 (load (concat dotfiles-dir "conf/conf_backup"))
 (load (concat dotfiles-dir "defun/defun_autocompile"))
