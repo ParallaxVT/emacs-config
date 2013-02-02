@@ -4,6 +4,9 @@
 (eval-when-compile (require 'cl))
 ;(require 'cl)
 
+;; enter in debug mode if there is an error
+(setq debug-on-error t)
+
 (defvar dotfiles-dir "~/.emacs/"
   "The root Emacs Lisp source folder")
 
