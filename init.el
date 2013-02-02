@@ -7,6 +7,7 @@
 ;; enter in debug mode if there is an error
 (setq debug-on-error t)
 
+;; root directory containing all the emacs configuration files
 (defvar dotfiles-dir "~/.emacs/"
   "The root Emacs Lisp source folder")
 
