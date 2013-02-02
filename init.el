@@ -41,4 +41,5 @@
 (load (concat dotfiles-dir "conf/conf_backup"))
 (load (concat dotfiles-dir "defun/defun_autocompile"))
 (load (concat dotfiles-dir "defun/defun_scratch"))
-
+(load (concat dotfiles-dir "vendor/fill-column-indicator"))
+(load (concat dotfiles-dir "conf/conf_fill_column_indicator"))
