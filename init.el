@@ -38,3 +38,5 @@
 
 (load (concat dotfiles-dir "conf/conf_autosave"))
 (load (concat dotfiles-dir "conf/conf_backup"))
+(load (concat dotfiles-dir "defun/defun_scratch"))
+
