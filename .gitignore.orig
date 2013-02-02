@@ -1,0 +1,16 @@
+<<<<<<< HEAD
+auto-save-list/
+elpa/
+eshell/
+server/
+url/
+ac-comphist.dat
+recentf
+savehist
+saveplace
+tramp
+init.elc
+=======
+backup/*
+*.elc
+>>>>>>> Added .gitignore file.
