@@ -113,6 +113,9 @@
 `(eshell-prompt ((t (:foreground ,sw-blue-1))))
 `(eshell-ls-directory ((t (:foreground ,sw-blue-1 :width normal))))
 
+;; sh-mode
+`(sh-heredoc ((t (:foreground ,sw-fg :bold n :width normal :weight normal))))
+
  )
  )
 
