@@ -36,10 +36,16 @@
 (setq custom-file (concat dotfiles-dir "conf/custom.el"))
 (load custom-file 'noerror)
 
+
+
+(load (concat dotfiles-dir "vendor/fill-column-indicator"))
+
+(load (concat dotfiles-dir "defun/defun_autocompile"))
+(load (concat dotfiles-dir "defun/defun_scratch"))
+
 (load (concat dotfiles-dir "conf/conf_appearance"))
 (load (concat dotfiles-dir "conf/conf_autosave"))
 (load (concat dotfiles-dir "conf/conf_backup"))
-(load (concat dotfiles-dir "defun/defun_autocompile"))
-(load (concat dotfiles-dir "defun/defun_scratch"))
-(load (concat dotfiles-dir "vendor/fill-column-indicator"))
+(load (concat dotfiles-dir "conf/conf_marmalade"))
+(load (concat dotfiles-dir "conf/conf_elpa"))
 (load (concat dotfiles-dir "conf/conf_fill_column_indicator"))
