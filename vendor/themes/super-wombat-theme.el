@@ -23,7 +23,7 @@
 (deftheme super-wombat "Super Wombat theme for Emacs")
 
  (let ((sw-fg		"#f6f3e8")
-       (sw-bg		"#242424")
+       (sw-bg		"#111111")
        (sw-green	"#95e454")
        (sw-green+1	"#cae682")
        (sw-green+2	"#4bc98a")
