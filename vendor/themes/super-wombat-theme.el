@@ -51,7 +51,7 @@
  'super-wombat
  
 `(default ((t (:foreground ,sw-fg :background ,sw-bg))))
-`(highlight ((t (:background ,sw-blue))))
+`(highlight ((t (:background ,sw-gray-1))))
 `(region ((t (:foreground ,sw-fg :background ,sw-gray-1))))
 
 ;; Font Lock
