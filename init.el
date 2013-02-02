@@ -49,3 +49,4 @@
 (load (concat dotfiles-dir "conf/conf_marmalade"))
 (load (concat dotfiles-dir "conf/conf_elpa"))
 (load (concat dotfiles-dir "conf/conf_fill_column_indicator"))
+(load (concat dotfiles-dir "conf/conf_smex"))
