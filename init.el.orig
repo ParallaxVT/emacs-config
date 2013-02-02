@@ -8,6 +8,7 @@
 ;; enter in debug mode if there is an error
 (setq debug-on-error t)
 
+;; root directory containing all the emacs configuration files
 (defvar dotfiles-dir "~/.emacs/"
   "The root Emacs Lisp source folder")
 
@@ -47,7 +48,7 @@
 (defvar dotfiles-dir "~/.emacs/"
   "The root Emacs Lisp source folder")
 
-;; external packages reside here
+;; external packages directory
 (defvar ext-dir (concat dotfiles-dir "vendor/")
   "The root folder for external packages")
 
@@ -69,4 +70,4 @@
 (add-subfolders-to-load-path ext-dir)
 
 (load "~/.emacs/conf/backup_and_autosave")
->>>>>>> init.el -> Added comment regarding dotfiles-dir
+>>>>>>> init.el -> Added comment regading the vendor directory

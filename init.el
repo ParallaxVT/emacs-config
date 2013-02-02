@@ -11,7 +11,7 @@
 (defvar dotfiles-dir "~/.emacs/"
   "The root Emacs Lisp source folder")
 
-;; external packages reside here
+;; external packages directory
 (defvar ext-dir (concat dotfiles-dir "vendor/")
   "The root folder for external packages")
 
