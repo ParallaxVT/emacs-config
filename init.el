@@ -2,6 +2,10 @@
 
 ;; determine the load path dirs
 ;; as relative to the location of this file
+;;Use eval-when-compile to avoid warning about require 'cl
+(eval-when-compile (require 'cl))
+;(require 'cl)
+
 (defvar dotfiles-dir "~/.emacs/"
   "The root Emacs Lisp source folder")
 
