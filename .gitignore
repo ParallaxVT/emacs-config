@@ -1,3 +1,4 @@
 backup/*
 *.elc
 misc/.smex-items
+init.el
