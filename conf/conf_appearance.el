@@ -4,7 +4,7 @@
 
 (add-to-list 'custom-theme-load-path "~/.emacs/vendor/themes/")
 (load-theme 'super-wombat t)
-(setq color-theme-is-global t)
+(defvar color-theme-is-global t)
 
 ;; ====================
 ;; Font
@@ -47,7 +47,7 @@
 (setq visible-bell t)                         ;; No bells and whistles
 (setq-default default-justification 'none)    ;; Deactivate justification. Stops  split the lines
 (setq-default mode-require-final-newline nil) ;; Prevent adding a new line  at the end of a file
-(setq whitespace-style '(face trailing tabs)) ;; Something about  margins (white-space-line-column)
+(defvar whitespace-style '(face trailing tabs)) ;; Something about  margins (white-space-line-column)
 
 ;; ====================
 ;; Windows
@@ -77,3 +77,4 @@
 
 
 (provide 'conf_appearance)
+
