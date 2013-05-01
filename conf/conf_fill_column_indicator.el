@@ -1,10 +1,11 @@
+;; ===============================
+;; conf_fill_column_indicator.el
+;; ===============================
 ;; Custom settings
-(setq fci-rule-width 2)
-(setq fci-rule-color "darkgreen")
-(setq fci-rule-column 80)
-
+(defvar fci-rule-width 2)
+(defvar fci-rule-color "darkgreen")
+(defvar fci-rule-column 80)
 ;; Turn on fci-mode automatically for certain mades
-
 (defun my-add-to-multiple-hooks (function hooks)
   (mapc (lambda (hook)
           (add-hook hook function))
