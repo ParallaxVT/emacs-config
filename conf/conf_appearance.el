@@ -76,6 +76,12 @@
     (fringe-mode 1))  ;; Make the sides fringe thinner
 (global-linum-mode t) ;; show line numbers please!
 
+;; ====================
+;; Indent
+;; ====================
+
+(setq-default indent-tabs-mode nil)  ;; Don't use tabs to indent
+(setq-default tab-width 8)           ;; Width of a TAB character
 
 (provide 'conf_appearance)
 
