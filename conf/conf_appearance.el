@@ -43,11 +43,12 @@
 ;; Emacs behavior
 ;; ====================
 
-(fset 'yes-or-no-p 'y-or-n-p)                 ;; use 'y' and 'n' instoad 'Yes' and 'No'
-(setq visible-bell t)                         ;; No bells and whistles
-(setq-default default-justification 'none)    ;; Deactivate justification. Stops  split the lines
-(setq-default mode-require-final-newline nil) ;; Prevent adding a new line  at the end of a file
+(fset 'yes-or-no-p 'y-or-n-p)                   ;; use 'y' and 'n' instoad 'Yes' and 'No'
+(setq visible-bell t)                           ;; No bells and whistles
+(setq-default default-justification 'none)      ;; Deactivate justification. Stops  split the lines
+(setq-default mode-require-final-newline nil)   ;; Prevent adding a new line  at the end of a file
 (defvar whitespace-style '(face trailing tabs)) ;; Something about  margins (white-space-line-column)
+(delete-selection-mode t)                       ;; Delete selection with a keypress
 
 ;; ====================
 ;; Windows
