@@ -50,7 +50,7 @@ function checkdir() {
     if [ -d $1 ]; then
         print_ok "Found directory: $(basename $1)"
     else
-        echo_fail "Directory not found: $1"
+        print_fail "Directory not found: $1"
     fi
 }
 
@@ -59,7 +59,7 @@ function checkfile() {
     if [ -f $1 ]; then
         print_ok "Found file: $(basename $1)"
     else
-        echo_fail "File not found: $1"
+        print_fail "File not found: $1"
     fi
 }
 
