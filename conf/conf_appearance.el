@@ -64,7 +64,7 @@
 ;; Mode line
 ;; ====================
 
-(line-number-mode t)     ;; Show line number 
+(line-number-mode t)     ;; Show line number
 (column-number-mode t)   ;; Show column number
 (size-indication-mode t) ;; Show buffer size in the mode line
 
