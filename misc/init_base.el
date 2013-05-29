@@ -12,7 +12,7 @@
   "The root Emacs Lisp source folder")
 
 ;; external packages directory
-(defvar ext-dir (concat dotfiles-dir "vendor/")
+(defvar vendor-dir (concat dotfiles-dir "vendor/")
   "The root folder for external packages")
 
 ;; add to the load pah
@@ -30,7 +30,7 @@
 
 ;; add the first level subfolders automatically
 (add-subfolders-to-load-path dotfiles-dir)
-(add-subfolders-to-load-path ext-dir)
+(add-subfolders-to-load-path vendor-dir)
 
 ;; set custom.el path and load it
 (setq custom-file (concat dotfiles-dir "conf/custom.el"))
