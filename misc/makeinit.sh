@@ -71,13 +71,13 @@ checkdir $emacsdir
 checkdir $confdir
 checkdir $defundir
 checkfile $emacspath
-checkfile ./init_base.el
+checkfile ./misc/init_base.el
 
 # Merge
 cat $confdir/conf*.el > $confdir/all.tmp
 cat $defundir/defun*.el > $defundir/all.tmp
 
-cp --remove-destination $emacsdir/init_base.el $initfile
+cp --remove-destination $emacsdir/misc/init_base.el $initfile
 
 cat $confdir/all.tmp >> $initfile
 cat $defundir/all.tmp >> $initfile
@@ -89,10 +89,12 @@ checkfile $defundir/all.tmp  && rm $defundir/all.tmp
 # Make sure the file doesn't have any '^M'
 checkfile $initfile  && dos2unix -q $initfile
 
+rm -f init.elc
+
 # Byte-compile, no emacs loading messages (-Q)
 $emacspath -Q --batch -f batch-byte-compile init.el
 
-rm $initfile
+rm -f $initfile
 
 print_done
 
