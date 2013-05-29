@@ -71,7 +71,7 @@ checkdir $emacsdir
 checkdir $confdir
 checkdir $defundir
 checkfile $emacspath
-checkfile ./misc/init_base.el
+checkfile $emacsdir/misc/init_base.el
 
 # Merge
 cat $confdir/conf*.el > $confdir/all.tmp
