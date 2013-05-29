@@ -41,7 +41,7 @@ function print_warn() {
 }
 
 function print_fail() {
-    printf "] \e[91mfail\e[0m ] $1\n"
+    printf "[ \e[91mfail\e[0m ] $1\n"
     exit 1
 }
 
