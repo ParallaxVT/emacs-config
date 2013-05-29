@@ -2,7 +2,7 @@
 ;; Theme
 ;; ====================
 
-(add-to-list 'custom-theme-load-path "~/.emacs/vendor/themes/")
+(add-to-list 'custom-theme-load-path (concat vendor-dir "themes/"))
 (load-theme 'super-wombat t)
 (defvar color-theme-is-global t)
 
