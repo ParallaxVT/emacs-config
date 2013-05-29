@@ -89,9 +89,10 @@ checkfile $defundir/all.tmp  && rm $defundir/all.tmp
 # Make sure the file doesn't have any '^M'
 checkfile $initfile  && dos2unix -q $initfile
 
-# Byte-compile, no emacs loading messages (-Q), no byte-compile wanning messgages
+# Byte-compile, no emacs loading messages (-Q)
+$emacspath -Q --batch -f batch-byte-compile init.el
 
-$emacspath -Q -batch --eval '(byte-compile-disable-warning nil) (byte-compile-file "init.el")' && print_ok "Create file: init.elc"
+rm $initfile
 
 print_done
 
