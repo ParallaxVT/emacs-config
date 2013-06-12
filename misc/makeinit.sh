@@ -92,7 +92,7 @@ checkfile $initfile  && dos2unix -q $initfile
 rm -f init.elc
 
 # Byte-compile, no emacs loading messages (-Q)
-$emacspath -Q --batch -f batch-byte-compile init.el
+$emacspath --batch -f batch-byte-compile $initfile
 
 rm -f $initfile
 
