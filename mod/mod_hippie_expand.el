@@ -1,5 +1,5 @@
 ;; ====================
-;; Hippie-expand
+;; mod_hippie_expand.el
 ;; ====================
 
 (global-set-key (kbd "M-/") 'hippie-expand)
@@ -14,4 +14,4 @@
                                          try-expand-line
                                          try-complete-lisp-symbol-partially
                                          try-complete-lisp-symbol))
-(provide 'conf_hippie_expand)
+(provide 'mod_hippie_expand)
