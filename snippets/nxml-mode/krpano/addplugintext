@@ -1,0 +1,33 @@
+# contributor: Rafaelguerrapaz
+# name: add plugin textfield
+# key: addpltxt
+# --
+addplugin(${1:var});
+    set(plugin[$1].align,center);
+    set(plugin[$1].alpha,1);
+    set(plugin[$1].autosize,center);
+    set(plugin[$1].background,false);
+    set(plugin[$1].backgroundcolor,0x000000);
+    set(plugin[$1].border,false);
+    set(plugin[$1].bordercolor,0xffffff);
+    set(plugin[$1].borderwidth,1);
+    set(plugin[$1].children,false);
+    set(plugin[$1].css,data:_css);
+    set(plugin[$1].edge,center);
+    set(plugin[$1].handcursor,true);
+    set(plugin[$1].height,);
+    set(plugin[$1].html,data:);
+    set(plugin[$1].keep,false);
+    set(plugin[$1].onclick,);
+    set(plugin[$1].onover,);
+    set(plugin[$1].onout,);
+    set(plugin[$1].roundedge,0);
+    set(plugin[$1].selectable,false);
+    set(plugin[$1].url,%SWFPATH%/plugins/textfield.swf);
+    set(plugin[$1].visible,true);
+    set(plugin[$1].width,);
+    set(plugin[$1].wordwrap,);
+    set(plugin[$1].x,);
+    set(plugin[$1].y,);
+    set(plugin[$1].zorder,10);
+$0

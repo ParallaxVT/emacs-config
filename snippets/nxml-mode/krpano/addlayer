@@ -1,0 +1,23 @@
+# contributor: Rafaelguerrapaz
+# name: add layer
+# key: addla
+# --
+addlayer(${1:var});
+    set(layer[$1].align,center);
+    set(layer[$1].alpha,1);
+    set(layer[$1].crop,||||);
+    set(layer[$1].children,false);
+    set(layer[$1].edge,center);
+    set(layer[$1].handcursor,true);
+    set(layer[$1].height,);
+    set(layer[$1].keep,false);
+    set(layer[$1].onclick,);
+    set(layer[$1].onover,);
+    set(layer[$1].onout,);
+    set(layer[$1].url,%HTMLPATH%/files/images/image_set.png);
+    set(layer[$1].visible,true);
+    set(layer[$1].width,);
+    set(layer[$1].x,);
+    set(layer[$1].y,);
+    set(layer[$1].zorder,10);
+$0

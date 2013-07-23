@@ -1,0 +1,5 @@
+# contributor: Rafaelguerrapaz
+# name: get layer
+# key: getla
+# --
+get(layer[$1].$0)

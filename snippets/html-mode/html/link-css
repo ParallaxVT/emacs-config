@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: link-css
+# key: link-css
+# --
+<link media="all" rel="stylesheet" href="css/$1.css" type="text/css" />$0

@@ -1,0 +1,5 @@
+# contributor: Rafaelguerrapaz
+# name: get data
+# key: getdt
+# --
+get(data[$0].content)

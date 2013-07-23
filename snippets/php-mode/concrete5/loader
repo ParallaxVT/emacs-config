@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: loader
+# key: Loader
+# --
+Loader::element'(${1:$$(yas/choose-value '("header" "footer"))}_required');$0

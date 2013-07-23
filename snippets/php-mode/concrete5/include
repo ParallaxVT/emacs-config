@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: include
+# key: inc
+# --
+$this->inc('elements/${1:$$(yas/choose-value '("head" "header" "navigation" "footer"))}.php');$0

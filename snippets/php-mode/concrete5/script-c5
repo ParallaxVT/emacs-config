@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: script-c5
+# key: script-c5
+# --
+<script src="<?php print $this->getThemePath(); ?>/js/$1.js"</script>$0

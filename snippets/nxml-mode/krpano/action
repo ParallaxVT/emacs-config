@@ -1,0 +1,7 @@
+# contributor: Rafaelguerrapaz
+# name: <action>
+# key: act
+# --
+<action name="$1">
+$0
+</action>

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: link-c5
+# key: link-c5
+# --
+<link rel="stylesheet" href="<?php print $this->getThemePath(); ?>/css/default.css">$0

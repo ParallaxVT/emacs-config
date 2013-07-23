@@ -1,0 +1,24 @@
+# contributor: Rafaelguerrapaz
+# name: layer
+# key: la
+# --
+<layer name       ="${1:var}"
+       align      ="$0"
+       alpha      ="1"
+       children   ="false"
+       crop       ="|||"
+       edge       =""
+       handcursor =""
+       height     =""
+       keep       ="true"
+       onclick    =""
+       onout      =""
+       onover     =""
+       style      =""
+       url        ="%SWFPATH%/include/.png"
+       visible    =""
+       width      =""
+       x          =""
+       y          =""
+       zorder     ="10"
+/>
