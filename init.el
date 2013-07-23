@@ -1,4 +1,3 @@
-
 ;; Emacs configuration file
 
 ;; Turn off mouse interface early in startup to avoid momentary display
@@ -23,6 +22,8 @@
   "The directory for emacs functionality.")
 (defvar vendor-dir (expand-file-name "vendor/" dotfiles-dir)
   "The directory for external packages.")
+(defvar elpa-dir (expand-file-name "elpa/" dotfiles-dir)
+  "The directory for elpa packages.")
 
 (defun add-subfolders-to-load-path (parent-dir)
   "Adds all first level `parent-dir' subdirs to the Emacs load-path."
