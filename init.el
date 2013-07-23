@@ -86,6 +86,7 @@
 (require 'mod_yasnippet)
 
 ;; Vendor
+(require 'auto-highlight-symbol)
 (require 'linum-off)
 
 ;; Set path to custom.el and then load it
