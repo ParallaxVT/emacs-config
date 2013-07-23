@@ -1,5 +1,5 @@
 ;; ====================
-;; conf_backup.el
+;; set_backup.el
 ;; ====================
 
 (unless (file-exists-p backup-dir)
