@@ -87,6 +87,7 @@
 
 ;; Vendor
 (require 'auto-highlight-symbol)
+;; (require 'fold)
 (require 'linum-off)
 
 ;; Set path to custom.el and then load it
