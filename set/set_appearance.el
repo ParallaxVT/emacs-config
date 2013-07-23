@@ -31,25 +31,41 @@
 (add-to-list 'initial-frame-alist (cons 'font vsc-little-font))
 
 ;; ====================
-;; Emacs gui
+;; Gui
 ;; ====================
 
-(tool-bar-mode -1)                                 ;; No tool bar
+(tool-bar-mode -1) ;; Hide tool bar
+(menu-bar-mode 1)  ;; Show menu bar
 (blink-cursor-mode -1)                             ;; Cursor, stop blinking!
 (setq inhibit-startup-screen (user-login-name))    ;; Start up screen? No thanks
 (setq initial-scratch-message ";; Scratch Buffer") ;; New scratch buffer text
 
 ;; ====================
-;; Emacs behavior
+;; Editor behavior
 ;; ====================
 
 (fset 'yes-or-no-p 'y-or-n-p)                   ;; use 'y' and 'n' instoad 'Yes' and 'No'
 (setq visible-bell t)                           ;; No bells and whistles
-(setq-default default-justification 'none)      ;; Deactivate justification. Stops  split the lines
+;;(setq-default default-justification 'none)    ;; Deactivate justification. Stops  split the lines
 (setq-default mode-require-final-newline nil)   ;; Prevent adding a new line  at the end of a file
 (defvar whitespace-style '(face trailing tabs)) ;; Something about  margins (white-space-line-column)
 (delete-selection-mode t)                       ;; Delete selection with a keypress
-(electric-pair-mode t)                          ;; Highlight parenthesis and quotes pairs
+(electric-pair-mode t)                          ;; Close autematically parenthesis and double quotes
+(electric-indent-mode t)                        ;; Indent a line after pressing return
+(show-paren-mode t)                             ;; Highlight matching parents
+(setq show-paren-style 'parenthesis)            ;; Set parenthesis as a parent
+(global-hl-line-mode +1)                        ;; Highlight the current line
+(setq next-line-add-newlines t)                 ;; Don't let next-line add new lines at end of file
+;; ====================
+;; Buffer
+;; ====================
+
+(require 'uniquify)                        ;; Meaningful names for buffers with the same name
+(setq uniquify-buffer-name-style 'forward)
+(setq uniquify-separator "/")
+(setq uniquify-after-kill-buffer-p t)      ;; Rename after killing uniquified
+(setq uniquify-ignore-buffers-re "^\\*")   ;; Don't muck with special buffers
+
 ;; ====================
 ;; Windows
 ;; ====================
@@ -82,5 +98,28 @@
 
 (setq-default indent-tabs-mode nil)  ;; Don't use tabs to indent
 (setq-default tab-width 8)           ;; Width of a TAB character
+
+;; ====================
+;; Search
+;; ====================
+
+;; Center screen when perform a search
+(defadvice
+  isearch-forward
+  (after isearch-forward-recenter activate)
+  (recenter))
+(ad-activate 'isearch-forward)
+
+(defadvice
+  isearch-repeat-forward
+  (after isearch-repeat-forward-recenter activate)
+  (recenter))
+(ad-activate 'isearch-repeat-forward)
+
+(defadvice
+  isearch-repeat-backward
+  (after isearch-repeat-backward-recenter activate)
+  (recenter))
+(ad-activate 'isearch-repeat-backward)
 
 (provide 'set_appearance)
