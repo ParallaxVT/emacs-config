@@ -94,3 +94,7 @@
 ;; Set path to custom.el and then load it
 (setq custom-file (expand-file-name "custom.el" settings-dir))
 (load custom-file 'noerror)
+
+;; TO DO
+;; Create a prog-mode to use prog-mode-hook
+;; There are some files waiting for this. Grep 'grog-mode-hook' to find out
