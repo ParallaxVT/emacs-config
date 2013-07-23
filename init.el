@@ -40,6 +40,7 @@
 (add-to-list 'load-path modules-dir)
 (add-to-list 'load-path settings-dir)
 (add-to-list 'load-path vendor-dir)
+(add-to-list 'load-path elpa-dir)
 
 ;; Add all the subfoldres in the first level to load-path
 (add-subfolders-to-load-path vendor-dir)
