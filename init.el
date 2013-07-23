@@ -49,6 +49,7 @@
 (require 'set_appearance)
 (require 'set_autosave)
 (require 'set_backup)
+(require 'set_hooks)
 (require 'set_keybindings)
 
 ;; Functions
