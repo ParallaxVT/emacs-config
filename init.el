@@ -23,8 +23,6 @@
   "The directory for emacs functionality.")
 (defvar vendor-dir (expand-file-name "vendor/" dotfiles-dir)
   "The directory for external packages.")
-;;(defvar modules-file (expand-file-name "modules.el" dotfiles-dir)
-;;  "The file with  a list of modules that will be loaded.")
 
 (defun add-subfolders-to-load-path (parent-dir)
   "Adds all first level `parent-dir' subdirs to the Emacs load-path."
