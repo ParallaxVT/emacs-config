@@ -1,0 +1,3 @@
+[submodule "vendor/auto-highlight-symbol"]
+	path = vendor/auto-highlight-symbol
+	url = https://github.com/emacsmirror/auto-highlight-symbol.git
