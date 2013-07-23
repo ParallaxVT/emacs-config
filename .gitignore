@@ -1,4 +1,6 @@
 backup/*
 *.elc
 misc/.smex-items
-elpa/
+elpa/*
+autosave/*
+el-get/*
