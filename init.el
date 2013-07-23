@@ -1,5 +1,10 @@
 
 ;; Emacs configuration file
+
+;; Turn off mouse interface early in startup to avoid momentary display
+(dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
+  (when (fboundp mode) (funcall mode -1)))
+
 ;;Use eval-when-compile to avoid warnings about require 'cl
 (eval-when-compile (require 'cl))
 
