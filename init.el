@@ -86,7 +86,6 @@
 (require 'mod_yasnippet)
 
 ;; Vendor
-(require 'fill-column-indicator)
 (require 'linum-off)
 
 ;; Set path to custom.el and then load it
