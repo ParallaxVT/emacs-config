@@ -89,6 +89,7 @@
 (require 'auto-highlight-symbol)
 ;; (require 'fold)
 (require 'linum-off)
+(require 'rotate-text)
 
 ;; Set path to custom.el and then load it
 (setq custom-file (expand-file-name "custom.el" settings-dir))
