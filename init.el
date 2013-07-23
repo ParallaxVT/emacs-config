@@ -53,14 +53,7 @@
 (require 'set_keybindings)
 
 ;; Functions
-(require 'fun_autocompile)
-(require 'fun_bytecompile)
-(require 'fun_google_it)
-(require 'fun_kill_region)
-(require 'fun_kill_ring_save)
-(require 'fun_move_line)
-(require 'fun_visit_bashrc)
-(require 'fun_visit_init)
+(require 'functions)
 
 ;; Modules 
 (require 'mod_css)
