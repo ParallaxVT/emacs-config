@@ -73,6 +73,7 @@
 (require 'mod_hippie_expand)
 ;; (require 'mod_magit)
 ;; (require 'mod_mmm_mode)
+(require 'mod_key_chord)
 (require 'mod_org)
 (require 'mod_php_plus_mode)
 ;; (require 'mod_powerline)

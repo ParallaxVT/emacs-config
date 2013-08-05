@@ -4,3 +4,5 @@ misc/.smex-items
 elpa/*
 autosave/*
 el-get/*
+eshell/history
+eshell/lastdir
