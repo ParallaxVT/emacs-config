@@ -88,8 +88,8 @@
 ;; Line numbers
 ;; ====================
 
-;;(if (fboundp 'fringe-mode)
-;;    (fringe-mode 1))  ;; Make the sides fringe thinner
+(if (fboundp 'fringe-mode)
+    (fringe-mode 1))  ;; Make the sides fringe thinner
 (global-linum-mode t) ;; show line numbers please!
 
 ;; ====================
