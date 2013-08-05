@@ -1,0 +1,47 @@
+alias .. cd ..
+alias ... cd ../..
+alias ff find-file $1
+alias l. ls -d .*
+alias ll ls -l $*
+alias la  ls -l -a $*
+alias c cd C:/
+alias d cd D:/
+alias e cd E:/
+alias f cd F:/
+
+alias hm cd C:/Users/rafaelgp/
+alias dk cd C:/Users/rafaelgp/Desktop
+alias dw cd C:/Users/rafaelgp/Downloads
+alias bx cd C:/Users/rafaelgp/Dropbox
+alias dc cd C:/Users/rafaelgp/Documents
+alias psh cd C:/Users/rafaelgp/Documents/WindowsPowerShell
+
+alias wk cd C:/Users/rafaelgp/work        
+alias vt cd C:/Users/rafaelgp/work/virtual_tours
+alias jb cd C:/Users/rafaelgp/work/jobs
+alias wb cd C:/Users/rafaelgp/work/websites
+
+alias hp cd C:/Users/rafaelgp/AppData/Roaming
+alias em cd C:/Users/rafaelgp/AppData/Roaming/.emacs
+
+alias nat cd C:/Users/rafaelgp/work/virtual_tours/natas
+alias gf cd  C:/Users/rafaelgp/work/virtual_tours/gforces
+alias add cd C:/Users/rafaelgp/work/websites/addoctor
+
+alias ga='git add'
+alias gap='git add -p'
+alias gb='git branch -a -v'
+alias gc='git checkout'
+alias gcl='git clone'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gl='git log --pretty=format:"%h %ad | %s%d" --graph --date=short '
+alias gll='git log --pretty=oneline'
+alias gm='git commit -m'
+alias gma='git commit -am'
+alias gp='git push'
+alias gpu='git pull'
+alias gra='git remote add'
+alias grr='git remote rm'
+alias gs='git status'
+alias gr c:/Users/rafaelgp/AppData/Roaming/git_remove_after.sh'
