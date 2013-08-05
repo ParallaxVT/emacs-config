@@ -9,16 +9,16 @@
 (setq org-publish-project-alist
       '(
         ("B-inherit"
-         :base-directory "C:/Users/rafaelgp/AppData/Roaming/org/"
+         :base-directory "/media/c/Users/rafaelgp/AppData/Roaming/org/"
          :recursive t
          :base-extension "css\\|js"
-         :publishing-directory "C:/Users/rafaelgp/AppData/Roaming/public_html/"
+         :publishing-directory "/media/c/Users/rafaelgp/AppData/Roaming/public_html/"
          :publishing-function org-publish-attachment
          )
         ("org-notes"
-         :base-directory "C:/Users/rafaelgp/AppData/Roaming/org/"
+         :base-directory "/media/c/Users/rafaelgp/AppData/Roaming/org/"
          :base-extension "org"
-         :publishing-directory "C:/Users/rafaelgp/AppData/Roaming/public_html/"
+         :publishing-directory "/media/c/Users/rafaelgp/AppData/Roaming/public_html/"
          :recursive t
          :publishing-function org-publish-org-to-html
          :headline-levels 4             ; Just the default for this project.
@@ -30,9 +30,9 @@
          :sitemap-style "tree"
          )
         ("org-static"
-         :base-directory "C:/Users/rafaelgp/AppData/Roaming/org/"
+         :base-directory "/media/c/Users/rafaelgp/AppData/Roaming/org/"
          :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-         :publishing-directory "C:/Users/rafaelgp/AppData/Roaming/public_html/"
+         :publishing-directory "/media/c/Users/rafaelgp/AppData/Roaming/public_html/"
          :recursive t
          :publishing-function org-publish-attachment
          )
