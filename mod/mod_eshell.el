@@ -15,4 +15,7 @@
 (setq eshell-scroll-to-bottom-on-output t)
 (setq eshell-glob-include-dot-dot nil)
 
+;; Relocate eshell folder 
+(defvar eshell-directory-name (concat dotfiles-dir "eshell"))
+
 (provide 'mod_eshell)
