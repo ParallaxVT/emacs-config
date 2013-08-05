@@ -53,7 +53,7 @@
 (require 'set_keybindings)
 
 ;; Functions
-(require 'functions)
+(require 'defun)
 
 ;; Modules -> mod_melpa ALWAYS FIRST
 (require 'mod_melpa) 
