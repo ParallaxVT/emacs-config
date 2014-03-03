@@ -301,4 +301,4 @@ Position the cursor at its beginning, according to the current mode."
   (move-end-of-line nil)
   (newline-and-indent))
 
-(provide 'defun)
+(provide 'setup_defun)
