@@ -24,8 +24,8 @@ alias wb cd E:/websites
 alias vt cd E:/virtual_tours
 alias bn cd E:/virtual_tours/.archives/bin
 
-alias em cd C:/Users/rafaelgp/AppData/Roaming/.emacs
 alias hm cd C:/Users/rafaelgp/AppData/Roaming
+alias em cd C:/Users/rafaelgp/AppData/Roaming/.emacs.d
 
 alias nat cd E:/virtual_tours/natas
 alias gf cd  E:/virtual_tours/gforces
