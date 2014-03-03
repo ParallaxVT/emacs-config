@@ -4,6 +4,7 @@ alias ff find-file $1
 alias l. ls -d .*
 alias ll ls -l $*
 alias la  ls -l -a $*
+alias cc recenter 0
 alias c cd C:/
 alias d cd D:/
 alias e cd E:/
@@ -16,17 +17,19 @@ alias bx cd C:/Users/rafaelgp/Dropbox
 alias dc cd C:/Users/rafaelgp/Documents
 alias psh cd C:/Users/rafaelgp/Documents/WindowsPowerShell
 
-alias wk cd C:/Users/rafaelgp/work        
-alias vt cd C:/Users/rafaelgp/work/virtual_tours
-alias jb cd C:/Users/rafaelgp/work/jobs
-alias wb cd C:/Users/rafaelgp/work/websites
+alias wk cd E:/        
+alias ss cd E:/360_site_survey
+alias jb cd E:/jobs
+alias wb cd E:/websites
+alias vt cd E:/virtual_tours
+alias bn cd E:/virtual_tours/.archives/bin
 
 alias hp cd C:/Users/rafaelgp/AppData/Roaming
 alias em cd C:/Users/rafaelgp/AppData/Roaming/.emacs
 
-alias nat cd C:/Users/rafaelgp/work/virtual_tours/natas
-alias gf cd  C:/Users/rafaelgp/work/virtual_tours/gforces
-alias add cd C:/Users/rafaelgp/work/websites/addoctor
+alias nat cd E:/virtual_tours/natas
+alias gf cd  E:/virtual_tours/gforces
+alias add cd E:/websites/addoctor
 
 alias ga='git add'
 alias gap='git add -p'
