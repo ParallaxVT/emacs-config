@@ -1,8 +1,11 @@
 backup/*
 *.elc
 misc/.smex-items
+misc/.emacs.bmk
 elpa/*
 autosave/*
 el-get/*
 eshell/history
 eshell/lastdir
+auto-save-list
+bookmarks
