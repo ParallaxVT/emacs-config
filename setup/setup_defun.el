@@ -308,5 +308,17 @@ Position the cursor at its beginning, according to the current mode."
   (interactive)
   (move-end-of-line nil)
   (newline-and-indent))
+;; =========================
+;; Change file coding system
+;; =========================
+(defun unix-file ()
+  "Change the current buffer to Latin 1 with Unix line-ends."
+  (interactive)
+  (set-buffer-file-coding-system 'iso-latin-1-unix t))
+
+(defun dos-file ()
+  "Change the current buffer to Latin 1 with DOS line-ends."
+  (interactive)
+  (set-buffer-file-coding-system 'iso-latin-1-dos t))
 
 (provide 'setup_defun)
