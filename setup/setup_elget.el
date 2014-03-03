@@ -1,5 +1,5 @@
 ;; ====================
-;; mod_elget.el
+;; setup_elget.el
 ;; ====================
 
 (defvar el-get-dir (expand-file-name "el-get/" dotfiles-dir)
@@ -19,4 +19,4 @@
 
 (el-get 'sync)
 
-(provide 'mod_elget)
+(provide 'setup_elget)

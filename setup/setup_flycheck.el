@@ -1,5 +1,5 @@
 ;; ====================
-;; mod_flycheck.el
+;; setup_flycheck.el
 ;; ====================
 
 (require 'flycheck)
@@ -7,4 +7,4 @@
 (add-hook 'prog-mode-hook 'flycheck-mode)
 (add-hook 'text-mode-hook 'flycheck-mode)
 
-(provide 'mod_flycheck)
+(provide 'setup_flycheck)

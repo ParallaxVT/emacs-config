@@ -1,8 +1,8 @@
 ;; ====================
-;; mod_php_plus_mode.el
+;; setup_php_plus_mode.el
 ;; ====================
 
 (require 'php+-mode)
 (php+-mode-setup)
 
-(provide 'mod_php_plus_mode)
+(provide 'setup_php_plus_mode)

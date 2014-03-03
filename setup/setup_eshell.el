@@ -1,5 +1,5 @@
 ;; ====================
-;; mod_eshell.el
+;; setup_eshell.el
 ;; ====================
 
 (setq eshell-ask-to-save-history (quote always))
@@ -18,4 +18,4 @@
 ;; Relocate eshell folder 
 (defvar eshell-directory-name (concat dotfiles-dir "eshell"))
 
-(provide 'mod_eshell)
+(provide 'setup_eshell)

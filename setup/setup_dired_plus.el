@@ -1,5 +1,5 @@
 ;; ====================
-;; mod_dired_plus.el
+;; setup_dired_plus.el
 ;; ====================
 
 ;; Enable ls-lisp
@@ -20,4 +20,7 @@
                                         ; was dired-up-directory
             ))
 
-(provide 'mod_dired_plus)
+(provide 'setup_dired_plus)
+
+
+

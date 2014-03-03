@@ -1,5 +1,5 @@
 ;; ====================
-;; mod_rotate_text.el
+;; setup_rotate_text.el
 ;; ====================
 
 (autoload 'rotate-text "rotate-text" nil t)
@@ -19,4 +19,4 @@ text."
   :group 'rotate-text
   :type '(repeat (repeat :tag "Rotation group" (string :tag "Word"))))
 
-(provide 'mod_rotate_text)
+(provide 'setup_rotate_text)

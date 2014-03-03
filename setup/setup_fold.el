@@ -1,5 +1,5 @@
 ;; ====================
-;; mod_fold.el
+;; setup_fold.el
 ;; ====================
 
 (require 'fold)
@@ -8,4 +8,4 @@
 (add-hook 'css-mode-hook 'fold-mode)
 (add-hook 'emacs-lisp-mode-hook 'fold-mode)
 
-(provide 'mod_fold)
+(provide 'setup_fold)

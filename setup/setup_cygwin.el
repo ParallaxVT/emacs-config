@@ -1,5 +1,5 @@
 ;; ====================
-;; mod_cygwin.el
+;; setup_cygwin.el
 ;; ====================
 
 ;; Prevent issues with the Windows null device (NUL)
@@ -10,4 +10,4 @@
     ad-do-it))
 (ad-activate 'grep-compute-defaults)
 
-(provide 'mod_cygwin)
+(provide 'setup_cygwin)

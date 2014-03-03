@@ -1,9 +1,24 @@
 ;; ====================
-;; mod_org.el
+;; setup_org.el
 ;; ====================
 
-;;; remove 'validate XHTML' link at the bottom
+(require 'org-install)
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(setq org-log-done t)
+
+(setq org-agenda-files (quote ("~/org/todo/manoj.org"
+                               "~/org/todo/office.org")))
+
+;;; Remove 'validate XHTML' link at the bottom
 (setq org-export-html-postamble nil)
+
+(setq org-tag-alist '((:startgroup . nil)
+                      ("@work" . ?w) ("@home" . ?h)
+                      ("@tennisclub" . ?t)
+                      (:endgroup . nil)
+                      ("laptop" . ?l) ("pc" . ?p)))
+
+(require 'remember)
 
 (require 'org-publish)
 (setq org-publish-project-alist
@@ -39,4 +54,4 @@
         ("org" :components ("org-notes" "org-static"))
         ))
 
-(provide 'mod_org)
+(provide 'setup_org)

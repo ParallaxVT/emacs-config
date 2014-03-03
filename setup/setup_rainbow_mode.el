@@ -1,5 +1,5 @@
 ;; ====================
-;; mod_rainbow_mode.el
+;; setup_rainbow_mode.el
 ;; ====================
 
 (add-hook 'html-mode-hook
@@ -14,4 +14,4 @@
              (rainbow-mode 1)
              ))
 
-(provide 'mod_rainbow_mode)
+(provide 'setup_rainbow_mode)

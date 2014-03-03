@@ -1,5 +1,5 @@
 ;; ====================
-;; mod_mmm_mode.el
+;; setup_mmm_mode.el
 ;; ====================
 
 (require 'mmm-auto)
@@ -10,4 +10,4 @@
 (mmm-add-mode-ext-class 'html-mode nil 'html-css)
 (mmm-add-mode-ext-class 'html-mode nil 'html-css-attribute)
 
-(provide 'mod_mmm_mode)
+(provide 'setup_mmm_mode)
