@@ -5,7 +5,7 @@
   "Compile if init.el is newer than init.elc"
   (interactive)
   (require 'bytecomp)
-  (let ((dotemacs (expand-file-name "~/.emacs/init.el")))
+  (let ((dotemacs (expand-file-name "~/.emacs.d/init.el")))
     (if (string= (buffer-file-name) (file-chase-links dotemacs))
         (byte-compile-file dotemacs))))
 ;; ===========
