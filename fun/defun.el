@@ -184,14 +184,6 @@ If there's a text selection, work on the selected text."
   (interactive)
   (find-file "~/.bashrc")
   )
-;; ==========
-;; visit_init
-;; ==========
-(defun vinit ()
-  "As in visit-init"
-  (interactive)
-  (find-file "~/.emacs/init.el")
-  )
 ;; ============
 ;; eshell/clear
 ;; ============
