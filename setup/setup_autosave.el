@@ -1,5 +1,5 @@
 ;; ====================
-;; set_autosave.el
+;; setup_autosave.el
 ;; ====================
 
 (defvar user-temporary-autosave-directory (concat dotfiles-dir "autosave")
@@ -30,4 +30,4 @@
       recentf-max-saved-items 200
       recentf-max-menu-items 15)
 
-(provide 'set_autosave)
+(provide 'setup_autosave)

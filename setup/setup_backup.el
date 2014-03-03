@@ -1,5 +1,5 @@
 ;; ====================
-;; set_backup.el
+;; setup_backup.el
 ;; ====================
 
 (unless (file-exists-p backup-dir)
@@ -15,4 +15,4 @@
  version-control t       ;; make numeric backup versions
  )
 
-(provide 'set_backup)
+(provide 'setup_backup)
