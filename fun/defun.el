@@ -99,6 +99,22 @@ there's a region, all lines that region covers will be duplicated."
       (progn
         (indent-buffer)
         (message "Indented buffer.")))))
+
+(defun prelude-kill-whole-line (&optional arg)
+  "A simple wrapper around command `kill-whole-line' that respects indentation.
+Passes ARG to command `kill-whole-line' when provided."
+  (interactive "P")
+  (kill-whole-line arg)
+  (back-to-indentation))
+;; ===========
+;; kill_whole-line
+;; ===========
+(defun smart-kill-whole-line (&optional arg)
+  "A simple wrapper around command `kill-whole-line' that respects indentation.
+Passes ARG to command `kill-whole-line' when provided."
+  (interactive "P")
+  (kill-whole-line arg)
+  (back-to-indentation))
 ;; ===========
 ;; kill_region
 ;; ===========
