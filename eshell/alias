@@ -10,7 +10,7 @@ alias d cd D:/
 alias e cd E:/
 alias f cd F:/
 
-alias hm cd C:/Users/rafaelgp/
+alias rgp cd C:/Users/rafaelgp/
 alias dk cd C:/Users/rafaelgp/Desktop
 alias dw cd C:/Users/rafaelgp/Downloads
 alias bx cd C:/Users/rafaelgp/Dropbox
@@ -24,8 +24,8 @@ alias wb cd E:/websites
 alias vt cd E:/virtual_tours
 alias bn cd E:/virtual_tours/.archives/bin
 
-alias hp cd C:/Users/rafaelgp/AppData/Roaming
 alias em cd C:/Users/rafaelgp/AppData/Roaming/.emacs
+alias hm cd C:/Users/rafaelgp/AppData/Roaming
 
 alias nat cd E:/virtual_tours/natas
 alias gf cd  E:/virtual_tours/gforces
