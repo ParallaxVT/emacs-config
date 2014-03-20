@@ -3,7 +3,7 @@
 ;; ====================
 
 (require 'evil)
-(evil-mode 0)
+(evil-mode 1)
 
 (provide 'setup_evil)
 
