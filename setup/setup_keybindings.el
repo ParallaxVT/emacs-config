@@ -46,6 +46,14 @@
   )
 
 ;; ================================
+;; Evil
+;; ================================
+
+(when (boundp 'mod-evil-loaded)
+  (global-set-key (kbd "M-SPC")                   'evil-normal-state)
+  (evil-define-key 'normal global-map (kbd ", d") 'duplicate-current-line-or-region)
+  )
+;; ================================
 ;; Obsolete
 ;; ================================
 
