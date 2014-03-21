@@ -52,8 +52,7 @@
 ;; ================================
 ;; Evil
 ;; ================================
-
-(when (boundp 'mod-evil-loaded)
+(when (and (boundp 'evil-mode) evil-mode)
   (global-set-key (kbd "M-SPC")                   'evil-normal-state)
   (evil-define-key 'normal global-map (kbd ", d") 'duplicate-current-line-or-region)
   ;; esc key quits everything
