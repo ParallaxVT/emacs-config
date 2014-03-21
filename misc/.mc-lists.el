@@ -3,17 +3,32 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        evil-append
+        evil-append-line
         evil-backward-word-begin
+        evil-change
         evil-delete
         evil-inner-tag
         evil-normal-state
+        evil-replace
+        evil-visual-line
         ))
 
 (setq mc/cmds-to-run-once
       '(
         evil-a-tag
+        evil-backward-char
         evil-delete-backward-char-and-join
         evil-find-char-to
+        evil-forward-char
         evil-forward-word-begin
+        evil-forward-word-end
+        evil-inner-word
         evil-insert
+        evil-mouse-drag-region
+        evil-next-line
+        evil-previous-line
+        evil-search-previous
+        evil-set-marker
+        smart-open-line
         ))
