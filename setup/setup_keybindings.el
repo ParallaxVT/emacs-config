@@ -36,8 +36,7 @@
 ;; ================================
 ;; Key-chord
 ;; ================================
-
-(when (boundp 'mod-key-chord-loaded)
+(when (require 'key-chord nil 'noerror)
   (key-chord-define-global "OO" 'other-window)
   (key-chord-define-global ",w" 'ace-jump-word-mode)
   (key-chord-define-global ",l" 'ace-jump-line-mode)
