@@ -28,8 +28,22 @@
 (global-set-key (kbd "C-c s")                  'smart-swap-windows)
 (global-set-key (kbd "C-c SPC")                'yas/expand)
 
+;; ================================
+;; Key-chord
+;; ================================
 
-;; NOTE: key-chord keybindings defined in mod/setup_key_chord.el
+(when (boundp 'mod-key-chord-loaded)
+  (key-chord-define-global "OO" 'other-window)
+  (key-chord-define-global ",w" 'ace-jump-word-mode)
+  (key-chord-define-global ",l" 'ace-jump-line-mode)
+  (key-chord-define-global ",c" 'ace-jump-char-mode)
+  (key-chord-define-global ",," 'smart-switch-to-previous-buffer)
+  (key-chord-define-global "UU" 'undo-tree-visualize)
+  (key-chord-define-global ";;" 'helm-bookmarks)
+  (key-chord-define-global ".." 'helm-imenu)
+  (key-chord-define-global ",d" 'duplicate-current-line-or-region)
+  (key-chord-define-global "__" 'bookmark-bmenu-list)
+  )
 
 ;;(global-key key (kbd "\C-ca")                  'org-agenda)
 ;;(global-key key (kbd "\C-cl")                  'org-store-link)
