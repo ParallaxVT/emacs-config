@@ -42,7 +42,6 @@
 (require 'setup_backup nil t)
 (require 'setup_filetype nil t)
 (require 'setup_hooks nil t)
-(require 'setup_keybindings nil t)
 
 ;; Functions
 (require 'setup_defun nil t)
@@ -87,6 +86,12 @@
 ;; (require 'fold nil t)
 (require 'linum-off nil t)
 (require 'rotate-text nil t)
+
+;; ==============================
+;; Keybindings - always load last
+;; ==============================
+
+(require 'setup_keybindings nil t)
 
 ;; Set path to custom.el and then load it
 (setq custom-file (expand-file-name "custom.el" settings-dir))
