@@ -27,6 +27,11 @@
 (global-set-key [(control shift return)]       'smart-open-line-above)
 (global-set-key (kbd "C-c s")                  'smart-swap-windows)
 (global-set-key (kbd "C-c SPC")                'yas/expand)
+(global-set-key (kbd "C->")                    'mc/mark-next-like-this)
+(global-set-key (kbd "C-<")                    'mc/mark-next-like-this)
+(global-set-key (kbd "C-'")                    'mc/mark-all-like-this)
+(global-set-key (kbd "C-}")                    'mc/edit-ends-of-lines)
+(global-set-key (kbd "C-{")                    'mc/edit-beginnings-of-lines)
 
 ;; ================================
 ;; Key-chord
