@@ -36,6 +36,12 @@
 ;; Add all the subfoldres in the first level to load-path
 (add-subfolders-to-load-path vendor-dir)
 
+;; Bookmarks file location
+(defvar bookmark-file "~/.emacs.d/bookmarks")
+(defvar bookmark-default-file "~/.emacs.d/bookmarks")
+(defvar bmkp-default-bookmark-file "~/.emacs.d/bookmarks")
+(defvar bmkp-last-as-first-bookmark-file nil)
+
 ;; Settings
 (require 'setup_appearance nil t)
 (require 'setup_autosave nil t)
