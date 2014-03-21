@@ -45,9 +45,13 @@
   (key-chord-define-global "__" 'bookmark-bmenu-list)
   )
 
-;;(global-key key (kbd "\C-ca")                  'org-agenda)
-;;(global-key key (kbd "\C-cl")                  'org-store-link)
-;; (global-set-key (kbd "C-c C-d")                'duplicate-current-line-or-region)
+;; ================================
+;; Obsolete
+;; ================================
+
+;; (global-key key (kbd "\C-ca")                 'org-agenda)
+;; (global-key key (kbd "\C-cl")                 'org-store-link)
+;; (global-set-key (kbd "C-c C-d")               'duplicate-current-line-or-region)
 ;; (global-set-key (kbd "C-c r")                 'smart-rename-file-and-buffer)
 ;; (global-set-key (kbd "C-x C-b")               'ibuffer)
 ;; (global-set-key (kbd "\C-cw")                 'fold-whole-buffer)  ;; close all folds
@@ -57,6 +61,3 @@
 ;; (global-set-key (kbd "\C-cf")                 'fold-region)        ;; fold current region
 
 (provide 'setup_keybindings)
-
-
-
