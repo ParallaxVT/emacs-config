@@ -57,7 +57,16 @@
 (when (boundp 'mod-evil-loaded)
   (global-set-key (kbd "M-SPC")                   'evil-normal-state)
   (evil-define-key 'normal global-map (kbd ", d") 'duplicate-current-line-or-region)
+  ;; esc key quits everything
+  (define-key evil-normal-state-map [escape] 'keyboard-quit)
+  (define-key evil-visual-state-map [escape] 'keyboard-quit)
+  (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+  (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+  (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+  (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+  (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
   )
+
 ;; ================================
 ;; Obsolete
 ;; ================================
