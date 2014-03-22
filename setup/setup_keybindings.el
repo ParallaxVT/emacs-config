@@ -66,6 +66,16 @@
   )
 
 ;; ================================
+;; Smex
+;; ================================
+;; Bound to x and capital X
+(when (require 'smex nil 'noerror)
+  (global-set-key (kbd "M-x") 'smex)
+  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+  )
+
+
+;; ================================
 ;; Obsolete
 ;; ================================
 
