@@ -19,4 +19,13 @@
       )
 (ido-mode 1)
 
+;; Use flx-ido for better flex matching between words
+(require 'flx-ido)
+(flx-ido-mode 1)
+(setq ido-use-faces nil) ;; disable ido faces to see flx highlights
+
+;; flx-ido looks better with ido-vertical-mode
+(require 'ido-vertical-mode)
+(ido-vertical-mode 1)
+
 (provide 'setup_ido)
