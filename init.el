@@ -58,7 +58,6 @@
 ;; (require 'setup_css nil t)
 ;; (require 'setup_cygwin nil t)
 (require 'setup_dired_plus nil t)
-;;(require 'setup_elget nil t)
 (require 'setup_eshell nil t)
 (require 'setup_evil_numbers nil t)
 (require 'setup_evil nil t)
