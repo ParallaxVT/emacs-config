@@ -75,7 +75,7 @@
 (require 'setup_multiple_cursors nil t)
 (require 'setup_org nil t)
 (require 'setup_php_plus_mode nil t)
-;; (require 'setup_powerline nil t)
+(require 'setup_powerline nil t) ;
 (require 'setup_powershell_mode nil t)
 (require 'setup_rainbow_mode nil t)
 (require 'setup_rotate_text nil t)
