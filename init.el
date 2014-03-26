@@ -54,6 +54,7 @@
 
 ;; Modules -> setup_melpa ALWAYS FIRST
 (require 'setup_melpa nil t)
+(require 'setup_autocomplete nil t)
 (require 'setup_auto_highlight_symbol nil t)
 ;; (require 'setup_css nil t)
 ;; (require 'setup_cygwin nil t)

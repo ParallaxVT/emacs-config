@@ -2,6 +2,7 @@ backup/*
 *.elc
 misc/.smex-items
 misc/.emacs.bmk
+misc/ac-comphist.dat
 elpa/*
 autosave/*
 el-get/*
