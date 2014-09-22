@@ -1,0 +1,6 @@
+# contributor: Rafaelguerrapaz
+# name: for
+# key: for
+# --
+<!--for(set(i,0), i LE 'number', 'next action to be called', 'loop action separated by comas');-->
+for(set(i,0), i LE $1, inc(i), $0);

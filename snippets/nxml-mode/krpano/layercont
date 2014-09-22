@@ -1,0 +1,41 @@
+# contributor: Rafaelguerrapaz
+# name: layercont
+# key: lacon
+# --
+<layer name          ="${1:var}"
+       align         =""
+       alpha         ="1"
+       bgalpha       ="0"
+       bgcapture     ="false"
+       bgcolor       ="0x000000"
+       crop          ="|||"
+       devices       ="all"
+       edge          =""
+       enabled       ="true"
+       handcursor    ="true"
+       height        =""
+       keep          ="false"
+       maskchildren  ="false"
+       onclick       =""
+       ondown        =""
+       ondowncrop    ="|||"
+       onhover       =""
+       onloaded      =""
+       onout         =""
+       onover        =""
+       onovercrop    ="|||"
+       onup          =""
+       parent        =""
+       rotate        ="0"
+       scale         ="1"
+       scalechildren ="false"
+       style         =""
+       type          ="container"
+       visible       ="true"
+       width         =""
+       x             ="0"
+       y             ="0"
+       zorder        ="10"
+>
+
+</layer>

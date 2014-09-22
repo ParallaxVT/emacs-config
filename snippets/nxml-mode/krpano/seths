@@ -1,0 +1,5 @@
+# contributor: Rafaelguerrapaz
+# name: set hotspot
+# key: seths
+# --
+set(hotspot[$1].$2,$0);

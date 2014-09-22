@@ -1,0 +1,7 @@
+# contributor: Rafaelguerrapaz
+# name: <scene>
+# key: sce
+# --
+<scene name="$1">
+ $0
+</scene>

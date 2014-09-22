@@ -1,0 +1,5 @@
+# contributor: Rafaelguerrapaz
+# name: if
+# key: if
+# --
+if($0);

@@ -1,0 +1,21 @@
+# contributor: Rafaelguerrapaz
+# name: <scene>
+# key: scn
+# --
+<scene name="pano${1:number}">
+    <preview url="panos/pano$1/preview.jpg" />
+    <image type="CUBE" multires="true" tilesize="902" progressive="false">
+        <level tiledimagewidth="2706" tiledimageheight="2706">
+            <cube url="panos/pano$1/l2_%s_%0v_%0h.jpg" />
+        </level>
+        <level tiledimagewidth="1353" tiledimageheight="1353">
+            <cube url="panos/pano$1/l1_%s_%0v_%0h.jpg" />
+        </level>
+        <mobile>
+            <cube url="panos/pano$1/mobile_%s.jpg" />
+        </mobile>
+        <tablet>
+            <cube url="panos/pano$1/tablet_%s.jpg" />
+        </tablet>
+    </image>
+</scene>

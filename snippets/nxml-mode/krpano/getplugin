@@ -1,0 +1,5 @@
+# contributor: Rafaelguerrapaz
+# name: get plugin
+# key: getpl
+# --
+get(plugin[$1].$0)

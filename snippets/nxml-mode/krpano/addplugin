@@ -1,0 +1,23 @@
+# contributor: Rafaelguerrapaz
+# name: add plugin
+# key: addpl
+# --
+addplugin(${1:var});
+    set(plugin[$1].align,center);
+    set(plugin[$1].alpha,1);
+    set(plugin[$1].crop,||||);
+    set(plugin[$1].children,false);
+    set(plugin[$1].edge,center);
+    set(plugin[$1].handcursor,true);
+    set(plugin[$1].height,);
+    set(plugin[$1].keep,false);
+    set(plugin[$1].onclick,);
+    set(plugin[$1].onover,);
+    set(plugin[$1].onout,);
+    set(plugin[$1].url,%HTMLPATH%/files/images/image_set.png);
+    set(plugin[$1].visible,true);
+    set(plugin[$1].width,);
+    set(plugin[$1].x,);
+    set(plugin[$1].y,);
+    set(plugin[$1].zorder,10);
+$0
