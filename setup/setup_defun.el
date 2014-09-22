@@ -1,25 +1,23 @@
-;; ===========
 ;; autocompile
-;; ===========
+;; =================================================================
+
 (defun autocompile nil
   "Compile if init.el is newer than init.elc"
   (interactive)
   (require 'bytecomp)
   (let ((dotemacs (expand-file-name "~/.emacs.d/init.el")))
     (if (string= (buffer-file-name) (file-chase-links dotemacs))
-        (byte-compile-file dotemacs))))
-;; ===========
-;; bytecompile
-;; ===========
-(defun bc nil
-  "Merge files, byte-compile and reload init.elc"
-  (interactive)
+        (byte-compile-file dotemacs)))
+  (let ((usepackage (expand-file-name "~/.emacs.d/setup/use-packages.el")))
+    (if (string= (buffer-file-name) (file-chase-links usepackage))
+        (byte-compile-file usepackage)))
+  (let ((defunfile (expand-file-name "~/.emacs.d/setup/setup_defun.el")))
+    (if (string= (buffer-file-name) (file-chase-links defunfile))
+        (byte-compile-file defunfile))))
 
-  (shell-command (concat "bash " dotfiles-dir "misc/makeinit.sh"))
-  (load-file (concat dotfiles-dir "init.elc")))
-;; ==============
 ;; cleanup_buffer
-;; ==============
+;; ====================================================================
+
 ;; Indent current buffer
 (defun indent-buffer ()
   "Indents the entire buffer."
@@ -36,9 +34,10 @@
   (untabify-buffer)
   (whitespace-cleanup)
   (message "Buffer cleaned") )
-;; ============
+
 ;; comment_line
-;; ============
+;; ==================================================================
+
 (defun comment-dwim-line (&optional arg)
   "Replacement for the comment-dwim command.
         If no region is selected and current line is not blank and we are not at the end of the line,
@@ -49,44 +48,10 @@
   (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
       (comment-or-uncomment-region (line-beginning-position) (line-end-position))
     (comment-dwim arg)))
-;; ========================
-;; duplicate_line_or_region
-;; ========================
-;; The equivalent of 'yy pp' in Vim
-(defun duplicate-current-line-or-region (arg)
-  "Duplicates the current line or region ARG times.
-If there's no region, the current line will be duplicated. However, if
-there's a region, all lines that region covers will be duplicated."
-  (interactive "p")
-  (let (beg end (origin (point)))
-    (if (and mark-active (> (point) (mark)))
-        (exchange-point-and-mark))
-    (setq beg (line-beginning-position))
-    (if mark-active
-        (exchange-point-and-mark))
-    (setq end (line-end-position))
-    (let ((region (buffer-substring-no-properties beg end)))
-      (dotimes (i arg)
-        (goto-char end)
-        (newline)
-        (insert region)
-        (setq end (point)))
-      (goto-char (+ origin (* (length region) arg) arg)))))
-;; =========
-;; google_it
-;; =========
-(defun google-it ()
-  "Search the text in a region in google."
-  (interactive)
-  (browse-url
-   (concat
-    "http://www.google.co.uk/search?ie=utf-8&oe=utf-8&q="
-    (if mark-active
-        (buffer-substring (region-beginning) (region-end))
-      (read-string "Google: ")))))
-;; ======================
+
 ;; indent_region_or_buffer
-;; ======================
+;; ==================================================================
+
 ;; Indent a region or the entire buffer
 (defun indent-region-or-buffer ()
   "Indents a region if selected, otherwise the whole buffer."
@@ -100,24 +65,19 @@ there's a region, all lines that region covers will be duplicated."
         (indent-buffer)
         (message "Indented buffer.")))))
 
-(defun prelude-kill-whole-line (&optional arg)
-  "A simple wrapper around command `kill-whole-line' that respects indentation.
-Passes ARG to command `kill-whole-line' when provided."
-  (interactive "P")
-  (kill-whole-line arg)
-  (back-to-indentation))
-;; ===========
 ;; kill_whole-line
-;; ===========
+;; =================================================================
+
 (defun smart-kill-whole-line (&optional arg)
   "A simple wrapper around command `kill-whole-line' that respects indentation.
 Passes ARG to command `kill-whole-line' when provided."
   (interactive "P")
   (kill-whole-line arg)
   (back-to-indentation))
-;; ===========
+
 ;; kill_region
-;; ===========
+;; =================================================================
+
 ;; The equivalent of 'dd' or 'D' in Vim
 (defadvice kill-region (before slick-cut activate compile)
   "When called interactively with no active region, kill a single line instead."
@@ -125,9 +85,10 @@ Passes ARG to command `kill-whole-line' when provided."
    (if mark-active (list (region-beginning) (region-end))
      (list (line-beginning-position)
            (line-beginning-position 2)))))
-;; ==============
+
 ;; kill_ring_save
-;; ==============
+;; ====================================================================
+
 ;; The equivalent of 'yy' or 'Y' in Vim
 (defadvice kill-ring-save (before slick-copy activate compile)
   "When called interactively with no active region, copy a single line instead."
@@ -136,65 +97,19 @@ Passes ARG to command `kill-whole-line' when provided."
      (message "Copied line")
      (list (line-beginning-position)
            (line-beginning-position 2)))))
-;; =========
-;; move_line
-;; =========
-(defun move-line-up ()
-  "Move up the current line."
-  (interactive)
-  (transpose-lines 1)
-  (forward-line -2))
-(defun move-line-down ()
-  "Move down the current line."
-  (interactive)
-  (forward-line 1)
-  (transpose-lines 1)
-  (forward-line -1))
-;; ==============================
-;; replace_underscores_and_spaces
-;; ==============================
-(defun replace-underscore-space-toggle ()
-  "Replace underscore/space in the current region or line.
-If the current line contains more '_' char than space,
-then replace them to space, else replace space to _.
-If there's a text selection, work on the selected text."
-  (interactive)
-  (let (li bds)
-    (setq bds
-          (if (region-active-p)
-              (cons (region-beginning) (region-end))
-            (bounds-of-thing-at-point 'line)))
-    (setq li (buffer-substring-no-properties (car bds) (cdr bds)))
-    (if (> (count 32 li) (count 95 li))
-        (replace-string " " "_" nil (car bds) (cdr bds))
-      (replace-string "_" " " nil (car bds) (cdr bds)))))
-;; ===========
-;; select_line
-;; ===========
-(defun select-current-line ()
-  "Select the current line"
-  (interactive)
-  (end-of-line) ; move to end of line
-  (set-mark (line-beginning-position)))
-;; ============
-;; visit_bashrc
-;; ============
-(defun visit-bashrc ()
-  "as in Load Custom"
-  (interactive)
-  (find-file "~/.bashrc")
-  )
-;; ============
+
 ;; eshell/clear
-;; ============
+;; ==================================================================
+
 (defun eshell/clear ()
   "clear the eshell buffer."
   (interactive)
   (let ((inhibit-read-only t))
     (erase-buffer)))
-;; ===================
+
 ;; kill scratch buffer
-;; ===================
+;; ==================================================================
+
 ;; If the *scratch* buffer is killed, recreate it automatically
 (with-current-buffer (get-buffer-create "*scratch*"))
 (lisp-interaction-mode)
@@ -215,9 +130,10 @@ If there's a text selection, work on the selected text."
   (add-hook 'kill-buffer-query-functions 'kill-scratch-buffer)
   ;; Since we killed it, don't let caller do that.
   nil)
-;; ===================
+
 ;; Swap windows
-;; ===================
+;; ==================================================================
+
 (defun smart-swap-windows ()
   "If you have 2 windows, it swaps them."
   (interactive)
@@ -234,29 +150,32 @@ If there's a text selection, work on the selected text."
       (set-window-start w1 s2)
       (set-window-start w2 s1)))
   (other-window 1))
-;; ===================
+
 ;; Switch to previous buffer
-;; ===================
+;; ==================================================================
+
 (defun smart-switch-to-previous-buffer ()
   "Switch to previously open buffer.
 Repeated invocations toggle between the two most recently open buffers."
   (interactive)
   (switch-to-buffer (other-buffer (current-buffer) 1)))
-;; ===================
+
 ;; kill other buffers
-;; ===================
+;; ==================================================================
+
 (defun smart-kill-other-buffers ()
   "Kill all buffers but the current one.
 Doesn't mess with special buffers."
   (interactive)
   (-each
-   (->> (buffer-list)
-     (-filter #'buffer-file-name)
-     (--remove (eql (current-buffer) it)))
-   #'kill-buffer))
-;; ===================
+      (->> (buffer-list)
+        (-filter #'buffer-file-name)
+        (--remove (eql (current-buffer) it)))
+    #'kill-buffer))
+
 ;; Create scratch buffer
-;; ===================
+;; ==================================================================
+
 (defun smart-create-scratch-buffer ()
   "Create a new scratch buffer."
   (interactive)
@@ -264,9 +183,10 @@ Doesn't mess with special buffers."
     (switch-to-buffer
      (get-buffer-create (generate-new-buffer-name "*scratch*")))
     (emacs-lisp-mode)))
-;; ================================
+
 ;; Move cursor to beginning of line
-;; ================================
+;; ==================================================================
+
 (defun smart-move-beginning-of-line (arg)
   "Move point back to indentation of beginning of line.
 
@@ -292,9 +212,10 @@ point reaches the beginning or end of the buffer, stop there."
 
 (global-set-key [remap move-beginning-of-line]
                 'smart-move-beginning-of-line)
-;; ===================
+
 ;; Open new lines
-;; ===================
+;; ==================================================================
+
 (defun smart-open-line-above ()
   "Insert an empty line above the current line.
 Position the cursor at it's beginning, according to the current mode."
@@ -308,9 +229,10 @@ Position the cursor at its beginning, according to the current mode."
   (interactive)
   (move-end-of-line nil)
   (newline-and-indent))
-;; =========================
+
 ;; Change file coding system
-;; =========================
+;; ==================================================================
+
 (defun unix-file ()
   "Change the current buffer to Latin 1 with Unix line-ends."
   (interactive)
@@ -320,5 +242,59 @@ Position the cursor at its beginning, according to the current mode."
   "Change the current buffer to Latin 1 with DOS line-ends."
   (interactive)
   (set-buffer-file-coding-system 'iso-latin-1-dos t))
+
+;; Search
+;; ==================================================================
+
+;; Center screen when perform a search
+(defadvice
+  isearch-forward
+  (after isearch-forward-recenter activate)
+  (recenter))
+(ad-activate 'isearch-forward)
+
+(defadvice
+  isearch-repeat-forward
+  (after isearch-repeat-forward-recenter activate)
+  (recenter))
+(ad-activate 'isearch-repeat-forward)
+
+(defadvice
+  isearch-repeat-backward
+  (after isearch-repeat-backward-recenter activate)
+  (recenter))
+(ad-activate 'isearch-repeat-backward)
+
+;; Rgrep
+;; ==================================================================
+
+;; Delete the first 4 lines in the rgrep outut buffer
+;; Type (C-x n w) to reveal this lines
+(defun delete-grep-header ()
+  (save-excursion
+    (with-current-buffer grep-last-buffer
+      (goto-line 5)
+      (narrow-to-region (point) (point-max)))))
+
+(defadvice grep (after delete-grep-header activate) (delete-grep-header))
+(defadvice rgrep (after delete-grep-header activate) (delete-grep-header))
+
+;; Text Editing
+;; ==================================================================
+
+(defun whack-whitespace (arg)
+  "Delete all white space from point to the next word.  With prefix ARG
+    delete across newlines as well.  The only danger in this is that you
+    don't have to actually be at the end of a word to make it work.  It
+    skips over to the next whitespace and then whacks it all to the next
+    word."
+  (interactive "P")
+  (let ((regexp (if arg "[ \t\n]+" "[ \t]+")))
+    (re-search-forward regexp nil t)
+    ;; (replace-match "" nil nil)
+    (fixup-whitespace)
+    (evil-forward-char))
+  (let ((regexp (if arg "[ \t\n]+" "[ \t]+")))
+    (replace-match "_" nil nil)))
 
 (provide 'setup_defun)
