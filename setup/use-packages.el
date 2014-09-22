@@ -10,7 +10,6 @@
 ;; (require 'bind-key)
 (use-package bind-key :ensure t)
 
-
 ;; Hooks
 (add-hook 'before-save-hook 'whitespace-cleanup nil t)
 (add-hook 'after-save-hook 'autocompile)
@@ -33,6 +32,7 @@
 (bind-key [(shift return)]                    'smart-open-line)
 (bind-key [(control shift return)]            'smart-open-line-above)
 (define-key emacs-lisp-mode-map (kbd "C-c v") 'eval-buffer)
+(bind-key "C-M-g"                             'gforces-config)
 
 (use-package key-chord
   :disabled t
@@ -113,6 +113,8 @@
               ls-lisp-use-insert-directory-program t
               ls-lisp-verbosity nil)))))
 
+(use-package elmacro :ensure t)
+
 (declare-function eshell "eshell")
 (use-package eshell
   :defer t
@@ -176,6 +178,7 @@
       "W" 'whack-whitespace)))
 
 (use-package evil
+
   :commands (evil-mode turn-on-evil-mode)
   :init
   (progn
@@ -325,6 +328,7 @@
               '(lambda()
                  (setq tab-width 4)
                  (setq c-basic-offset 4)
+                 (setq sgml-basic-offset 4)
                  (setq indent-tabs-mode nil)))))
 
 (use-package ido
@@ -369,8 +373,8 @@
 
 (use-package nxml-mode
   :commands nxml-mode
-  :mode (("\\.xml\\'" . nxml-mode))
-  :init (progn (setq nxml-child-indent 4)))
+  :mode (("\\.xml\\'" . nxml-mode)))
+;; :init (defalias 'xml-mode 'nxml-mode))
 
 (use-package org
   :ensure t
@@ -385,11 +389,29 @@
     (setq org-tags-column -130)
     (setq org-agenda-tags-column -130)
     (setq org-agenda-window-setup 'current-window)
+    (cond
+     ((string-equal system-type "gnu/linux") ; linux
+      (progn
+        (defvar orgfiles-dir "/media/sf_c/Users/Rafael/AppData/Roaming/org/"
+          "The root dir of my emacs files in Linux.")
+        ;;    (defvar elpa-dir "~/.emacs.d/elpa/"
+        ;;      "The directory for elpa packages in Linux.")
+        ))
+     ((string-equal system-type "windows-nt") ; Microsoft Windows
+      (progn
+        (defvar orgfiles-dir "~/org/"
+          "The root dir of my emacs files in Windows.")
+        ;;    (defvar elpa-dir (expand-file-name "elpa/" dotfiles-dir)
+        ;;      "The directory for elpa packages in Windows.")
+        )))
+    (setq org-agenda-files (list
+                             (concat orgfiles-dir "agenda.org")
+                             (concat orgfiles-dir "gforces.org")))
     (require 'remember)
     (require 'org-capture)
     (setq org-capture-templates
           '(("t" "Tasks Todo" entry
-             (file+headline "~/org/agenda.org" "Tasks")
+             (file+headline (concat orgfiles-dir "agenda.org") "Tasks")
              "\n\n** TODO %?\n%T\n\n%i\n%a\n\n\n"
              :empty-lines 1)))
     ;; ("n" "Tasks Notes" entry
@@ -455,7 +477,6 @@
     (push '("\\.ps[12]?$" . powershell-mode) auto-mode-alist)))
 
 (use-package rainbow-mode
-  :ensure t
   :init
   (hook-into-modes #'rainbow-mode '(css-mode-hook
                                     emacs-lisp-mode-hook
@@ -484,7 +505,7 @@
                     '(lambda ()
                        (setq tab-width 4)
                        (setq c-basic-offset 4)
-                       (setq sgml-basic-offset 4)
+		       (setq sgml-basic-offset 4)
                        (setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80))
                        (setq indent-tabs-mode nil)))))
 
