@@ -9,21 +9,10 @@
 ;; Enter in debug mode if there is an error
 ;; (setq debug-on-error t)
 
-(cond
- ((string-equal system-type "gnu/linux") ; linux
-  (progn
-    (defvar dotfiles-dir "~/.emacs.d/"
-      "The root dir of my emacs files in Linux.")
-    ;;    (defvar elpa-dir "~/.emacs.d/elpa/"
-    ;;      "The directory for elpa packages in Linux.")
-    ))
- ((string-equal system-type "windows-nt") ; Microsoft Windows
-  (progn
-    (defvar dotfiles-dir "~/.emacs.d/"
-      "The root dir of my emacs files in Windows.")
-    ;;    (defvar elpa-dir (expand-file-name "elpa/" dotfiles-dir)
-    ;;      "The directory for elpa packages in Windows.")
-    )))
+(defvar dotfiles-dir "~/.emacs.d/"
+  "The root dir of my emacs files in Linux.")
+;;    (defvar elpa-dir "~/.emacs.d/elpa/"
+;;      "The directory for elpa packages in Linux.")
 
 (defvar settings-dir (expand-file-name "setup/" dotfiles-dir)
   "The directory for emacs functionality.")
@@ -121,7 +110,7 @@
 (defvar vsc-little-font "")
 
 (when linux-p
-  (setq vsc-little-font "Bitstream Vera Sans Mono-11"))
+  (setq vsc-little-font "Monospace-10.5"))
 
 (when cygwin-p
   (setq vsc-little-font "Bitstream Vera Sans Mono-11"))
@@ -267,11 +256,11 @@
 (setq locale-coding-system 'utf-8-dos)
 (set-default-coding-systems 'utf-8-dos)
 (set-terminal-coding-system 'utf-8-dos)
-(unless (eq system-type 'windows-nt)
-  (set-selection-coding-system 'utf-16-le))
 (prefer-coding-system 'utf-8-dos)
 (set-buffer-file-coding-system 'utf-8-dos)
 (setq-default default-buffer-file-coding-system 'utf-8-dos)
+;; Clipboard
+(set-clipboard-coding-system 'utf-8)
 
 ;;------------------------------------------------------------------
 ;; Eshell
