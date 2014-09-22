@@ -573,9 +573,6 @@
   (progn
     (yas-load-directory (expand-file-name "snippets/" dotfiles-dir))
     (bind-key "<tab>" 'yas-next-field-or-maybe-expand yas-keymap)
-
-    (use-package dropdown-list
-      :config (setq yas-prompt-functions '(yas/ido-prompt))))
-  :bind ("C-c SPC" . yas-expand))
-
+  :bind ("C-c SPC" . yas-expand)))
+ 
 (provide 'use-packages)
