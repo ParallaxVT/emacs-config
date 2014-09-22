@@ -1,5 +1,0 @@
-# contributor: Rafaelguerrapaz
-# name: tween hotspot;
-# key: twhs
-# --
-tween(hotspot[$1].$2,$0,.3,easeoutquad);

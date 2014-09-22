@@ -1,5 +1,0 @@
-# contributor: Rafaelguerrapaz
-# name: set layer
-# key: setla
-# --
-set(layer[$1].$2,$0)

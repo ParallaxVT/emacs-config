@@ -1,5 +1,0 @@
-# contributor: Rafaelguerrapaz
-# name: tween layer;
-# key: twla
-# --
-tween(layer[$1].$2,$0,.3,easeoutquad);

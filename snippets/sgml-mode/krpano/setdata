@@ -1,5 +1,0 @@
-# contributor: Rafaelguerrapaz
-# name: set data - setdt
-# key: setdt
-# --
-set(data[$1].content,$0);
