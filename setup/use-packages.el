@@ -373,8 +373,13 @@
 
 (use-package nxml-mode
   :commands nxml-mode
-  :mode (("\\.xml\\'" . nxml-mode)))
-;; :init (defalias 'xml-mode 'nxml-mode))
+  :mode (("\\.xml\\'" . nxml-mode))
+  ;; :init (defalias 'xml-mode 'nxml-mode))
+  :init
+  (add-hook 'nxml-mode-hook
+            '(lambda()
+               (setq nxml-child-indent 4)
+               (setq indent-tabs-mode nil))))
 
 (use-package org
   :ensure t
