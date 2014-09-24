@@ -577,7 +577,7 @@
   :config
   (progn
     (yas-load-directory (expand-file-name "snippets/" dotfiles-dir))
-    (bind-key "<tab>" 'yas-next-field-or-maybe-expand yas-keymap)
-  :bind ("C-c SPC" . yas-expand)))
- 
+    (bind-key "<tab>" 'yas-next-field-or-maybe-expand yas-keymap))
+  :bind ("C-c SPC" . yas-expand))
+
 (provide 'use-packages)
