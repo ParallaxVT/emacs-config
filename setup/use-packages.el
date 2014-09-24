@@ -410,8 +410,8 @@
         ;;      "The directory for elpa packages in Windows.")
         )))
     (setq org-agenda-files (list
-                             (concat orgfiles-dir "agenda.org")
-                             (concat orgfiles-dir "gforces.org")))
+                            (concat orgfiles-dir "agenda.org")
+                            (concat orgfiles-dir "gforces.org")))
     (require 'remember)
     (require 'org-capture)
     (setq org-capture-templates
@@ -510,7 +510,7 @@
                     '(lambda ()
                        (setq tab-width 4)
                        (setq c-basic-offset 4)
-		       (setq sgml-basic-offset 4)
+                       (setq sgml-basic-offset 4)
                        (setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80))
                        (setq indent-tabs-mode nil)))))
 
