@@ -121,7 +121,10 @@
    `(org-level-6 ((t (:foreground "#9FC59F"))))
    `(org-level-7 ((t (:foreground "#8C5353"))))
    `(org-level-8 ((t (:foreground "#4C7073"))))
-
+   `(org-block ((t (:foreground "LawnGreen"))))
+   `(org-block-begin-line ((t (:foreground "ForestGreen"))))
+   `(org-block-end-line ((t (:foreground "ForestGreen"))))
+                                                 
    ;; isearch
    `(isearch ((t (:background ,sw-pink :foreground ,"white"))))
    `(isearch-lazy-highlight-face ((t (:foreground ,"white" :background ,sw-pink+1))))
