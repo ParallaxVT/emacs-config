@@ -11,6 +11,7 @@ bookmarks
 elpa/*
 eshell/history
 eshell/lastdir
+server
 todo.org
 tramp
 url
