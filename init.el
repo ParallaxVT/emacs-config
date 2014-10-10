@@ -1,5 +1,7 @@
 ;; Emacs configuration file
 
+(server-start)
+
 (defconst emacs-start-time (current-time))
 
 ;; Turn off mouse interface early in startup to avoid momentary display
