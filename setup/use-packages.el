@@ -33,6 +33,8 @@
 (bind-key [(control shift return)]            'smart-open-line-above)
 (define-key emacs-lisp-mode-map (kbd "C-c v") 'eval-buffer)
 (bind-key "C-M-g"                             'gforces-config)
+(bind-key "C-x C-c"                           'suspend-frame)
+(bind-key "C-x C-S-C"                         'save-buffers-kill-terminal)
 
 (use-package key-chord
   :disabled t
