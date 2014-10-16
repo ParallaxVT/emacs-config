@@ -304,7 +304,7 @@ Position the cursor at its beginning, according to the current mode."
   "Change me!"
   (interactive)
   (evil-beginning-of-line)
-  (duplicate-current-line-or-region 1)
+  (md/duplicate-down 1)
   (evil-insert 1 nil nil)
   (indent-for-tab-command nil)
   (evil-normal-state 1)
