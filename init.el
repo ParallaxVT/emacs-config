@@ -68,7 +68,7 @@
 (setq package-user-dir elpa-dir)
 
 (setq package-archives '(
-                         ("melpa" . "http://melpa.milkbox.net/packages/")
+                         ("melpa" . "http://melpa.org/packages/")
                          ;; ("ELPA" . "http://tromey.com/elpa/")
                          ;; ("gnu" . "http://elpa.gnu.org/packages/")
                          ;; ("marmalade" . "http://marmalade-repo.org/packages/")
