@@ -120,7 +120,8 @@
   )
 
 (use-package elmacro
-  :disabled t
+  :disabled nil
+  :commands (elmacro-mode)
   :ensure t)
 
 (declare-function eshell "eshell")
