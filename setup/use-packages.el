@@ -9,7 +9,7 @@
 
 ;; (require 'bind-key)
 (use-package bind-key
-  :disabled t
+  :disabled nil
   :ensure t)
 
 ;; Hooks
