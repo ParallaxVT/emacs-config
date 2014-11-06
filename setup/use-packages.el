@@ -144,10 +144,11 @@
 
 ;; Load evil-header before evil to make sure all  the binds work everywhere
 (use-package evil-leader
-  :disabled t
+  :disabled nil
   :ensure t
+  :defer t
   :commands (evil-mode turn-on-evil-mode)
-  :init
+  :config
   (progn
     (global-evil-leader-mode)
     (evil-leader/set-leader ".")
