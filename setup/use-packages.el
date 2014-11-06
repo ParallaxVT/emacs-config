@@ -126,8 +126,7 @@
 
 (declare-function eshell "eshell")
 (use-package eshell
-  :disabled t
-  :defer t
+  :disabled nil
   :commands (eshell)
   :init
   (progn (setq eshell-ask-to-save-history 'always
