@@ -57,8 +57,9 @@
   :commands (ace-jump-mode key-chord-mode))
 
 (use-package auto-complete
-  :disabled t
+  :disabled nil
   :ensure t
+  :commands (auto-complete)
   :init
   (progn
     (hook-into-modes #'auto-complete-mode '(lisp-mode-hook
