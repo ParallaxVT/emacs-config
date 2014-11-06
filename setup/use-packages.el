@@ -51,7 +51,7 @@
     (key-chord-define-global "__" 'bookmark-bmenu-list)))
 
 (use-package ace-jump-mode
-  :disabled t
+  :disabled nil
   :ensure t
   :defer t
   :commands (ace-jump-mode key-chord-mode))
