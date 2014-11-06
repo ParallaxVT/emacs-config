@@ -250,7 +250,7 @@
         (set-face-background 'powerline-evil-emacs-face "dark violet")))))
 
 (use-package expand-region
-  :disabled t
+  :disabled nil
   :ensure t
   :commands (er/expand-region)
   :bind ("C-=" . er/expand-region))
