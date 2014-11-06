@@ -278,7 +278,7 @@
        fundamental-mode-hook))))
 
 (use-package flycheck
-  :disabled t
+  :disabled nil
   :ensure t
   :defer t
   :commands (flycheck-mode)
