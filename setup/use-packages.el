@@ -95,8 +95,9 @@
   :ensure t)
 
 (use-package dired+
-  :disabled t
+  :disabled nil
   :ensure t
+  :commands (dired)
   :config
   (progn
     ;; Rebind Shift-SpaceBar to move to a parent directory using the same buffer.
@@ -104,25 +105,19 @@
               (lambda ()
                 (define-key dired-mode-map (kbd "S-<SPC>")
                   (lambda () (interactive) (find-alternate-file "..")))))
-    ;; :config
+    ;; Show files and directories details
+    (setq diredp-hide-details-initially-flag nil
+          diredp-hide-details-propagate-flag nil)
+    ;; Always use one buffer when I move directory
+    (declare-function toggle-diredp-find-file-reuse-dir "dired+")
+    (toggle-diredp-find-file-reuse-dir 1))
+  ;; Dired+ requires ls-lisp
+  (use-package ls-lisp
+    :config
     (progn
-      ;; Show files and directories details
-      (setq diredp-hide-details-initially-flag nil
-            diredp-hide-details-propagate-flag nil)
-      ;; Always use one buffer when I move directory
-      (declare-function toggle-diredp-find-file-reuse-dir "dired+")
-      (toggle-diredp-find-file-reuse-dir 1))
-    ;; Dired+ requires ls-lisp
-    (use-package ls-lisp
-      :defer t
-      :commands (dired)
-      :init
-      (progn
-        ;;(ls-lisp-set-options)
-        (setq ls-lisp-dirs-first nil
-              ls-lisp-emulation 'MS-Windows
-              ls-lisp-use-insert-directory-program t
-              ls-lisp-verbosity nil)))))
+      (setq ls-lisp-emulation 'MS-Windows)
+      (ls-lisp-set-options)))
+  )
 
 (use-package elmacro
   :disabled t
