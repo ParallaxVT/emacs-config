@@ -148,7 +148,7 @@
   :ensure t
   :defer t
   :commands (evil-mode turn-on-evil-mode)
-  :config
+  :init
   (progn
     (global-evil-leader-mode)
     (evil-leader/set-leader ".")
@@ -189,7 +189,7 @@
       "W" 'whack-whitespace)))
 
 (use-package evil
-  :disabled t
+  :disabled nil
   :commands (evil-mode turn-on-evil-mode)
   :init
   (progn
@@ -206,13 +206,16 @@
     (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
     (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
     (use-package evil-matchit
+      :disabled nil
       :ensure t
       :commands (evil-matchit-mode)
       :init (add-hook 'web-mode-hook 'evil-matchit-mode))
     (use-package evil-nerd-commenter
+      :disabled nil
       :ensure t
       :init (evilnc-default-hotkeys))
     (use-package evil-numbers
+      :disabled nil
       :ensure t
       :commands (evil-numbers/inc-at-pt evil-numbers/dec-at-pt)
       :init
@@ -221,6 +224,7 @@
           (global-set-key [(meta shift up)]   'evil-numbers/inc-at-pt)
           (global-set-key [(meta shift down)] 'evil-numbers/dec-at-pt))))
     (use-package evil-surround
+      :disabled nil
       :ensure t
       :defer t
       :init
@@ -231,6 +235,7 @@
     ;; (add-to-list 'surround-operator-alist
     ;;              '(evil-paredit-delete . delete))))
     (use-package powerline-evil
+      :disabled nil
       :ensure t
       :commands (powerline-evil-vim-color-theme)
       :init
