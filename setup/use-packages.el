@@ -298,13 +298,9 @@
     (add-hook 'emacs-lisp-mode-hook 'fold-mode)))
 
 (use-package helm
-  :disabled t
+  :disabled nil
   :ensure t
-  :init
-  (progn
-    (helm-mode 1)
-    (use-package helm-config)
-    )
+  :init (helm-mode)
   :config
   (progn
     (setq helm-candidate-number-limit 20
