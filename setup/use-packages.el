@@ -110,10 +110,11 @@
       :init
       (progn
         ;;(ls-lisp-set-options)
-        (setq ls-lisp-dirs-first nil
-              ls-lisp-emulation 'MS-Windows
-              ls-lisp-use-insert-directory-program t
-              ls-lisp-verbosity nil)))))
+        ;; (setq ls-lisp-dirs-first nil
+        ;;       ls-lisp-emulation 'MS-Windows
+        ;;       ls-lisp-use-insert-directory-program t
+        ;;       ls-lisp-verbosity nil)))))
+        ))))
 
 (use-package elmacro :ensure t)
 
