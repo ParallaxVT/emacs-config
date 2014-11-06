@@ -90,7 +90,8 @@
                                                     web-mode-hook))))
 
 (use-package bookmark+
-  :disabled t
+  :disabled nil
+  :commands (helm-bookmarks bookmark-bmenu-list)
   :ensure t)
 
 (use-package dired+
