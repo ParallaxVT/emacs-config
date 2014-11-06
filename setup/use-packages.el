@@ -8,7 +8,9 @@
      (add-hook mode-hook ,func)))
 
 ;; (require 'bind-key)
-(use-package bind-key :ensure t)
+(use-package bind-key
+  :disabled t
+  :ensure t)
 
 ;; Hooks
 (add-hook 'before-save-hook 'whitespace-cleanup nil t)
@@ -49,11 +51,13 @@
     (key-chord-define-global "__" 'bookmark-bmenu-list)))
 
 (use-package ace-jump-mode
+  :disabled t
   :ensure t
   :defer t
   :commands (ace-jump-mode key-chord-mode))
 
 (use-package auto-complete
+  :disabled t
   :ensure t
   :init
   (progn
@@ -84,9 +88,12 @@
                                                     prog-mode-hook
                                                     web-mode-hook))))
 
-(use-package bookmark+ :ensure t)
+(use-package bookmark+
+  :disabled t
+  :ensure t)
 
 (use-package dired+
+  :disabled t
   :ensure t
   :config
   (progn
@@ -115,10 +122,13 @@
               ls-lisp-use-insert-directory-program t
               ls-lisp-verbosity nil)))))
 
-(use-package elmacro :ensure t)
+(use-package elmacro
+  :disabled t
+  :ensure t)
 
 (declare-function eshell "eshell")
 (use-package eshell
+  :disabled t
   :defer t
   :commands (eshell)
   :init
@@ -137,6 +147,7 @@
 
 ;; Load evil-header before evil to make sure all  the binds work everywhere
 (use-package evil-leader
+  :disabled t
   :ensure t
   :commands (evil-mode turn-on-evil-mode)
   :init
@@ -180,7 +191,7 @@
       "W" 'whack-whitespace)))
 
 (use-package evil
-
+  :disabled t
   :commands (evil-mode turn-on-evil-mode)
   :init
   (progn
@@ -236,6 +247,7 @@
         (set-face-background 'powerline-evil-emacs-face "dark violet")))))
 
 (use-package expand-region
+  :disabled t
   :ensure t
   :commands (er/expand-region)
   :bind ("C-=" . er/expand-region))
@@ -263,6 +275,7 @@
        fundamental-mode-hook))))
 
 (use-package flycheck
+  :disabled t
   :ensure t
   :defer t
   :commands (flycheck-mode)
@@ -282,6 +295,7 @@
     (add-hook 'emacs-lisp-mode-hook 'fold-mode)))
 
 (use-package helm
+  :disabled t
   :ensure t
   :init
   (progn
@@ -306,6 +320,7 @@
          ("C-c o" . helm-occur)))
 
 (use-package helm-swoop
+  :disabled t
   :ensure t
   :commands (helm-swoop helm-swoop-from-isearch helm-swoop-back-to-last-point)
   :init
@@ -314,6 +329,7 @@
           (bind-key "M-I" 'helm-swoop-back-to-last-point)))
 
 (use-package helm-descbinds
+  :disabled t
   :ensure t
   :commands (helm-descbinds)
   :init
@@ -334,6 +350,7 @@
                  (setq indent-tabs-mode nil)))))
 
 (use-package ido
+  :disabled t
   :ensure t
   :commands (ido-mode)
   :config
@@ -360,11 +377,15 @@
       :config
       (flx-ido-mode 1))))
 
-(use-package linum-off)
+(use-package linum-off
+  :disabled t)
 
-(use-package move-dup :ensure t)
+(use-package move-dup
+  :disabled t
+  :ensure t)
 
 (use-package multiple-cursors
+  :disabled t
   :ensure t
   :commands (multiple-cursors-mode)
   :config (progn (defvar mc/list-file "~/misc/.mc-lists.el"))
@@ -374,6 +395,7 @@
          ("C-{" . mc/edit-beginnings-of-lines)))
 
 (use-package nxml-mode
+  :disabled t
   :commands nxml-mode
   :mode (("\\.xml\\'" . nxml-mode))
   ;; :init (defalias 'xml-mode 'nxml-mode))
@@ -384,6 +406,7 @@
                (setq indent-tabs-mode nil))))
 
 (use-package org
+  :disabled t
   :ensure t
   :commands (org-mode)
   :config
@@ -425,7 +448,8 @@
     ;; (file+headline "~/org/agenda.org" "Notes")
     ;; "\n\n** %?\n%T\n%i\n%a\n\n\n"
     ;; :empty-lines 1)))
-    (require 'org-publish)
+    (or (require 'org-publish nil t)
+        (require 'ox-publish))
     (setq org-publish-project-alist
           '(
             ;;("B-inherit"
@@ -460,6 +484,7 @@
 
 
 (use-package php-mode
+  :disabled t
   :ensure t
   :commands php-mode
   :mode (("\\.php\\'" . php-mode))
@@ -470,6 +495,7 @@
   :init (php+-mode-setup))
 
 (use-package powershell
+  :disabled t
   :ensure t
   :commands (powershell-mode)
   :config     (push '("\\.ps[12]?$" . powershell-mode) auto-mode-alist))
@@ -484,6 +510,7 @@
     (push '("\\.ps[12]?$" . powershell-mode) auto-mode-alist)))
 
 (use-package rainbow-mode
+  :disabled t
   :init
   (hook-into-modes #'rainbow-mode '(css-mode-hook
                                     emacs-lisp-mode-hook
@@ -495,6 +522,7 @@
                                     xml-mode-hook)))
 
 (use-package rotate-text
+  :disabled t
   :init
   (progn
     (defvar rotate-text-words '(("width" "height")
@@ -517,6 +545,7 @@
                        (setq indent-tabs-mode nil)))))
 
 (use-package smex
+  :disabled t
   :ensure t
   :commands (smex smex-major-mode-commands)
   :config
@@ -527,15 +556,18 @@
          ("M-X" . smex-major-mode-commands)))
 
 (use-package undo-tree
+  :disabled t
   :ensure t
   :commands (undo-tree-mode)
   :config (global-undo-tree-mode))
 
 (use-package volatile-highlights
+  :disabled t
   :ensure t
   :commands (volatile-highlights-mode))
 
 (use-package web-mode
+  :disabled t
   :ensure t
   ;; :mode "\\.\\(erb\\|html?\\)\\'"
   :mode (("\\.html\\'" . web-mode))
@@ -559,6 +591,7 @@
                  (setq indent-tabs-mode nil)))))
 
 (use-package yasnippet
+  :disabled t
   :ensure t
   :if (not noninteractive)
   :diminish yas-minor-mode
