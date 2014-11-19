@@ -330,8 +330,9 @@
           (bind-key "M-I" 'helm-swoop)))
 
 (use-package helm-descbinds
-  :disabled t
+  :disabled nil
   :ensure t
+  :defer t
   :commands (helm-descbinds)
   :init
   (progn
