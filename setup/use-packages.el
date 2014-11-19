@@ -439,17 +439,6 @@
                             (concat orgfiles-dir "agenda.org")
                             (concat orgfiles-dir "gforces.org")))
     (require 'org-agenda)
-    (require 'remember)
-    (require 'org-capture)
-    (setq org-capture-templates
-          '(("t" "Tasks Todo" entry
-             (file+headline (concat orgfiles-dir "agenda.org") "Tasks")
-             "\n\n** TODO %?\n%T\n\n%i\n%a\n\n\n"
-             :empty-lines 1)))
-    ("n" "Tasks Notes" entry
-     (file+headline "~/org/agenda.org" "Notes")
-     "\n\n** %?\n%T\n%i\n%a\n\n\n"
-     :empty-lines 1)
     (or (require 'org-publish nil t)
         (require 'ox-publish))
     (setq org-publish-project-alist
