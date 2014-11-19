@@ -398,10 +398,8 @@
          ("C-{" . mc/edit-beginnings-of-lines)))
 
 (use-package nxml-mode
-  :disabled t
-  :commands nxml-mode
+  :disabled nil
   :mode (("\\.xml\\'" . nxml-mode))
-  ;; :init (defalias 'xml-mode 'nxml-mode))
   :init
   (add-hook 'nxml-mode-hook
             '(lambda()
