@@ -15,6 +15,12 @@
 ;; Hooks
 (add-hook 'before-save-hook 'whitespace-cleanup nil t)
 (add-hook 'after-save-hook 'autocompile)
+(add-hook 'html-mode-hook
+          '(lambda()
+             (setq tab-width 4)
+             (setq c-basic-offset 4)
+             (setq sgml-basic-offset 4)
+             (setq indent-tabs-mode nil)))
 
 ;; Keybindings
 (bind-key "C-c n"                             'cleanup-buffer)
@@ -339,16 +345,6 @@
     (helm-descbinds-mode)
     (setq helm-descbinds-window-style 'split-window))
   :bind ("C-x b" . helm-descbinds))
-
-(use-package html-mode
-  :init
-  (progn
-    (add-hook 'html-mode-hook
-              '(lambda()
-                 (setq tab-width 4)
-                 (setq c-basic-offset 4)
-                 (setq sgml-basic-offset 4)
-                 (setq indent-tabs-mode nil)))))
 
 (use-package ido
   :disabled nil
