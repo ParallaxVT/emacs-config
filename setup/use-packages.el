@@ -497,9 +497,10 @@
   :bind ("C-c C-c" . rotate-text))
 
 (use-package smex
-  :disabled t
+  :disabled nil
   :ensure t
   :commands (smex smex-major-mode-commands)
+  :defer t
   :config
   (progn
     ;; Put smex file in misc folder
@@ -508,7 +509,7 @@
          ("M-X" . smex-major-mode-commands)))
 
 (use-package undo-tree
-  :disabled t
+  :disabled nil
   :ensure t
   :commands (undo-tree-mode)
   :config (global-undo-tree-mode))
