@@ -8,11 +8,31 @@
      (add-hook mode-hook ,func)))
 
 ;; (require 'bind-key)
-(use-package bind-key :ensure t)
+(use-package bind-key
+  :disabled nil
+  :ensure t)
 
 ;; Hooks
 (add-hook 'before-save-hook 'whitespace-cleanup nil t)
 (add-hook 'after-save-hook 'autocompile)
+(add-hook 'html-mode-hook
+          '(lambda()
+             (setq tab-width 4)
+             (setq c-basic-offset 4)
+             (setq sgml-basic-offset 4)
+             (setq indent-tabs-mode nil)))
+(add-hook 'sgml-hook
+          '(lambda ()
+             (setq tab-width 4)
+             (setq c-basic-offset 4)
+             (setq sgml-basic-offset 4)
+             (setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80))
+             (setq indent-tabs-mode nil)))
+(add-hook 'xml-mode-hook
+          '(lambda()
+             (setq tab-width 4)
+             (setq c-basic-offset 4)
+             (setq indent-tabs-mode nil)))
 
 ;; Keybindings
 (bind-key "C-c n"                             'cleanup-buffer)
@@ -49,12 +69,15 @@
     (key-chord-define-global "__" 'bookmark-bmenu-list)))
 
 (use-package ace-jump-mode
+  :disabled nil
   :ensure t
   :defer t
   :commands (ace-jump-mode key-chord-mode))
 
 (use-package auto-complete
+  :disabled nil
   :ensure t
+  :commands (auto-complete)
   :init
   (progn
     (hook-into-modes #'auto-complete-mode '(lisp-mode-hook
@@ -84,9 +107,13 @@
                                                     prog-mode-hook
                                                     web-mode-hook))))
 
-(use-package bookmark+ :ensure t)
+(use-package bookmark+
+  :disabled nil
+  :commands (helm-bookmarks bookmark-bmenu-list)
+  :ensure t)
 
 (use-package dired+
+  :disabled nil
   :ensure t
   :config
   (progn
@@ -95,32 +122,28 @@
               (lambda ()
                 (define-key dired-mode-map (kbd "S-<SPC>")
                   (lambda () (interactive) (find-alternate-file "..")))))
-    ;; :config
+    ;; Show files and directories details
+    (setq diredp-hide-details-initially-flag nil
+          diredp-hide-details-propagate-flag nil)
+    ;; Always use one buffer when I move directory
+    (declare-function toggle-diredp-find-file-reuse-dir "dired+")
+    (toggle-diredp-find-file-reuse-dir 1))
+  ;; Dired+ requires ls-lisp
+  (use-package ls-lisp
+    :config
     (progn
-      ;; Show files and directories details
-      (setq diredp-hide-details-initially-flag nil
-            diredp-hide-details-propagate-flag nil)
-      ;; Always use one buffer when I move directory
-      (declare-function toggle-diredp-find-file-reuse-dir "dired+")
-      (toggle-diredp-find-file-reuse-dir 1))
-    ;; Dired+ requires ls-lisp
-    (use-package ls-lisp
-      :defer t
-      :commands (dired)
-      :init
-      (progn
-        ;;(ls-lisp-set-options)
-        ;; (setq ls-lisp-dirs-first nil
-        ;;       ls-lisp-emulation 'MS-Windows
-        ;;       ls-lisp-use-insert-directory-program t
-        ;;       ls-lisp-verbosity nil)))))
-        ))))
+      (setq ls-lisp-emulation 'MS-Windows)
+      (ls-lisp-set-options)))
+  )
 
-(use-package elmacro :ensure t)
+(use-package elmacro
+  :disabled nil
+  :commands (elmacro-mode)
+  :ensure t)
 
 (declare-function eshell "eshell")
 (use-package eshell
-  :defer t
+  :disabled nil
   :commands (eshell)
   :init
   (progn (setq eshell-ask-to-save-history 'always
@@ -138,7 +161,9 @@
 
 ;; Load evil-header before evil to make sure all  the binds work everywhere
 (use-package evil-leader
+  :disabled nil
   :ensure t
+  :defer t
   :commands (evil-mode turn-on-evil-mode)
   :init
   (progn
@@ -181,7 +206,7 @@
       "W" 'whack-whitespace)))
 
 (use-package evil
-
+  :disabled nil
   :commands (evil-mode turn-on-evil-mode)
   :init
   (progn
@@ -198,13 +223,16 @@
     (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
     (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
     (use-package evil-matchit
+      :disabled nil
       :ensure t
       :commands (evil-matchit-mode)
       :init (add-hook 'web-mode-hook 'evil-matchit-mode))
     (use-package evil-nerd-commenter
+      :disabled nil
       :ensure t
       :init (evilnc-default-hotkeys))
     (use-package evil-numbers
+      :disabled nil
       :ensure t
       :commands (evil-numbers/inc-at-pt evil-numbers/dec-at-pt)
       :init
@@ -213,6 +241,7 @@
           (global-set-key [(meta shift up)]   'evil-numbers/inc-at-pt)
           (global-set-key [(meta shift down)] 'evil-numbers/dec-at-pt))))
     (use-package evil-surround
+      :disabled nil
       :ensure t
       :defer t
       :init
@@ -222,7 +251,11 @@
     ;;              '(evil-paredit-change . change))
     ;; (add-to-list 'surround-operator-alist
     ;;              '(evil-paredit-delete . delete))))
+    (use-package powerline
+      :disabled nil
+      :ensure t)
     (use-package powerline-evil
+      :disabled nil
       :ensure t
       :commands (powerline-evil-vim-color-theme)
       :init
@@ -237,6 +270,7 @@
         (set-face-background 'powerline-evil-emacs-face "dark violet")))))
 
 (use-package expand-region
+  :disabled nil
   :ensure t
   :commands (er/expand-region)
   :bind ("C-=" . er/expand-region))
@@ -264,6 +298,7 @@
        fundamental-mode-hook))))
 
 (use-package flycheck
+  :disabled nil
   :ensure t
   :defer t
   :commands (flycheck-mode)
@@ -282,15 +317,13 @@
     (add-hook 'css-mode-hook 'fold-mode)
     (add-hook 'emacs-lisp-mode-hook 'fold-mode)))
 
+;; Loading Helm like :init (helm-mode) adds 5 seconds to the start up time
 (use-package helm
+  :disabled nil
   :ensure t
-  :init
-  (progn
-    (helm-mode 1)
-    (use-package helm-config)
-    )
   :config
   (progn
+    (require 'helm-config)
     (setq helm-candidate-number-limit 20
           helm-ff-skip-boring-files t
           helm-idle-delay 0.0
@@ -307,15 +340,19 @@
          ("C-c o" . helm-occur)))
 
 (use-package helm-swoop
+  :disabled nil
   :ensure t
+  :defer t
   :commands (helm-swoop helm-swoop-from-isearch helm-swoop-back-to-last-point)
   :init
-  (progn  (bind-key "M-i" 'helm-swoop-from-isearch isearch-mode-map)
-          (bind-key "M-i" 'helm-swoop)
-          (bind-key "M-I" 'helm-swoop-back-to-last-point)))
+  (progn  (bind-key "M-i" 'helm-swoop-from-isearch)
+          ;; (bind-key "M-I" 'helm-swoop-back-to-last-point)
+          (bind-key "M-I" 'helm-swoop)))
 
 (use-package helm-descbinds
+  :disabled nil
   :ensure t
+  :defer t
   :commands (helm-descbinds)
   :init
   (progn
@@ -323,19 +360,10 @@
     (setq helm-descbinds-window-style 'split-window))
   :bind ("C-x b" . helm-descbinds))
 
-(use-package html-mode
-  :disabled t
-  :init
-  (progn
-    (add-hook 'html-mode-hook
-              '(lambda()
-                 (setq tab-width 4)
-                 (setq c-basic-offset 4)
-                 (setq sgml-basic-offset 4)
-                 (setq indent-tabs-mode nil)))))
-
 (use-package ido
+  :disabled nil
   :ensure t
+  :defer t
   :commands (ido-mode)
   :config
   (progn
@@ -361,13 +389,18 @@
       :config
       (flx-ido-mode 1))))
 
-(use-package linum-off)
+(use-package linum-off
+  :disabled nil
+  )
 
-(use-package move-dup :ensure t)
+(use-package move-dup
+  :disabled nil
+  :ensure t)
 
 (use-package multiple-cursors
+  :disabled nil
   :ensure t
-  :commands (multiple-cursors-mode)
+  :defer t
   :config (progn (defvar mc/list-file "~/misc/.mc-lists.el"))
   :bind (("C->" . mc/mark-next-like-this)
          ("C-'" . mc/mark-all-like-this)
@@ -375,9 +408,8 @@
          ("C-{" . mc/edit-beginnings-of-lines)))
 
 (use-package nxml-mode
-  :commands nxml-mode
+  :disabled nil
   :mode (("\\.xml\\'" . nxml-mode))
-  ;; :init (defalias 'xml-mode 'nxml-mode))
   :init
   (add-hook 'nxml-mode-hook
             '(lambda()
@@ -385,10 +417,13 @@
                (setq indent-tabs-mode nil))))
 
 (use-package org
+  :disabled nil
   :ensure t
+  :defer t
   :commands (org-mode)
   :config
   (progn
+    (require 'org-agenda)
     (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
     (setq org-log-done t)
     ;; Remove 'validate XHTML' link at the bottom
@@ -414,53 +449,13 @@
         )))
     (setq org-agenda-files (list
                             (concat orgfiles-dir "agenda.org")
-                            (concat orgfiles-dir "gforces.org")))
-    (require 'remember)
-    (require 'org-capture)
-    (setq org-capture-templates
-          '(("t" "Tasks Todo" entry
-             (file+headline (concat orgfiles-dir "agenda.org") "Tasks")
-             "\n\n** TODO %?\n%T\n\n%i\n%a\n\n\n"
-             :empty-lines 1)))
-    ;; ("n" "Tasks Notes" entry
-    ;; (file+headline "~/org/agenda.org" "Notes")
-    ;; "\n\n** %?\n%T\n%i\n%a\n\n\n"
-    ;; :empty-lines 1)))
-    (require 'org-publish)
-    (setq org-publish-project-alist
-          '(
-            ;;("B-inherit"
-            ;; :base-directory "C:/Users/rafaelgp/AppData/Roaming/org/"
-            ;; :recursive t
-            ;; :base-extension "css\\|js"
-            ;; :publishing-directory "C:/Users/rafaelgp/AppData/Roaming/public_html/"
-            ;; :publishing-function org-publish-attachment)
-            ("org-notes"
-             :base-directory "C:/Users/rafaelgp/AppData/Roaming/org/"
-             :base-extension "org"
-             :publishing-directory "C:/Users/rafaelgp/AppData/Roaming/public_html/"
-             :recursive t
-             :publishing-function org-html-publish-to-html
-             :headline-levels 4             ; Just the default for this project.
-             ;; :style "<link rel=\"stylesheet\" type=\"text/css\" href=\"../css/style.css\" />"
-             :auto-preamble n
-             :auto-sitemap t                ; Generate sitemap.org automagically...
-             :sitemap-filename "sitemap.org"  ; ... call it sitemap.org (it's the default)...
-             :sitemap-title "Sitemap"         ; ... with title 'Sitemap'.
-             :sitemap-style "tree")
-            ("org-static"
-             :base-directory "C:/Users/rafaelgp/AppData/Roaming/org/"
-             :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-             :publishing-directory "C:/Users/rafaelgp/AppData/Roaming/public_html/"
-             :recursive t
-             :publishing-function org-publish-attachment)
-            ("org" :components ("org-notes" "org-static")))))
+                            (concat orgfiles-dir "gforces.org"))))
   :bind (("C-c a" . org-agenda)
-         ("C-c l" . org-store-link)
-         ("C-c c" . org-capture)))
+         ("C-c l" . org-store-link)))
 
 
 (use-package php-mode
+  :disabled nil
   :ensure t
   :commands php-mode
   :mode (("\\.php\\'" . php-mode))
@@ -471,6 +466,7 @@
   :init (php+-mode-setup))
 
 (use-package powershell
+  :disabled t
   :ensure t
   :commands (powershell-mode)
   :config     (push '("\\.ps[12]?$" . powershell-mode) auto-mode-alist))
@@ -485,6 +481,7 @@
     (push '("\\.ps[12]?$" . powershell-mode) auto-mode-alist)))
 
 (use-package rainbow-mode
+  :disabled t
   :init
   (hook-into-modes #'rainbow-mode '(css-mode-hook
                                     emacs-lisp-mode-hook
@@ -496,6 +493,7 @@
                                     xml-mode-hook)))
 
 (use-package rotate-text
+  :disabled nil
   :init
   (progn
     (defvar rotate-text-words '(("width" "height")
@@ -505,21 +503,11 @@
                                 ("left" "right" "top" "bottom"))))
   :bind ("C-c C-c" . rotate-text))
 
-(use-package sgml-mode
-  :disabled t
-  :commands (sgml-mode)
-  :init (progn
-          (add-hook 'sgml-hook
-                    '(lambda ()
-                       (setq tab-width 4)
-                       (setq c-basic-offset 4)
-                       (setq sgml-basic-offset 4)
-                       (setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80))
-                       (setq indent-tabs-mode nil)))))
-
 (use-package smex
+  :disabled nil
   :ensure t
   :commands (smex smex-major-mode-commands)
+  :defer t
   :config
   (progn
     ;; Put smex file in misc folder
@@ -528,18 +516,26 @@
          ("M-X" . smex-major-mode-commands)))
 
 (use-package undo-tree
+  :disabled nil
   :ensure t
   :commands (undo-tree-mode)
   :config (global-undo-tree-mode))
 
 (use-package volatile-highlights
+  :disabled t
   :ensure t
   :commands (volatile-highlights-mode))
 
 (use-package web-mode
+  :disabled nil
   :ensure t
   ;; :mode "\\.\\(erb\\|html?\\)\\'"
-  :mode (("\\.html\\'" . web-mode))
+  ;; :mode (("\\.html\\'" . web-mode))
+  :init
+  (hook-into-modes #'(lambda () (web-mode ))
+                   '(css-mode-hook
+                     html-mode-hook))
+  :defer t
   :config
   (progn
     (setq web-mode-markup-indent-offset 4
@@ -549,17 +545,8 @@
                                  (yas-activate-extra-mode 'css-mode)
                                  (evil-leader/set-key "t" 'web-mode-comment-or-uncomment)))))
 
-(use-package xml-mode
-  :disabled t
-  :init
-  (progn
-    (add-hook 'xml-mode-hook
-              '(lambda()
-                 (setq tab-width 4)
-                 (setq c-basic-offset 4)
-                 (setq indent-tabs-mode nil)))))
-
 (use-package yasnippet
+  :disabled nil
   :ensure t
   :if (not noninteractive)
   :diminish yas-minor-mode
