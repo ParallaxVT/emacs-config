@@ -479,7 +479,7 @@
                                     xml-mode-hook)))
 
 (use-package rotate-text
-  :disabled t
+  :disabled nil
   :init
   (progn
     (defvar rotate-text-words '(("width" "height")
