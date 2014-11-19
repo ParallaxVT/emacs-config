@@ -320,13 +320,13 @@
          ("C-c o" . helm-occur)))
 
 (use-package helm-swoop
-  :disabled t
+  :disabled nil
   :ensure t
   :commands (helm-swoop helm-swoop-from-isearch helm-swoop-back-to-last-point)
   :init
-  (progn  (bind-key "M-i" 'helm-swoop-from-isearch isearch-mode-map)
-          (bind-key "M-i" 'helm-swoop)
-          (bind-key "M-I" 'helm-swoop-back-to-last-point)))
+  (progn  (bind-key "M-i" 'helm-swoop-from-isearch)
+          ;; (bind-key "M-I" 'helm-swoop-back-to-last-point)
+          (bind-key "M-I" 'helm-swoop)))
 
 (use-package helm-descbinds
   :disabled t
