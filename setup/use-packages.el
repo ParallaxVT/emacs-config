@@ -297,6 +297,7 @@
     (add-hook 'css-mode-hook 'fold-mode)
     (add-hook 'emacs-lisp-mode-hook 'fold-mode)))
 
+;; Helm adds 5 seconds to the start up time
 (use-package helm
   :disabled nil
   :ensure t
