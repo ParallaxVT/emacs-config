@@ -300,9 +300,9 @@
 
 ;; Make rgrep find the executables it needs in windows
 (when (or (eq system-type 'windows-nt) (eq system-type 'msdos))
-  (setq find-program "C:\\\"Program Files (x86)\"\\Git\\bin\\find"
-        xargs-program "C:\\\"Program Files (x86)\"\\Git\\bin\\xargs"
-        grep-program "C:\\\"Program Files (x86)\"\\Git\\bin\\grep"))
+  (setq find-program "C:\\msysgit\\bin\\find"
+        xargs-program "C:\\msysgit\\bin\\xargs"
+        grep-program "C:\\msysgit\\bin\\grep"))
 
 (defadvice shell-quote-argument (after windows-nt-special-quote (argument) activate)
   "Add special quotes to ARGUMENT in case the system type is 'windows-nt."
