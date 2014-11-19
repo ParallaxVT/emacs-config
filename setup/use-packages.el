@@ -115,7 +115,6 @@
 (use-package dired+
   :disabled nil
   :ensure t
-  :commands (dired)
   :config
   (progn
     ;; Rebind Shift-SpaceBar to move to a parent directory using the same buffer.
