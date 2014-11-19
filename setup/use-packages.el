@@ -524,10 +524,15 @@
   :commands (volatile-highlights-mode))
 
 (use-package web-mode
-  :disabled t
+  :disabled nil
   :ensure t
   ;; :mode "\\.\\(erb\\|html?\\)\\'"
-  :mode (("\\.html\\'" . web-mode))
+  ;; :mode (("\\.html\\'" . web-mode))
+  :init
+  (hook-into-modes #'(lambda () (web-mode ))
+                   '(css-mode-hook
+                     html-mode-hook))
+  :defer t
   :config
   (progn
     (setq web-mode-markup-indent-offset 4
