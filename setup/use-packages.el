@@ -441,7 +441,7 @@
 
 
 (use-package php-mode
-  :disabled t
+  :disabled nil
   :ensure t
   :commands php-mode
   :mode (("\\.php\\'" . php-mode))
