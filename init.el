@@ -1,6 +1,6 @@
 ;; Emacs configuration file
 
-(server-start)
+;;(server-start)
 
 (defconst emacs-start-time (current-time))
 
