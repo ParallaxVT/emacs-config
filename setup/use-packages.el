@@ -440,8 +440,7 @@
                             (concat orgfiles-dir "gforces.org")))
     (require 'org-agenda))
   :bind (("C-c a" . org-agenda)
-         ("C-c l" . org-store-link)
-         ("C-c c" . org-capture)))
+         ("C-c l" . org-store-link)))
 
 
 (use-package php-mode
