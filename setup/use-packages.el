@@ -388,9 +388,9 @@
   :ensure t)
 
 (use-package multiple-cursors
-  :disabled t
+  :disabled nil
   :ensure t
-  :commands (multiple-cursors-mode)
+  :defer t
   :config (progn (defvar mc/list-file "~/misc/.mc-lists.el"))
   :bind (("C->" . mc/mark-next-like-this)
          ("C-'" . mc/mark-all-like-this)
