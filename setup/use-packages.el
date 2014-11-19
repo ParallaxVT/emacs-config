@@ -380,10 +380,11 @@
       (flx-ido-mode 1))))
 
 (use-package linum-off
-  :disabled t)
+  :disabled nil
+  )
 
 (use-package move-dup
-  :disabled t
+  :disabled nil
   :ensure t)
 
 (use-package multiple-cursors
