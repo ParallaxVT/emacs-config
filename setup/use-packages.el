@@ -409,9 +409,11 @@
 (use-package org
   :disabled nil
   :ensure t
+  :defer t
   :commands (org-mode)
   :config
   (progn
+    (require 'org-agenda)
     (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
     (setq org-log-done t)
     ;; Remove 'validate XHTML' link at the bottom
@@ -437,8 +439,7 @@
         )))
     (setq org-agenda-files (list
                             (concat orgfiles-dir "agenda.org")
-                            (concat orgfiles-dir "gforces.org")))
-    (require 'org-agenda))
+                            (concat orgfiles-dir "gforces.org"))))
   :bind (("C-c a" . org-agenda)
          ("C-c l" . org-store-link)))
 
