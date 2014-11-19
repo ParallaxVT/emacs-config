@@ -351,8 +351,9 @@
                  (setq indent-tabs-mode nil)))))
 
 (use-package ido
-  :disabled t
+  :disabled nil
   :ensure t
+  :defer t
   :commands (ido-mode)
   :config
   (progn
