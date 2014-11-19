@@ -341,7 +341,6 @@
   :bind ("C-x b" . helm-descbinds))
 
 (use-package html-mode
-  :disabled t
   :init
   (progn
     (add-hook 'html-mode-hook
