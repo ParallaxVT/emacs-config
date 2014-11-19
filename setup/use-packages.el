@@ -322,6 +322,7 @@
 (use-package helm-swoop
   :disabled nil
   :ensure t
+  :defer t
   :commands (helm-swoop helm-swoop-from-isearch helm-swoop-back-to-last-point)
   :init
   (progn  (bind-key "M-i" 'helm-swoop-from-isearch)
