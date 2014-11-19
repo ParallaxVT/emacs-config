@@ -252,6 +252,9 @@
     ;;              '(evil-paredit-change . change))
     ;; (add-to-list 'surround-operator-alist
     ;;              '(evil-paredit-delete . delete))))
+    (use-package powerline
+      :disabled nil
+      :ensure t)
     (use-package powerline-evil
       :disabled nil
       :ensure t
