@@ -544,7 +544,7 @@
                                  (evil-leader/set-key "t" 'web-mode-comment-or-uncomment)))))
 
 (use-package yasnippet
-  :disabled t
+  :disabled nil
   :ensure t
   :if (not noninteractive)
   :diminish yas-minor-mode
