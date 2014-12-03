@@ -152,6 +152,7 @@
 (global-hl-line-mode +1)                        ;; Highlight the current line
 (setq next-line-add-newlines t)                 ;; Make sure text files end in a new line
 (setq inhibit-default-init t)                   ;; Disable loading of defoult.el at startup
+(global-prettify-symbols-mode 1)                ;; Display a lambda symbol itstead of the word
 
 ;; Buffer
 ;; =================================================================
