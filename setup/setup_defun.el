@@ -248,20 +248,20 @@ Position the cursor at its beginning, according to the current mode."
 
 ;; Center screen when perform a search
 (defadvice
-  isearch-forward
-  (after isearch-forward-recenter activate)
+    isearch-forward
+    (after isearch-forward-recenter activate)
   (recenter))
 (ad-activate 'isearch-forward)
 
 (defadvice
-  isearch-repeat-forward
-  (after isearch-repeat-forward-recenter activate)
+    isearch-repeat-forward
+    (after isearch-repeat-forward-recenter activate)
   (recenter))
 (ad-activate 'isearch-repeat-forward)
 
 (defadvice
-  isearch-repeat-backward
-  (after isearch-repeat-backward-recenter activate)
+    isearch-repeat-backward
+    (after isearch-repeat-backward-recenter activate)
   (recenter))
 (ad-activate 'isearch-repeat-backward)
 
