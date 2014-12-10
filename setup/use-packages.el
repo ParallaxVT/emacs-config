@@ -327,7 +327,8 @@
     (setq helm-candidate-number-limit 20
           helm-ff-skip-boring-files t
           helm-idle-delay 0.0
-          helm-quick-update t)
+          helm-quick-update t
+          helm-buffers-fuzzy-matching t)
     (helm-match-plugin-mode)
     (setq helm-boring-file-regexp-list
           '("\\.jpg$" "\\.jpeg$" "\\.gif$" "\\.png$" "\\.swf$" "\\.sa$" "\\.fla$" ))
