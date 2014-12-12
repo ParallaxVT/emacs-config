@@ -112,6 +112,23 @@
   :commands (helm-bookmarks bookmark-bmenu-list)
   :ensure t)
 
+(use-package company
+  :disabled nil
+  :ensure t
+  :diminish company-mode
+  :bind ("M-RET" . company-complete)
+  :init (global-company-mode)
+  :config
+  (progn
+    (custom-set-faces
+     '(company-preview ((t (:inherit font-lock-type-face))))
+     '(company-tooltip ((t (:foreground "white"))))
+     '(company-tooltip-common ((t (:foreground "green"))))
+     '(company-scrollbar-fg ((t (:background "gray27"))))
+     '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection))))
+     '(company-tooltip-selection ((t (:inherit company-tooltip :background "dark green"))))
+     )))
+
 (use-package dired+
   :disabled nil
   :ensure t
