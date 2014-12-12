@@ -7,7 +7,6 @@ auto-save-list
 autosave/*
 backup/*
 image-dired
-bookmarks
 elpa/*
 eshell/history
 eshell/lastdir
