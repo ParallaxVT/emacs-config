@@ -10,6 +10,7 @@ image-dired
 elpa/*
 eshell/history
 eshell/lastdir
+misc/bookmarks
 server
 todo.org
 tramp
