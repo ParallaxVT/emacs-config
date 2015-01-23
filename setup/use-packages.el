@@ -453,6 +453,7 @@
     (setq org-tags-column -130)
     (setq org-agenda-tags-column -130)
     (setq org-agenda-window-setup 'current-window)
+    (setq calendar-week-start-day 1)
     (cond
      ((string-equal system-type "gnu/linux") ; linux
       (progn
