@@ -39,7 +39,6 @@
 (bind-key "M-;"                               'comment-dwim-line)
 (bind-key "C-c g"                             'google-it)
 (bind-key "C-c r"                             'ibuffer)
-(bind-key "M-/"                               'hippie-expand)
 (bind-key "C-M-\\"                            'indent-region-or-buffer)
 (bind-key "C-c C-k"                           'kill-region)
 (bind-key "M-n"                               'negative-argument)
@@ -116,10 +115,14 @@
   :disabled nil
   :ensure t
   :diminish company-mode
-  :bind ("M-RET" . company-complete)
+  :bind (("M-/" . company-complete)
+         ("M-/" . company-manual-begin)
+         ("M-/" . company-complete-common))
   :init (global-company-mode)
   :config
   (progn
+   ;; Complete by request instead of waiting
+    (setq company-idle-delay 1000)
     (custom-set-faces
      '(company-preview ((t (:inherit font-lock-type-face))))
      '(company-tooltip ((t (:foreground "white"))))
