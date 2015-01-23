@@ -43,8 +43,8 @@
 (bind-key "C-c C-k"                           'kill-region)
 (bind-key "M-n"                               'negative-argument)
 (bind-key "C-c k"                             'smart-kill-other-buffers)
-(bind-key [(control shift up)]                'md/move-lines-up)
-(bind-key [(control shift down)]              'md/move-lines-down)
+(bind-key "<M-S-up>"                          'md/move-lines-up)
+(bind-key "<M-S-down>"                        'md/move-lines-down)
 (bind-key [remap kill-whole-line]             'smart-kill-whole-line)
 (bind-key [remap move-beginning-of-line]      'smart-move-beginning-of-line)
 (bind-key [(shift return)]                    'smart-open-line)
@@ -266,8 +266,8 @@
       :init
       (progn
         (progn
-          (global-set-key [(meta shift up)]   'evil-numbers/inc-at-pt)
-          (global-set-key [(meta shift down)] 'evil-numbers/dec-at-pt))))
+          (global-set-key [(control shift up)]   'evil-numbers/inc-at-pt)
+          (global-set-key [(control shift down)] 'evil-numbers/dec-at-pt))))
     (use-package evil-surround
       :disabled nil
       :ensure t
