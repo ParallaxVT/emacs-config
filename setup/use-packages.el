@@ -43,7 +43,6 @@
 (bind-key "C-c C-k"                           'kill-region)
 (bind-key "M-n"                               'negative-argument)
 (bind-key "C-c k"                             'smart-kill-other-buffers)
-(bind-key "C-c s"                             'smart-swap-windows)
 (bind-key [(control shift up)]                'md/move-lines-up)
 (bind-key [(control shift down)]              'md/move-lines-down)
 (bind-key [remap kill-whole-line]             'smart-kill-whole-line)
@@ -61,7 +60,6 @@
   :init (key-chord-mode 1)
   :config
   (progn
-    (key-chord-define-global "OO" 'other-window)
     (key-chord-define-global ",," 'smart-switch-to-previous-buffer)
     (key-chord-define-global "UU" 'undo-tree-visualize)
     (key-chord-define-global ",d" 'duplicate-current-line-or-region)
@@ -72,6 +70,11 @@
   :ensure t
   :defer t
   :commands (ace-jump-mode key-chord-mode))
+
+(use-package ace-window
+  :ensure t
+  :defer t
+  :commands (ace-window))
 
 (use-package auto-complete
   :disabled nil
@@ -215,7 +218,6 @@
       "k" 'kill-buffer
       "l" 'ace-jump-line-mode
       "L" 'align-regexp
-      "o" 'other-window
       "O" 'helm-occur
       "q" 'org-set-tags-command
       "r" 'helm-recentf
@@ -223,7 +225,9 @@
       "t" 'comment-dwim-line
       "x" 'helm-M-x
       "w" 'save-buffer
-      "W" 'whack-whitespace)
+      "W" 'whack-whitespace
+      "z" 'ace-window
+      "Z" 'ace-swap-window)
     (evil-leader/set-key-for-mode 'org-mode
       "T" 'org-clock-update-time-maybe
       "u" 'org-clock-in
