@@ -185,6 +185,7 @@
   :ensure t
   :defer t
   :commands (evil-mode turn-on-evil-mode)
+  :config (setq evil-leader/no-prefix-mode-rx '("org-agenda"))
   :init
   (progn
     (global-evil-leader-mode)
@@ -201,7 +202,7 @@
       "A" 'org-agenda
       "b" 'helm-buffers-list
       "B" 'helm-bookmarks
-      "a" 'helm-ack
+      "a" '(lambda () (interactive)(find-file "~/org/agenda.org"))
       "c" 'ace-jump-char-mode
       "C" 'cleanup-buffer
       "d" 'md/duplicate-down
