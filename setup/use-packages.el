@@ -198,20 +198,20 @@
       "1" 'delete-other-windows
       "2" '(lambda () (interactive)(split-window-vertically)(other-window 1))
       "3" '(lambda () (interactive)(split-window-horizontally)(other-window 1))
+      "a" '(lambda () (interactive)(find-file "~/org/agenda.org"))
       "A" 'org-agenda
       "b" 'helm-buffers-list
       "B" 'helm-bookmarks
-      "a" '(lambda () (interactive)(find-file "~/org/agenda.org"))
       "c" 'ace-jump-char-mode
       "C" 'cleanup-buffer
       "d" 'md/duplicate-down
       "D" 'dired-jump
       "e" 'helm-find-files
       "E" 'eval-buffer
-      "i" 'helm-imenu
       "g" 'rgrep
       "G" 'helm-google-suggest
       "h" 'helm-apropos
+      "i" 'helm-imenu
       "k" 'kill-buffer
       "l" 'ace-jump-line-mode
       "L" 'align-regexp
