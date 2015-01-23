@@ -275,7 +275,7 @@
       :disabled nil
       :ensure t
       :commands (powerline-evil-vim-color-theme)
-      :init
+      :config
       (progn
         (powerline-evil-vim-color-theme)
         (set-face-background 'powerline-evil-normal-face "dark green")
