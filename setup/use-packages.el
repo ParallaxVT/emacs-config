@@ -198,7 +198,6 @@
       "1" 'delete-other-windows
       "2" '(lambda () (interactive)(split-window-vertically)(other-window 1))
       "3" '(lambda () (interactive)(split-window-horizontally)(other-window 1))
-      "a" 'align-regexp
       "A" 'org-agenda
       "b" 'helm-buffers-list
       "B" 'helm-bookmarks
@@ -215,6 +214,7 @@
       "h" 'helm-apropos
       "k" 'kill-buffer
       "l" 'ace-jump-line-mode
+      "L" 'align-regexp
       "o" 'other-window
       "O" 'helm-occur
       "q" 'org-set-tags-command
