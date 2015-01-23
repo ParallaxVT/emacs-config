@@ -462,6 +462,7 @@
     (setq org-indent-mode t)
     (setq org-startup-indented t)
     (setq calendar-week-start-day 1)
+    (setq org-time-stamp-rounding-minutes (quote (0 1))) ;; Change timestamps by multiples of 1
     (cond
      ((string-equal system-type "gnu/linux") ; linux
       (progn
