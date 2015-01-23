@@ -121,7 +121,7 @@
   :init (global-company-mode)
   :config
   (progn
-   ;; Complete by request instead of waiting
+    ;; Complete by request instead of waiting
     (setq company-idle-delay 1000)
     (custom-set-faces
      '(company-preview ((t (:inherit font-lock-type-face))))
