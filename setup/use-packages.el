@@ -453,6 +453,10 @@
     (setq org-tags-column -130)
     (setq org-agenda-tags-column -130)
     (setq org-agenda-window-setup 'current-window)
+    (setq org-hide-leading-stars t)
+    (setq org-adapt-indentation t)
+    (setq org-indent-mode t)
+    (setq org-startup-indented t)
     (setq calendar-week-start-day 1)
     (cond
      ((string-equal system-type "gnu/linux") ; linux
