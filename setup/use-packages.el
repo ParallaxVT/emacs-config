@@ -221,10 +221,13 @@
       "r" 'helm-recentf
       "s" 'smart-switch-to-previous-buffer
       "t" 'comment-dwim-line
-      "T" 'org-capture
       "x" 'helm-M-x
       "w" 'save-buffer
-      "W" 'whack-whitespace)))
+      "W" 'whack-whitespace)
+    (evil-leader/set-key-for-mode 'org-mode
+      "T" 'org-clock-update-time-maybe
+      "u" 'org-clock-in
+      "U" 'org-clock-out)))
 
 (use-package evil
   :disabled nil
