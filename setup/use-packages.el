@@ -277,24 +277,7 @@
       :defer t
       :init
       (progn
-        (global-evil-surround-mode 1)))
-    (use-package powerline
-      :disabled nil
-      :ensure t)
-    (use-package powerline-evil
-      :disabled nil
-      :ensure t
-      :commands (powerline-evil-vim-color-theme)
-      :config
-      (progn
-        (powerline-evil-vim-color-theme)
-        (set-face-background 'powerline-evil-normal-face "dark green")
-        (set-face-background 'powerline-evil-insert-face "royal blue")
-        (set-face-background 'powerline-evil-visual-face "dark orange")
-        (set-face-background 'powerline-evil-operator-face "dark cyan")
-        (set-face-background 'powerline-evil-replace-face "dark red")
-        (set-face-background 'powerline-evil-motion-face "dark magenta")
-        (set-face-background 'powerline-evil-emacs-face "dark violet")))))
+        (global-evil-surround-mode 1)))))
 
 (use-package expand-region
   :disabled nil
