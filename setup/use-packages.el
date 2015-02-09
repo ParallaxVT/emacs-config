@@ -77,6 +77,11 @@
   :defer t
   :commands (ace-window))
 
+(use-package helm-ag
+  :ensure t
+  :defer t
+  :commands (helm-ag))
+
 (use-package auto-complete
   :disabled nil
   :ensure t
@@ -212,7 +217,7 @@
       "D" 'dired-jump
       "e" 'helm-find-files
       "E" 'eval-buffer
-      "g" 'rgrep
+      "g" 'helm-ag
       "G" 'helm-google-suggest
       "h" 'helm-apropos
       "i" 'helm-imenu
