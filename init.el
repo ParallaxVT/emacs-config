@@ -26,6 +26,14 @@
 (defvar autosave-dir (expand-file-name "autosave/" dotfiles-dir))
 (defvar misc-dir (expand-file-name "misc/" dotfiles-dir))
 
+;;------------------------------------------------------------------
+;; Customize file
+;;------------------------------------------------------------------
+
+;; Set path to custom.el and then load it
+(setq custom-file (expand-file-name "custom.el" settings-dir))
+(load custom-file 'noerror)
+
 (defun add-subfolders-to-load-path (parent-dir)
   "Adds all first level `parent-dir' subdirs to the Emacs load-path."
   (dolist (f (directory-files parent-dir))
@@ -334,14 +342,6 @@
 ;;------------------------------------------------------------------
 
 (require 'use-packages)
-
-;;------------------------------------------------------------------
-;; Customize file
-;;------------------------------------------------------------------
-
-;; Set path to custom.el and then load it
-(setq custom-file (expand-file-name "custom.el" settings-dir))
-(load custom-file 'noerror)
 
 ;;------------------------------------------------------------------
 ;; Loading time
