@@ -531,6 +531,17 @@
                                 ("left" "right" "top" "bottom"))))
   :bind ("C-c C-c" . rotate-text))
 
+;; Use 'pre-load' option to load it before evil
+(use-package smart-mode-line
+  :pre-load
+  :disabled nil
+  :ensure t
+  :init (sml/setup)
+  (progn
+    (setq sml/theme 'dark
+          sml/shorten-directory nil
+          sml/mode-width 'right)))
+
 (use-package smex
   :disabled nil
   :ensure t
