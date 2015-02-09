@@ -188,65 +188,62 @@
                eshell-glob-include-dot-dot nil
                eshell-directory-name (concat dotfiles-dir "eshell"))))
 
-;; Load evil-header before evil to make sure all  the binds work everywhere
-(use-package evil-leader
-  :disabled nil
-  :ensure t
-  :defer t
-  :commands (evil-mode turn-on-evil-mode)
-  :config (setq evil-leader/no-prefix-mode-rx '("org-agenda"))
-  :init
-  (progn
-    (global-evil-leader-mode)
-    (evil-leader/set-leader ".")
-    (evil-leader/set-key
-      "." 'evil-repeat
-      "RET" 'delete-other-windows
-      "SPC" 'ace-jump-word-mode
-      "0" 'delete-window
-      "1" 'delete-other-windows
-      "2" '(lambda () (interactive)(split-window-vertically)(other-window 1))
-      "3" '(lambda () (interactive)(split-window-horizontally)(other-window 1))
-      "a" '(lambda () (interactive)(find-file "~/org/agenda.org"))
-      "A" 'org-agenda
-      "b" 'helm-buffers-list
-      "B" 'helm-bookmarks
-      "c" 'ace-jump-char-mode
-      "C" 'cleanup-buffer
-      "d" 'md/duplicate-down
-      "D" 'dired-jump
-      "e" 'helm-find-files
-      "E" 'eval-buffer
-      "g" 'helm-ag
-      "G" 'helm-google-suggest
-      "h" 'helm-apropos
-      "i" 'helm-imenu
-      "k" 'kill-buffer
-      "l" 'ace-jump-line-mode
-      "L" 'align-regexp
-      "O" 'helm-occur
-      "q" 'org-set-tags-command
-      "r" 'helm-recentf
-      "s" 'smart-switch-to-previous-buffer
-      "t" 'comment-dwim-line
-      "x" 'helm-M-x
-      "w" 'save-buffer
-      "W" 'whack-whitespace
-      "z" 'ace-window
-      "Z" 'ace-swap-window)
-    (evil-leader/set-key-for-mode 'org-mode
-      "T" 'org-clock-update-time-maybe
-      "u" 'org-clock-in
-      "U" 'org-clock-out)))
-
+;; Load evil-leader before evil to make sure all the binds work everywhere
 (use-package evil
+  :pre-load
   :disabled nil
-  :commands (evil-mode turn-on-evil-mode)
   :init
   (progn
-    (evil-mode 1))
+    (use-package evil-leader
+      :disabled nil
+      :ensure t
+      :init
+      (progn
+        (global-evil-leader-mode)
+        (evil-leader/set-leader ".")
+        (evil-leader/set-key
+          "." 'evil-repeat
+          "RET" 'delete-other-windows
+          "SPC" 'ace-jump-word-mode
+          "0" 'delete-window
+          "1" 'delete-other-windows
+          "2" '(lambda () (interactive)(split-window-vertically)(other-window 1))
+          "3" '(lambda () (interactive)(split-window-horizontally)(other-window 1))
+          "a" '(lambda () (interactive)(find-file "~/org/agenda.org"))
+          "A" 'org-agenda
+          "b" 'helm-buffers-list
+          "B" 'helm-bookmarks
+          "c" 'ace-jump-char-mode
+          "C" 'cleanup-buffer
+          "d" 'md/duplicate-down
+          "D" 'dired-jump
+          "e" 'helm-find-files
+          "E" 'eval-buffer
+          "g" 'helm-ag
+          "G" 'helm-google-suggest
+          "h" 'helm-apropos
+          "i" 'helm-imenu
+          "k" 'kill-buffer
+          "l" 'ace-jump-line-mode
+          "L" 'align-regexp
+          "O" 'helm-occur
+          "q" 'org-set-tags-command
+          "r" 'helm-recentf
+          "s" 'smart-switch-to-previous-buffer
+          "t" 'comment-dwim-line
+          "x" 'helm-M-x
+          "w" 'save-buffer
+          "W" 'whack-whitespace
+          "z" 'ace-window
+          "Z" 'ace-swap-window)
+        (evil-leader/set-key-for-mode 'org-mode
+          "T" 'org-clock-update-time-maybe
+          "u" 'org-clock-in
+          "U" 'org-clock-out))))
   :config
   (progn
+    (setq evil-leader/no-prefix-mode-rx '("org-agenda"))
+    (evil-mode 1)
     (global-set-key (kbd "M-SPC") 'evil-normal-state)
     ;; esc key quits everything
     (define-key evil-normal-state-map [escape] 'keyboard-quit)
@@ -281,10 +278,6 @@
       :init
       (progn
         (global-evil-surround-mode 1)))
-    ;; (add-to-list 'surround-operator-alist
-    ;;              '(evil-paredit-change . change))
-    ;; (add-to-list 'surround-operator-alist
-    ;;              '(evil-paredit-delete . delete))))
     (use-package powerline
       :disabled nil
       :ensure t)
