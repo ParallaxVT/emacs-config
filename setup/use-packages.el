@@ -348,10 +348,28 @@
 (use-package helm
   :disabled nil
   :ensure t
+  :commands (helm-buffers-list
+             helm-colors
+             helm-find-files
+             helm-for-files
+             helm-google-suggest
+             helm-mini
+             helm-help
+             helm-show-kill-ring
+             helm-org-keywords
+             helm-org-headlines
+             helm-projectile
+             helm-M-x
+             helm-occur)
+  :bind (("C-x f" . helm-recentf)
+         ("C-x C-b" . helm-buffers-list)
+         ("C-x C-f" . helm-find-files)
+         ("C-c h" . helm-mini)
+         ("C-c o" . helm-occur))
   :config
   (progn
     (require 'helm-config)
-    (setq helm-candidate-number-limit 20
+    (setq helm-candidate-number-limit 30
           helm-ff-skip-boring-files t
           helm-idle-delay 0.0
           helm-quick-update t
@@ -360,33 +378,26 @@
     (setq helm-boring-file-regexp-list
           '("\\.jpg$" "\\.jpeg$" "\\.gif$" "\\.png$" "\\.swf$" "\\.sa$" "\\.fla$" ))
     (bind-key "C-w" 'helm-find-files-up-one-level helm-map)
-    (bind-key "C-v" 'helm-execute-persistent-action helm-map))
-  :bind (("C-x f" . helm-recentf)
-         ("C-x C-b" . helm-buffers-list)
-         ("C-x C-f" . helm-find-files)
-         ("C-c h" . helm-mini)
-         ("C-c o" . helm-occur)))
-
-(use-package helm-swoop
-  :disabled nil
-  :ensure t
-  :defer t
-  :commands (helm-swoop helm-swoop-from-isearch helm-swoop-back-to-last-point)
-  :init
-  (progn  (bind-key "M-i" 'helm-swoop-from-isearch)
-          ;; (bind-key "M-I" 'helm-swoop-back-to-last-point)
-          (bind-key "M-I" 'helm-swoop)))
-
-(use-package helm-descbinds
-  :disabled nil
-  :ensure t
-  :defer t
-  :commands (helm-descbinds)
-  :init
-  (progn
-    (helm-descbinds-mode)
-    (setq helm-descbinds-window-style 'split-window))
-  :bind ("C-x b" . helm-descbinds))
+    (bind-key "C-v" 'helm-execute-persistent-action helm-map)
+    (use-package helm-swoop
+      :disabled nil
+      :ensure t
+      :defer t
+      :commands (helm-swoop helm-swoop-from-isearch helm-swoop-back-to-last-point)
+      :init
+      (progn  (bind-key "M-I" 'helm-swoop-from-isearch)
+              ;; (bind-key "M-I" 'helm-swoop-back-to-last-point)
+              (bind-key "M-i" 'helm-swoop)))
+    (use-package helm-descbinds
+      :disabled nil
+      :ensure t
+      :defer t
+      :commands (helm-descbinds)
+      :init
+      (progn
+        (helm-descbinds-mode)
+        (setq helm-descbinds-window-style 'split-window))
+      :bind ("C-x b" . helm-descbinds))))
 
 (use-package ido
   :disabled nil
