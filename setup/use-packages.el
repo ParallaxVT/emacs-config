@@ -340,7 +340,7 @@
              helm-help
              helm-show-kill-ring
              helm-org-keywords
-             helm-org-headlines
+             helm-org-in-buffer-headings
              helm-projectile
              helm-M-x
              helm-occur)
