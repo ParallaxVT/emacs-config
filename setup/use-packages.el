@@ -451,8 +451,8 @@
     ;; Remove 'validate XHTML' link at the bottom
     (setq org-export-html-postamble nil)
     (setq org-agenda-start-with-log-mode t)
-    (setq org-tags-column -130)
-    (setq org-agenda-tags-column -130)
+    (setq org-tags-column -148)
+    (setq org-agenda-tags-column -150)
     (setq org-agenda-window-setup 'current-window)
     (setq org-hide-leading-stars t)
     (setq org-adapt-indentation t)
