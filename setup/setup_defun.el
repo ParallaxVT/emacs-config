@@ -305,4 +305,16 @@ Position the cursor at its beginning, according to the current mode."
   (evil-next-line nil)
   )
 
+;; Get rid of \smtp symbol in org-mode
+;; =================================================================
+
+(defun org-clocktable-indent-string (level)
+  (if (= level 1)
+      ""
+    (let ((str "\\__"))
+      (while (> level 2)
+        (setq level (1- level)
+              str (concat str "___")))
+      (concat str " "))))
+
 (provide 'setup_defun)
