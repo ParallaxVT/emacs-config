@@ -548,10 +548,24 @@
   :disabled nil
   :ensure t
   :init (sml/setup)
+  :config
   (progn
     (setq sml/theme 'dark
           sml/shorten-directory nil
-          sml/mode-width 'right)))
+          sml/mode-width 'right))
+  (custom-theme-set-faces
+   'smart-mode-line-dark
+   '(mode-line-buffer-id ((t :inherit sml/filename :foreground nil :background nil)))
+   '(mode-line-inactive ((t :foreground "gray60" :background "#404045" :inverse-video nil)))
+   '(mode-line ((t :foreground "gray60" :background "#21212a" :inverse-video nil :overline "grey40" :box nil :underline (:color "grey40" :style line))))
+   '(sml/global ((t :foreground "gray50" :inverse-video nil)))
+   '(sml/modes ((t :inherit sml/global :foreground "White")))
+   '(sml/filename ((t :inherit sml/global :foreground "#FF69B4" :weight normal)))
+   '(sml/prefix ((t :inherit sml/global :foreground "#bf6000")))
+   '(sml/read-only ((t :inherit sml/not-modified :foreground "DeepSkyBlue")))
+   '(persp-selected-face ((t :foreground "ForestGreen" :inherit sml/filename)))
+   '(helm-candidate-number ((t :inherit sml/global :foreground "#eab700" :background nil))))
+  )
 
 (use-package smex
   :disabled nil
