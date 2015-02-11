@@ -481,6 +481,17 @@
   :bind (("C-c a" . org-agenda)
          ("C-c l" . org-store-link)))
 
+(use-package popwin
+  :disabled nil
+  :ensure t
+  :commands popwin-mode
+  :idle (popwin-mode 1)
+  :defer t
+  :config
+  (progn
+    (push '("*helm*" :height 20) popwin:special-display-config)
+    (push '("^\*helm .+\*$" :regexp t :height 20) popwin:special-display-config)
+    (push '("*Compile-Log*" :height 20 :noselect t) popwin:special-display-config)))
 
 (use-package php-mode
   :disabled nil
