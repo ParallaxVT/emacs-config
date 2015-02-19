@@ -106,9 +106,10 @@
 
    ;; Web-mode
 
-   `(web-mode-html-tag-face ((t (:foreground ,sw-blue))))
+   `(web-mode-html-tag-face ((t (:foreground ,sw-blue-1))))
    `(web-mode-html-tag-bracket-face ((t (:foreground ,sw-green))))
    `(web-mode-html-attr-name-face ((t (:foreground ,sw-green))))
+   `(web-mode-css-selector-face ((t (:foreground ,sw-blue-1))))
 
    ;; Org-mode
    `(org-date ((t (:foreground ,sw-purple :underline t))))
