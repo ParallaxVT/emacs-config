@@ -382,6 +382,13 @@
         (setq helm-descbinds-window-style 'split-window))
       :bind ("C-x b" . helm-descbinds))))
 
+(use-package highlight-symbol
+  :disabled nil
+  :ensure t
+  :init (highlight-symbol-mode)
+  :bind (("M-[" . highlight-symbol-prev)
+         ("M-]" . highlight-symbol-next)))
+
 (use-package ido
   :disabled nil
   :ensure t
