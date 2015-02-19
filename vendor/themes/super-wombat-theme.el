@@ -115,7 +115,7 @@
    `(org-date ((t (:foreground ,sw-purple :underline t))))
    `(org-special-keyword ((t (:foreground ,sw-purple))))
    `(org-agenda-date ((t (:foreground ,sw-blue-1))))
-   `(org-agenda-date-weekend ((t (:foreground "DeepSkyBLue1"))))
+   `(org-agenda-date-weekend ((t (:foreground ,sw-blue-1))))
    `(org-agenda-calendar-event ((t (:foreground ,sw-orange+1))))
    `(org-hide ((t (:foreground ,sw-bg))))
    `(org-todo ((t (:foreground ,"Firebrick2" :bold t))))
@@ -135,7 +135,7 @@
    `(org-scheduled ((t (:foreground ,sw-green+1))))
    `(org-scheduled-today ((t (:foreground ,sw-orange+1))))
    `(org-scheduled-previously ((t (:foreground ,sw-orange+1))))
-   `(org-tag ((t (:foreground "SteelBLue1"))))
+   `(org-tag ((t (:foreground ,sw-blue-1))))
 
    ;; isearch
    `(isearch ((t (:background ,sw-pink :foreground ,"white"))))
