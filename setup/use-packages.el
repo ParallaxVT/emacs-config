@@ -431,7 +431,7 @@
   :disabled nil
   :ensure t
   :defer t
-  :config (progn (defvar mc/list-file "~/misc/.mc-lists.el"))
+  :config (defvar mc/list-file "~/misc/.mc-lists.el")
   :bind (("C->" . mc/mark-next-like-this)
          ("C-<" . mc/unmark-next-like-this)
          ("C-'" . mc/mark-all-like-this)
