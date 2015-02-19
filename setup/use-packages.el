@@ -283,7 +283,8 @@
   :disabled nil
   :ensure t
   :commands (er/expand-region)
-  :bind ("C-=" . er/expand-region))
+  :bind (("C-=" . er/expand-region)
+         ("C-+" . er/contract-region)))
 
 (use-package fci
   :disabled t
