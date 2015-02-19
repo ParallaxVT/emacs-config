@@ -331,12 +331,11 @@
                ad-return-value)))))
 
 ;;------------------------------------------------------------------
-;; Better that grep: The Silver Searcher and Ack
+;; The Silver Searcher
 ;;------------------------------------------------------------------
+
 (when (string-equal system-type "windows-nt")
-  (setq exec-path
-        '("~\\Ag"
-          "~\\Ack")))
+  (setq exec-path '("~\\Ag")))
 
 ;;------------------------------------------------------------------
 ;; Functions
