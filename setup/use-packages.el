@@ -433,6 +433,7 @@
   :defer t
   :config (progn (defvar mc/list-file "~/misc/.mc-lists.el"))
   :bind (("C->" . mc/mark-next-like-this)
+         ("C-<" . mc/unmark-next-like-this)
          ("C-'" . mc/mark-all-like-this)
          ("C-}" . mc/edit-ends-of-lines)
          ("C-{" . mc/edit-beginnings-of-lines)))
