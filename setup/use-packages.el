@@ -219,7 +219,7 @@
           "D" 'dired-jump
           "e" 'helm-find-files
           "E" 'eval-buffer
-          "g" 'helm-ag
+          "g" '(lambda () (interactive)(setq current-prefix-arg '(4))(helm-ag))
           "G" 'helm-google-suggest
           "h" 'helm-apropos
           "i" 'helm-imenu
