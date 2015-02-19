@@ -83,7 +83,7 @@
    ;; `(nxml-delimited-data ((t (:foreground ,sw-))))
    ;; `(nxml-delimiter ((t (:foreground ,sw-))))
    ;; `(nxml-element-colon ((t (:foreground ,sw-))))
-   ;; `(nxml-element-local-name ((t (:foreground ,sw-))))
+   `(nxml-element-local-name ((t (:foreground ,sw-blue-1))))
    ;; `(nxml-element-prefix ((t (:foreground ,sw-))))
    ;; `(nxml-entity-ref-delimiter ((t (:foreground ,sw-))))
    ;; `(nxml-glyph ((t (:foreground ,sw-))))
@@ -93,7 +93,7 @@
    ;; `(nxml-outline-ellipsis ((t (:foreground ,sw-))))
    ;; `(nxml-outline-indicator ((t (:foreground ,sw-))))
    ;; `(nxml-prolog-literal-delimiter ((t (:foreground ,sw-))))
-   `(nxml-tag-delimiter ((t (:foreground ,sw-blue+2))))
+   `(nxml-tag-delimiter ((t (:foreground ,sw-blue-1))))
 
 
    ;; UI Items
