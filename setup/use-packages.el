@@ -368,10 +368,8 @@
       :ensure t
       :defer t
       :commands (helm-swoop helm-swoop-from-isearch helm-swoop-back-to-last-point)
-      :init
-      (progn  (bind-key "M-I" 'helm-swoop-from-isearch)
-              ;; (bind-key "M-I" 'helm-swoop-back-to-last-point)
-              (bind-key "M-i" 'helm-swoop)))
+      :bind (("M-I" . helm-swoop-from-isearch)
+             ( "M-i" . helm-swoop)))
     (use-package helm-descbinds
       :disabled nil
       :ensure t
