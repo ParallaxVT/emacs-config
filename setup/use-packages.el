@@ -385,7 +385,15 @@
 (use-package highlight-symbol
   :disabled nil
   :ensure t
-  :init (highlight-symbol-mode)
+  :diminish highlight-symbol-mode
+  :init (hook-into-modes #'highlight-symbol-mode '(lisp-mode-hook
+                                                   prog-mode-hook
+                                                   web-mode-hook
+                                                   nxml-mode-hook
+                                                   php-mode-hook
+                                                   org-mode-hook
+                                                   sgml-mode-hook))
+  :config (setq highlight-symbol-idle-delay 0)
   :bind (("M-[" . highlight-symbol-prev)
          ("M-]" . highlight-symbol-next)))
 
