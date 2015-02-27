@@ -269,9 +269,7 @@
       :disabled nil
       :ensure t
       :defer t
-      :init
-      (progn
-        (global-evil-surround-mode 1)))))
+      :init (global-evil-surround-mode 1))))
 
 (use-package expand-region
   :disabled nil
