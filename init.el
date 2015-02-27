@@ -274,25 +274,6 @@
 (set-clipboard-coding-system 'utf-8)
 
 ;;------------------------------------------------------------------
-;; Eshell
-;;------------------------------------------------------------------
-
-(add-hook 'eshell-mode-hook
-          (lambda ()
-            (global-hl-line-mode -1)                        ;; Disable highlight the current line
-            (setq eshell-ask-to-save-history 'always)
-            (setq eshell-history-size 1000)
-            (setq eshell-ask-to-save-history 'always)
-            (setq eshell-cmpl-cycle-completions nil)
-            (setq eshell-ls-dired-initial-args '("-h"))
-            (setq eshell-ls-initial-args "-h")
-            (setq eshell-ls-use-in-dired t)
-            (setq eshell-output-filter-functions '(eshell-handle-control-codes eshell-watch-for-password-prompt eshell-postoutput-scroll-to-bottom))
-            (setq eshell-scroll-show-maximum-output t)
-            (setq eshell-scroll-to-bottom-on-output t)
-            (setq eshell-glob-include-dot-dot nil)
-            (setq eshell-directory-name (concat dotfiles-dir "eshell"))))
-;;------------------------------------------------------------------
 ;; Hippie expand
 ;;------------------------------------------------------------------
 

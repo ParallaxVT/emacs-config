@@ -175,18 +175,17 @@
   :disabled nil
   :commands (eshell)
   :init
-  (progn (setq eshell-ask-to-save-history 'always
-               eshell-history-size 1000
-               eshell-ask-to-save-history 'always
-               eshell-cmpl-cycle-completions nil
-               eshell-ls-dired-initial-args '("-h")
-               eshell-ls-initial-args "-h"
-               eshell-ls-use-in-dired t
-               eshell-output-filter-functions '(eshell-handle-control-codes eshell-watch-for-password-prompt eshell-postoutput-scroll-to-bottom)
-               eshell-scroll-show-maximum-output t
-               eshell-scroll-to-bottom-on-output t
-               eshell-glob-include-dot-dot nil
-               eshell-directory-name (concat dotfiles-dir "eshell"))))
+  (progn (defvar eshell-ask-to-save-history 'always)
+         (defvar eshell-history-size 1000)
+         (defvar eshell-cmpl-cycle-completions nil)
+         (defvar eshell-ls-dired-initial-args '("-h"))
+         (defvar eshell-ls-initial-args "-h")
+         (defvar eshell-ls-use-in-dired t)
+         (defvar eshell-output-filter-functions '(eshell-handle-control-codes eshell-watch-for-password-prompt eshell-postoutput-scroll-to-bottom))
+         (defvar eshell-scroll-show-maximum-output t)
+         (defvar eshell-scroll-to-bottom-on-output t)
+         (defvar eshell-glob-include-dot-dot nil)
+         (defvar eshell-directory-name (concat dotfiles-dir "eshell"))))
 
 ;; Load evil-leader before evil to make sure all the binds work everywhere
 (use-package evil
