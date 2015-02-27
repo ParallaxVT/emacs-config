@@ -311,31 +311,29 @@
 ;; Windows Stuff
 ;;------------------------------------------------------------------
 
-;; Make rgrep find the executables it needs in windows
 (when (string-equal system-type "windows-nt")
-  (setq find-program"C:\\msysgit\\bin\\find.exe"
-        grep-program "C:\\msysgit\\bin\\grep.exe"
-        xargs-program "C:\\msysgit\\bin\\xargs.exe"
-        shell-file-name "C:\\msysgit\\bin\\cmdproxy.exe"))
+  (setq shell-file-name "C:/msysgit/bin/bash")
+  (setq explicit-shell-file-name shell-file-name)
+  (setenv "PATH"
+          (concat ".:/mingw/bin:/bin:"
+                  (replace-regexp-in-string " " "\\\\ "
+                                            (replace-regexp-in-string "\\\\" "/"
+                                                                      (replace-regexp-in-string "\\([A-Za-z]\\):" "/\\1"
+                                                                                                (getenv "PATH"))))))
 
+  (defadvice shell-quote-argument (after windows-nt-special-quote (argument) activate)
+    "Add special quotes to ARGUMENT in case the system type is 'windows-nt."
+    (when
+        (and (eq system-type 'windows-nt) (w32-shell-dos-semantics))
+      (if (string-match "[\\.~]" ad-return-value)
+          (setq ad-return-value
+                (replace-regexp-in-string
+                 "\\([\\.~]\\)"
+                 "\\\\\\1"
+                 ad-return-value)))))
 
-(defadvice shell-quote-argument (after windows-nt-special-quote (argument) activate)
-  "Add special quotes to ARGUMENT in case the system type is 'windows-nt."
-  (when
-      (and (eq system-type 'windows-nt) (w32-shell-dos-semantics))
-    (if (string-match "[\\.~]" ad-return-value)
-        (setq ad-return-value
-              (replace-regexp-in-string
-               "\\([\\.~]\\)"
-               "\\\\\\1"
-               ad-return-value)))))
-
-;;------------------------------------------------------------------
-;; The Silver Searcher
-;;------------------------------------------------------------------
-
-(when (string-equal system-type "windows-nt")
-  (setq exec-path '("~\\Ag")))
+  ;; The Silver Searcher
+  (setq exec-path '("~/Ag")))
 
 ;;------------------------------------------------------------------
 ;; Functions
