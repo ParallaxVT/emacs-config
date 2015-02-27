@@ -70,7 +70,7 @@
   :disabled nil
   :ensure t
   :defer t
-  :commands (ace-jump-mode key-chord-mode))
+  :commands (ace-jump-mode))
 
 (use-package ace-window
   :ensure t
