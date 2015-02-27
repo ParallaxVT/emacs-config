@@ -293,8 +293,8 @@
 ;;------------------------------------------------------------------
 
 (when (string-equal system-type "windows-nt")
-  (setq shell-file-name "C:/msysgit/bin/bash")
-  (setq explicit-shell-file-name shell-file-name)
+  (setq shell-file-name "C:\\msysgit\\bin\\bash")
+  (defvar explicit-shell-file-name "C:\\msysgit\\bin\\bash")
   (setenv "PATH"
           (concat ".:/mingw/bin:/bin:"
                   (replace-regexp-in-string " " "\\\\ "
