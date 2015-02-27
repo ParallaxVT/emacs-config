@@ -124,9 +124,7 @@
   :disabled nil
   :ensure t
   :diminish company-mode
-  :bind (("M-RET" . company-complete)
-         ("M-RET" . company-manual-begin)
-         ("M-RET" . company-complete-common))
+  :bind (("M-RET" . company-complete))
   :init (global-company-mode)
   :config
   (progn
