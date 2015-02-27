@@ -80,7 +80,8 @@
 (use-package helm-ag
   :ensure t
   :defer t
-  :commands (helm-ag))
+  :commands (helm-ag)
+  :config (when (string-equal system-type "windows-nt") (setq exec-path '("~/Ag"))))
 
 (use-package auto-complete
   :disabled nil

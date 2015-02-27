@@ -311,10 +311,7 @@
                 (replace-regexp-in-string
                  "\\([\\.~]\\)"
                  "\\\\\\1"
-                 ad-return-value)))))
-
-  ;; The Silver Searcher
-  (setq exec-path '("~/Ag")))
+                 ad-return-value))))))
 
 ;;------------------------------------------------------------------
 ;; Functions
