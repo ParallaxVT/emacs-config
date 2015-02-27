@@ -129,7 +129,7 @@
   :config
   (progn
     ;; Complete by request instead of waiting
-    (setq company-idle-delay 1000)
+    (defvar company-idle-delay 1000)
     (custom-set-faces
      '(company-preview ((t (:inherit font-lock-type-face))))
      '(company-tooltip ((t (:foreground "white"))))
