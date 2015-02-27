@@ -274,7 +274,7 @@
 (use-package expand-region
   :disabled nil
   :ensure t
-  :commands (er/expand-region)
+  :commands (er/expand-region er/contract-region)
   :bind (("C-=" . er/expand-region)
          ("C-+" . er/contract-region)))
 
