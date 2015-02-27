@@ -144,17 +144,14 @@
   :ensure t
   :config
   (progn
-    ;; Rebind Shift-SpaceBar to move to a parent directory using the same buffer.
-    (add-hook 'dired-mode-hook
-              (lambda ()
-                (define-key dired-mode-map (kbd "S-<SPC>")
-                  (lambda () (interactive) (find-alternate-file "..")))))
     ;; Show files and directories details
     (setq diredp-hide-details-initially-flag nil
           diredp-hide-details-propagate-flag nil)
     ;; Always use one buffer when I move directory
     (declare-function toggle-diredp-find-file-reuse-dir "dired+")
-    (toggle-diredp-find-file-reuse-dir 1))
+    (toggle-diredp-find-file-reuse-dir 1)
+    ;; Rebind Shift-SpaceBar to move to a parent directory using the same buffer.
+    (bind-key "S-<SPC>" '(lambda () (interactive) (find-alternate-file "..")) dired-mode-map))
   ;; Dired+ requires ls-lisp
   (use-package ls-lisp
     :config
