@@ -304,6 +304,8 @@
                                             (replace-regexp-in-string "\\\\" "/"
                                                                       (replace-regexp-in-string "\\([A-Za-z]\\):" "/\\1"
                                                                                                 (getenv "PATH"))))))
+  ;; Agg gzip
+  (add-to-list 'exec-path "C:/Program Files (x86)/GnuWin32/bin")
 
   (defadvice shell-quote-argument (after windows-nt-special-quote (argument) activate)
     "Add special quotes to ARGUMENT in case the system type is 'windows-nt."
