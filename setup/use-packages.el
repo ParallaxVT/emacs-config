@@ -81,7 +81,7 @@
   :ensure t
   :defer t
   :commands (helm-ag)
-  :config (when (string-equal system-type "windows-nt") (setq exec-path '("~/Ag"))))
+  :config (when (string-equal system-type "windows-nt") (add-to-list 'exec-path "~/Ag")))
 
 (use-package auto-complete
   :disabled nil

@@ -26,6 +26,9 @@
 (defvar autosave-dir (expand-file-name "autosave/" dotfiles-dir))
 (defvar misc-dir (expand-file-name "misc/" dotfiles-dir))
 
+;; Clean exec-path
+(setq exec-path '(""))
+
 ;;------------------------------------------------------------------
 ;; Customize file
 ;;------------------------------------------------------------------
