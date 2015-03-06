@@ -237,7 +237,7 @@
           "U" 'org-clock-out))))
   :config
   (progn
-    (defvar evil-leader/no-prefix-mode-rx '("org-agenda"))
+    (setq evil-leader/no-prefix-mode-rx '("org-agenda"))
     (evil-mode 1)
     (global-set-key (kbd "M-SPC") 'evil-normal-state)
     ;; esc key quits everything
