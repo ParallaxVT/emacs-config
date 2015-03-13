@@ -375,7 +375,7 @@
     (bind-key "C-w" 'helm-find-files-up-one-level helm-map)
     (bind-key "C-v" 'helm-execute-persistent-action helm-map)
     (use-package helm-swoop
-      :disabled nil
+      :disabled t
       :ensure t
       :defer t
       :commands (helm-swoop helm-swoop-from-isearch helm-swoop-back-to-last-point)
@@ -605,6 +605,11 @@
     (setq smex-save-file (concat dotfiles-dir "misc/.smex-items")))
   :bind (("M-x" . smex)
          ("M-X" . smex-major-mode-commands)))
+
+(use-package swiper
+  :disabled nil
+  :commands swiper
+  :bind ("M-i" . swiper))
 
 (use-package undo-tree
   :disabled nil
