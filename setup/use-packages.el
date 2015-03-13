@@ -312,6 +312,24 @@
     (add-hook 'prog-mode-hook 'flycheck-mode)
     (add-hook 'text-mode-hook 'flycheck-mode)))
 
+(use-package flyspell
+  :disabled nil
+  :ensure t
+  :defer t
+  :init
+  (progn
+    (add-to-list 'exec-path "C:/Program Files (x86)/Aspell/bin/")
+    (setq-default ispell-program-name "aspell")
+    (setq-default ispell-extra-args '("--sug-mode=fast"))
+    (setq-default ispell-dictionary "english")
+    (add-hook 'markdown-mode-hook '(lambda () (flyspell-mode 1)))
+    (add-hook 'text-mode-hook '(lambda () (flyspell-mode 1))))
+  :config
+  (progn
+    (define-key evil-normal-state-map "]s" 'flyspell-goto-next-error)
+    (define-key evil-normal-state-map "[s" 'flyspell-check-previous-highlighted-word)
+    (define-key evil-normal-state-map "z=" 'ispell-word)))
+
 (use-package fold
   :disabled t
   :init
