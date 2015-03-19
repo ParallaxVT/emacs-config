@@ -9,7 +9,6 @@
 
 ;; (require 'bind-key)
 (use-package bind-key
-  :disabled nil
   :ensure t)
 
 ;; Hooks
@@ -67,7 +66,6 @@
     (key-chord-define-global "__" 'bookmark-bmenu-list)))
 
 (use-package ace-jump-mode
-  :disabled nil
   :ensure t
   :defer t
   :commands (ace-jump-mode))
@@ -84,7 +82,6 @@
   :config (when (string-equal system-type "windows-nt") (add-to-list 'exec-path "~/Ag")))
 
 (use-package auto-complete
-  :disabled nil
   :ensure t
   :commands (auto-complete)
   :init
@@ -117,12 +114,10 @@
                                                     web-mode-hook))))
 
 (use-package bookmark+
-  :disabled nil
   :commands (helm-bookmarks bookmark-bmenu-list)
   :ensure t)
 
 (use-package company
-  :disabled nil
   :ensure t
   :diminish company-mode
   :bind (("M-RET" . company-complete))
@@ -141,7 +136,6 @@
      )))
 
 (use-package dired+
-  :disabled nil
   :ensure t
   :config
   (progn
@@ -162,13 +156,11 @@
   )
 
 (use-package elmacro
-  :disabled nil
   :commands (elmacro-mode)
   :ensure t)
 
 (declare-function eshell "eshell")
 (use-package eshell
-  :disabled nil
   :commands (eshell)
   :init
   (progn (defvar eshell-ask-to-save-history 'always)
@@ -186,11 +178,9 @@
 ;; Load evil-leader before evil to make sure all the binds work everywhere
 (use-package evil
   :pre-load
-  :disabled nil
   :init
   (progn
     (use-package evil-leader
-      :disabled nil
       :ensure t
       :init
       (progn
@@ -249,16 +239,13 @@
     (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
     (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
     (use-package evil-matchit
-      :disabled nil
       :ensure t
       :commands (evil-matchit-mode)
       :init (add-hook 'web-mode-hook 'evil-matchit-mode))
     (use-package evil-nerd-commenter
-      :disabled nil
       :ensure t
       :init (evilnc-default-hotkeys))
     (use-package evil-numbers
-      :disabled nil
       :ensure t
       :commands (evil-numbers/inc-at-pt evil-numbers/dec-at-pt)
       :init
@@ -267,13 +254,11 @@
           (global-set-key [(control shift up)]   'evil-numbers/inc-at-pt)
           (global-set-key [(control shift down)] 'evil-numbers/dec-at-pt))))
     (use-package evil-surround
-      :disabled nil
       :ensure t
       :defer t
       :init (global-evil-surround-mode 1))))
 
 (use-package expand-region
-  :disabled nil
   :ensure t
   :commands (er/expand-region er/contract-region)
   :bind (("C-=" . er/expand-region)
@@ -302,7 +287,6 @@
        fundamental-mode-hook))))
 
 (use-package flycheck
-  :disabled nil
   :ensure t
   :defer t
   :commands (flycheck-mode)
@@ -313,7 +297,6 @@
     (add-hook 'text-mode-hook 'flycheck-mode)))
 
 (use-package flyspell
-  :disabled nil
   :ensure t
   :defer t
   :init
@@ -341,7 +324,6 @@
 
 ;; Loading Helm like :init (helm-mode) adds 5 seconds to the start up time
 (use-package helm
-  :disabled nil
   :ensure t
   :commands (helm-buffers-list
              helm-colors
@@ -375,7 +357,6 @@
     (bind-key "C-w" 'helm-find-files-up-one-level helm-map)
     (bind-key "C-v" 'helm-execute-persistent-action helm-map)
     (use-package helm-swoop
-      :disabled t
       :ensure t
       :defer t
       :commands (helm-swoop helm-swoop-from-isearch helm-swoop-back-to-last-point)
@@ -383,7 +364,6 @@
       :bind (("M-I" . helm-swoop-from-isearch)
              ( "M-i" . helm-swoop)))
     (use-package helm-descbinds
-      :disabled nil
       :ensure t
       :defer t
       :commands (helm-descbinds)
@@ -394,7 +374,6 @@
       :bind ("C-x b" . helm-descbinds))))
 
 (use-package highlight-symbol
-  :disabled nil
   :ensure t
   :diminish highlight-symbol-mode
   :init (hook-into-modes #'highlight-symbol-mode '(lisp-mode-hook
@@ -409,7 +388,6 @@
          ("M-]" . highlight-symbol-next)))
 
 (use-package ido
-  :disabled nil
   :ensure t
   :defer t
   :commands (ido-mode)
@@ -438,15 +416,12 @@
       (flx-ido-mode 1))))
 
 (use-package linum-off
-  :disabled nil
   )
 
 (use-package move-dup
-  :disabled nil
   :ensure t)
 
 (use-package multiple-cursors
-  :disabled nil
   :ensure t
   :defer t
   :config (defvar mc/list-file "~/misc/.mc-lists.el")
@@ -457,7 +432,6 @@
          ("C-{" . mc/edit-beginnings-of-lines)))
 
 (use-package nxml-mode
-  :disabled nil
   :mode (("\\.xml\\'" . nxml-mode))
   :init
   (add-hook 'nxml-mode-hook
@@ -466,7 +440,6 @@
                (setq indent-tabs-mode nil))))
 
 (use-package org
-  :disabled nil
   :ensure t
   :defer t
   :commands (org-mode)
@@ -509,7 +482,6 @@
          ("C-c l" . org-store-link)))
 
 (use-package popwin
-  :disabled nil
   :ensure t
   :commands popwin-mode
   :idle (popwin-mode 1)
@@ -521,7 +493,6 @@
     (push '("*Compile-Log*" :height 20 :noselect t) popwin:special-display-config)))
 
 (use-package php-mode
-  :disabled nil
   :ensure t
   :commands php-mode
   :mode (("\\.php\\'" . php-mode))
@@ -559,7 +530,6 @@
                                     xml-mode-hook)))
 
 (use-package rotate-text
-  :disabled nil
   :init
   (progn
     (defvar rotate-text-words '(("width" "height")
@@ -572,7 +542,6 @@
 ;; Use 'pre-load' option to load it before evil
 (use-package smart-mode-line
   :pre-load
-  :disabled nil
   :ensure t
   :init (sml/setup)
   :config
@@ -595,7 +564,6 @@
   )
 
 (use-package smex
-  :disabled nil
   :ensure t
   :commands (smex smex-major-mode-commands)
   :defer t
@@ -607,12 +575,10 @@
          ("M-X" . smex-major-mode-commands)))
 
 (use-package swiper
-  :disabled nil
   :commands swiper
   :bind ("M-i" . swiper))
 
 (use-package undo-tree
-  :disabled nil
   :ensure t
   :commands (undo-tree-mode)
   :config (global-undo-tree-mode))
@@ -623,7 +589,6 @@
   :commands (volatile-highlights-mode))
 
 (use-package web-mode
-  :disabled nil
   :ensure t
   ;; :mode "\\.\\(erb\\|html?\\)\\'"
   ;; :mode (("\\.html\\'" . web-mode))
@@ -642,7 +607,6 @@
                                  (evil-leader/set-key "t" 'web-mode-comment-or-uncomment)))))
 
 (use-package yasnippet
-  :disabled nil
   :ensure t
   :if (not noninteractive)
   :diminish yas-minor-mode
