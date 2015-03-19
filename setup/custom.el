@@ -19,7 +19,8 @@
  '(org-export-html-postamble nil t)
  '(package-selected-packages
    (quote
-    ((progn t elisp--witness--lisp)
+    (swiper
+     (progn t elisp--witness--lisp)
      (progn t elisp--witness--lisp)
      paredit
      (progn t elisp--witness--lisp)
