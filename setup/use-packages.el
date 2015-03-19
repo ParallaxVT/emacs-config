@@ -573,8 +573,16 @@
          ("M-X" . smex-major-mode-commands)))
 
 (use-package swiper
+  :ensure t
   :commands swiper
-  :bind ("M-i" . swiper))
+  :bind ("M-i" . swiper)
+  :config
+  (progn
+    (setq swiper-completion-method 'ivy)
+    (custom-set-faces
+     '(swiper-line-face ((t (:background "forestgreen"))))
+     '(swiper-match-face-3 ((t (:foreground "white" :background "darkorange"))))
+     )))
 
 (use-package undo-tree
   :ensure t
