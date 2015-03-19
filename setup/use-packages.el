@@ -1,6 +1,9 @@
-;;------------------------------------------------------------------
-;; Use-Packages
-;;------------------------------------------------------------------
+;; Packages
+
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
 
 ;; Function to create hooks with ease
 (defmacro hook-into-modes (func modes)
@@ -170,7 +173,7 @@
 
 ;; Load evil-leader before evil to make sure all the binds work everywhere
 (use-package evil
-  :pre-load
+  ;;:pre-load
   :init
   (progn
     (use-package evil-leader
@@ -482,7 +485,7 @@
 (use-package popwin
   :ensure t
   :commands popwin-mode
-  :idle (popwin-mode 1)
+  ;;:idle (popwin-mode 1)
   :defer t
   :config
   (progn
@@ -539,7 +542,7 @@
 
 ;; Use 'pre-load' option to load it before evil
 (use-package smart-mode-line
-  :pre-load
+  ;;:pre-load
   :ensure t
   :init (sml/setup)
   :config
