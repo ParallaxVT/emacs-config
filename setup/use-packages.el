@@ -7,9 +7,29 @@
   `(dolist (mode-hook ,modes)
      (add-hook mode-hook ,func)))
 
-;; (require 'bind-key)
 (use-package bind-key
-  :ensure t)
+  :ensure t
+  :config
+  (progn
+    (bind-key "C-c n"                             'cleanup-buffer)
+    (bind-key "M-;"                               'comment-dwim-line)
+    (bind-key "C-c g"                             'google-it)
+    (bind-key "C-c r"                             'ibuffer)
+    (bind-key "M-/"                               'hippie-expand)
+    (bind-key "C-M-\\"                            'indent-region-or-buffer)
+    (bind-key "C-c C-k"                           'kill-region)
+    (bind-key "M-n"                               'negative-argument)
+    (bind-key "C-c k"                             'smart-kill-other-buffers)
+    (bind-key "<M-S-up>"                          'md/move-lines-up)
+    (bind-key "<M-S-down>"                        'md/move-lines-down)
+    (bind-key [remap kill-whole-line]             'smart-kill-whole-line)
+    (bind-key [remap move-beginning-of-line]      'smart-move-beginning-of-line)
+    (bind-key [(shift return)]                    'smart-open-line)
+    (bind-key [(control shift return)]            'smart-open-line-above)
+    (define-key emacs-lisp-mode-map (kbd "C-c v") 'eval-buffer)
+    (bind-key "C-M-g"                             'gforces-config)
+    (bind-key "C-x C-c"                           'suspend-frame)
+    (bind-key "C-x C-S-C"                         'save-buffers-kill-terminal)))
 
 ;; Hooks
 (add-hook 'before-save-hook 'whitespace-cleanup nil t)
@@ -32,27 +52,6 @@
              (setq tab-width 4)
              (setq c-basic-offset 4)
              (setq indent-tabs-mode nil)))
-
-;; Keybindings
-(bind-key "C-c n"                             'cleanup-buffer)
-(bind-key "M-;"                               'comment-dwim-line)
-(bind-key "C-c g"                             'google-it)
-(bind-key "C-c r"                             'ibuffer)
-(bind-key "M-/"                               'hippie-expand)
-(bind-key "C-M-\\"                            'indent-region-or-buffer)
-(bind-key "C-c C-k"                           'kill-region)
-(bind-key "M-n"                               'negative-argument)
-(bind-key "C-c k"                             'smart-kill-other-buffers)
-(bind-key "<M-S-up>"                          'md/move-lines-up)
-(bind-key "<M-S-down>"                        'md/move-lines-down)
-(bind-key [remap kill-whole-line]             'smart-kill-whole-line)
-(bind-key [remap move-beginning-of-line]      'smart-move-beginning-of-line)
-(bind-key [(shift return)]                    'smart-open-line)
-(bind-key [(control shift return)]            'smart-open-line-above)
-(define-key emacs-lisp-mode-map (kbd "C-c v") 'eval-buffer)
-(bind-key "C-M-g"                             'gforces-config)
-(bind-key "C-x C-c"                           'suspend-frame)
-(bind-key "C-x C-S-C"                         'save-buffers-kill-terminal)
 
 (use-package key-chord
   :disabled t
