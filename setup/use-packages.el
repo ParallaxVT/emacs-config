@@ -363,6 +363,13 @@
         (helm-descbinds-mode)
         (setq helm-descbinds-window-style 'split-window))
       :bind ("C-x b" . helm-descbinds))
+    (use-package helm-swoop
+      :disabled t
+      :ensure t
+      :defer t
+      :commands (helm-swoop helm-swoop-from-isearch helm-swoop-back-to-last-point)
+      :config (setq helm-swoop-pre-input-function (lambda () nil))
+      :bind (("M-I" . helm-swoop-from-isearch)
              ( "M-i" . helm-swoop)))))
 
 (use-package highlight-symbol
