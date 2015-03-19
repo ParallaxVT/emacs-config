@@ -344,7 +344,7 @@
           helm-idle-delay 0.0
           helm-quick-update t
           helm-buffers-fuzzy-matching t)
-    (helm-match-plugin-mode)
+    ;; (helm-match-plugin-mode)
     (setq helm-boring-file-regexp-list
           '("\\.jpg$" "\\.jpeg$" "\\.gif$" "\\.png$" "\\.swf$" "\\.sa$" "\\.fla$" "\\.elc"))
     (bind-key "C-w" 'helm-find-files-up-one-level helm-map)
