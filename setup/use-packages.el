@@ -74,12 +74,6 @@
   :defer t
   :commands (ace-window))
 
-(use-package helm-ag
-  :ensure t
-  :defer t
-  :commands (helm-ag)
-  :config (when (string-equal system-type "windows-nt") (add-to-list 'exec-path "~/Ag")))
-
 (use-package auto-complete
   :ensure t
   :commands (auto-complete)
@@ -355,13 +349,11 @@
           '("\\.jpg$" "\\.jpeg$" "\\.gif$" "\\.png$" "\\.swf$" "\\.sa$" "\\.fla$" "\\.elc"))
     (bind-key "C-w" 'helm-find-files-up-one-level helm-map)
     (bind-key "C-v" 'helm-execute-persistent-action helm-map)
-    (use-package helm-swoop
+    (use-package helm-ag
       :ensure t
       :defer t
-      :commands (helm-swoop helm-swoop-from-isearch helm-swoop-back-to-last-point)
-      :config (setq helm-swoop-pre-input-function (lambda () nil))
-      :bind (("M-I" . helm-swoop-from-isearch)
-             ( "M-i" . helm-swoop)))
+      :commands (helm-ag)
+      :config (when (string-equal system-type "windows-nt") (add-to-list 'exec-path "~/Ag")))
     (use-package helm-descbinds
       :ensure t
       :defer t
@@ -370,7 +362,8 @@
       (progn
         (helm-descbinds-mode)
         (setq helm-descbinds-window-style 'split-window))
-      :bind ("C-x b" . helm-descbinds))))
+      :bind ("C-x b" . helm-descbinds))
+             ( "M-i" . helm-swoop)))))
 
 (use-package highlight-symbol
   :ensure t
