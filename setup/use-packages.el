@@ -417,6 +417,9 @@
       :config
       (flx-ido-mode 1))))
 
+(use-package krpano
+  :disabled t
+  :mode (("\\.xml\\'" . krpano-mode)))
 
 (use-package linum-off)
 
