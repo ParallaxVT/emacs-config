@@ -414,11 +414,10 @@
       :config
       (flx-ido-mode 1))))
 
-(use-package linum-off
-  )
 
-(use-package move-dup
-  :ensure t)
+(use-package linum-off)
+
+(use-package move-dup :ensure t)
 
 (use-package multiple-cursors
   :ensure t
