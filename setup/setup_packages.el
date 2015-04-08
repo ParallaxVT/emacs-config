@@ -110,7 +110,7 @@
                                                     web-mode-hook))))
 
 (use-package bookmark+
-  :commands (helm-bookmarks bookmark-bmenu-list)
+  :commands (bookmark-bmenu-list)
   :ensure t)
 
 (use-package company
@@ -192,27 +192,27 @@
           "3" '(lambda () (interactive)(split-window-horizontally)(other-window 1))
           "a" '(lambda () (interactive)(find-file "~/org/agenda.org"))
           "A" 'org-agenda
-          "b" 'helm-buffers-list
-          "B" 'helm-bookmarks
+          "b" 'ido-display-buffer
+          "B" 'ido-choose-from-bookmark
           "c" 'ace-jump-char-mode
           "C" 'cleanup-buffer
           "d" 'md/duplicate-down
           "D" 'dired-jump
-          "e" 'helm-find-files
+          "e" 'ido-find-file
           "E" 'eval-buffer
           "g" '(lambda () (interactive)(setq current-prefix-arg '(4))(helm-ag))
-          "G" 'helm-google-suggest
           "h" 'helm-apropos
+          "I" 'ibuffer
           "i" 'helm-imenu
           "k" 'kill-buffer
           "l" 'ace-jump-line-mode
           "L" 'align-regexp
           "O" 'helm-occur
           "q" 'org-set-tags-command
-          "r" 'helm-recentf
+          "r" 'ido-recentf
           "s" 'smart-switch-to-previous-buffer
           "t" 'comment-dwim-line
-          "x" 'helm-M-x
+          "x" 'smex
           "w" 'save-buffer
           "W" 'whack-whitespace
           "z" 'ace-window
@@ -391,8 +391,7 @@
 
 (use-package ido
   :ensure t
-  :defer t
-  :commands (ido-mode)
+  :init (ido-mode)
   :config
   (progn
     (setq
@@ -407,7 +406,12 @@
      ;; Don't highlight first match
      ido-use-faces nil
      ;; Find file at point using ido
-     ido-use-filename-at-point 'guess)
+     ido-use-filename-at-point 'guess
+     ;; Change ido-last file location
+     ido-save-directory-list-file "~/.emacs.d/misc/ido.last")
+    (recentf-mode t)
+    (define-key ido-file-completion-map "\C-v" 'ido-exit-minibuffer)
+    (define-key ido-file-completion-map "\C-w" 'ido-up-directory)
     (use-package ido-vertical-mode
       :ensure t
       :config (ido-vertical-mode))
@@ -415,7 +419,41 @@
     (use-package flx-ido
       :ensure t
       :config
-      (flx-ido-mode 1))))
+      (flx-ido-mode 1))
+    (use-package smex
+      :ensure t
+      :commands (smex smex-major-mode-commands)
+      :defer t
+      :config
+      (progn
+        ;; Put smex file in misc folder
+        (setq smex-save-file (concat dotfiles-dir "misc/.smex-items")))
+      :bind (("M-x" . smex)
+             ("M-X" . smex-major-mode-commands)))
+    (defun ido-recentf ()
+      "Use ido to select a recently opened file from the `recentf-list'"
+      (interactive)
+      (let ((home (expand-file-name (getenv "HOME"))))
+        (find-file
+         (ido-completing-read "Recentf open: "
+                              (mapcar (lambda (path)
+                                        (replace-regexp-in-string home "~" path))
+                                      recentf-list)
+                              nil t))))
+    (defun ido-recentf-open ()
+      "Use `ido-completing-read' to \\[find-file] a recent file"
+      (interactive)
+      (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+          (message "Opening file...")
+        (message "Aborting")))
+    (defun ido-choose-from-bookmark ()
+      (interactive)
+      (bookmark-jump
+       (ido-completing-read "Jump to bookmark: " (bookmark-all-names))))
+    )
+  :bind (("C-x f" . ido-find-file)
+         ("C-x C-b" . ido-display-buffer)
+         ("C-x C-f" . ido-recentf)))
 
 (use-package krpano
   :disabled t
@@ -566,17 +604,6 @@
    '(persp-selected-face ((t :foreground "ForestGreen" :inherit sml/filename)))
    '(helm-candidate-number ((t :inherit sml/global :foreground "#eab700" :background nil))))
   )
-
-(use-package smex
-  :ensure t
-  :commands (smex smex-major-mode-commands)
-  :defer t
-  :config
-  (progn
-    ;; Put smex file in misc folder
-    (setq smex-save-file (concat dotfiles-dir "misc/.smex-items")))
-  :bind (("M-x" . smex)
-         ("M-X" . smex-major-mode-commands)))
 
 (use-package swiper
   :ensure t
