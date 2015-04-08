@@ -293,17 +293,13 @@
 ;; Windows Stuff
 ;;------------------------------------------------------------------
 
+;; Make rgrep find the executables it needs in windows
 (when (string-equal system-type "windows-nt")
-  (setq shell-file-name "C:\\msysgit\\bin\\bash")
-  (defvar explicit-shell-file-name "C:\\msysgit\\bin\\bash")
-  (setenv "PATH"
-          (concat ".:/mingw/bin:/bin:"
-                  (replace-regexp-in-string " " "\\\\ "
-                                            (replace-regexp-in-string "\\\\" "/"
-                                                                      (replace-regexp-in-string "\\([A-Za-z]\\):" "/\\1"
-                                                                                                (getenv "PATH"))))))
-  ;; Agg gzip
-  (add-to-list 'exec-path "C:/Program Files (x86)/GnuWin32/bin")
+  (setq find-program" C:\\msys64\\usr\\bin\\find.exe"
+        grep-program "C:\\msys64\\usr\\bin\\grep.exe"
+        xargs-program "C:\\msys64\\usr\\bin\\xargs.exe"
+        shell-file-name "C:\\msys64\\mingw64\\libexec\\emacs\\24.4\\x86_64-w64-mingw32\\cmdproxy.exe")
+  (add-to-list 'exec-path "C:\\msys64\\usr\\bin")
 
   (defadvice shell-quote-argument (after windows-nt-special-quote (argument) activate)
     "Add special quotes to ARGUMENT in case the system type is 'windows-nt."
