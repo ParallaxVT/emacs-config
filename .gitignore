@@ -12,6 +12,7 @@ eshell/history
 eshell/lastdir
 misc/.mc-lists.el
 misc/bookmarks
+misc/ido.last
 server
 todo.org
 tramp
