@@ -1,0 +1,412 @@
+;;; krpano-mode.el --- Major mode for editing Django HTML templates
+;; Author: Rafael Guerra Paz
+;; Keywords: languages
+;;; Commentary:
+;;
+;; This krpano-mode is mainly derived from nxml-mode.
+;;; History:
+;;
+;; TODO: Make comment-region work with Django comments instead of HTML comments
+(require 'nxml-mode)
+;;; Code:
+(defgroup krpano nil
+  "Customizations for `krpano-mode'."
+  :prefix "krpano-"
+  :group 'django)
+(defvar krpano-mode-hook nil
+  "List of functions to be executed on entry to `krpano-mode'.")
+(defvar krpano-mode-map
+  (let ((krpano-mode-map (make-keymap)))
+    (define-key krpano-mode-map "\C-c\C-dj" 'newline-and-indent)
+    (define-key krpano-mode-map "\C-c\C-d]" 'krpano-close-tag)
+    (define-key krpano-mode-map "\C-c\C-di" 'krpano-insert-tag)
+    krpano-mode-map)
+  "Keymap for Django major mode.")
+;; if : if, if not, if A or B, if not A or B, if not A and B
+;; for : for a in alist reversed
+;; forloop.counter The current iteration of the loop (1-indexed)
+;; forloop.counter0 The current iteration of the loop (0-indexed)
+;; forloop.revcounter The number of iterations from the end of the loop
+;; (1-indexed)
+;; forloop.revcounter0 The number of iterations from the end of the loop
+;; (0-indexed)
+;; forloop.first True if this is the first time through the loop
+;; forloop.last True if this is the last time through the loop
+;; forloop.parentloop For nested loops, this is the loop "above" the
+;; current one
+;; ifequal : ifequal A B
+;; comment : {% This is comment %}
+;; filter : {{ name | lower }}
+;; keyword-end : if, for, ifequal, block, ifnotequal, spaceless
+;; keyword-3 : regroup
+;; keyword-2 : for, ifequal
+;; keyword-1 : if, block, extends, include, ifchanged, load, now, ssi, withratio
+;; keyword-0 : else, spaceless
+(defconst krpano-open-block "{%"
+  "Start keyword for template blocks.")
+(defconst krpano-close-block "%}"
+  "End keyword for template blocks.")
+(defconst krpano-open-comment "{#"
+  "Start keyword for template comments.")
+(defconst krpano-close-comment "#}"
+  "End keyword for template comments.")
+(defconst krpano-open-variable "{{"
+  "Start keyword for template variables.")
+(defconst krpano-close-variable "}}"
+  "End keyword for template variables.")
+(defconst krpano-font-lock-keywords
+  (append
+   nxml-font-lock-keywords
+   `(;; comment
+     (,(rx (eval krpano-open-comment)
+           (1+ space)
+           (0+ (not (any "#")))
+           (1+ space)
+           (eval krpano-close-comment))
+      . font-lock-comment-face)
+     ;; variable font lock
+     (,(rx (eval krpano-open-variable)
+           (1+ space)
+           (group (0+ (not (any "}"))))
+           (1+ space)
+           (eval krpano-close-variable))
+      (1 font-lock-variable-name-face))
+     ;; start, end keyword font lock
+     (,(rx (group (or (eval krpano-open-block)
+                      (eval krpano-close-block)
+                      (eval krpano-open-comment)
+                      (eval krpano-close-comment)
+                      (eval krpano-open-variable)
+                      (eval krpano-close-variable))))
+      (1 font-lock-builtin-face))
+     ;; end prefix keyword font lock
+     (,(rx (eval krpano-open-block)
+           (1+ space)
+           (group (and "end"
+                       ;; end prefix keywords
+                       (or "autoescape" "block" "blocktrans" "cache" "comment"
+                           "filter" "for" "if" "ifchanged" "ifequal"
+                           "ifnotequal" "spaceless" "trans" "with")))
+           (1+ space)
+           (eval krpano-close-block))
+      (1 font-lock-keyword-face))
+     ;; more words after keyword
+     (,(rx (eval krpano-open-block)
+           (1+ space)
+           (group (or "autoescape" "block" "blocktrans" "cache" "comment"
+                      "cycle" "debug" "else" "empty" "extends" "filter" "firstof" "for"
+                      "if" "ifchanged" "ifequal" "ifnotequal" "include"
+                      "load" "now" "regroup" "spaceless" "ssi" "templatetag"
+                      "trans" "url" "widthratio" "with"))
+           ;; TODO: is there a more beautiful way?
+           (0+ (not (any "}")))
+           (1+ space)
+           (eval krpano-close-block))
+      (1 font-lock-keyword-face))
+     ;; TODO: if specific cases for supporting "or", "not", and "and"
+     ;; for sepcific cases for supporting in
+     (,(rx (eval krpano-open-block)
+           (1+ space)
+           "for"
+           (1+ space)
+           (group (1+ (or word ?_ ?.)))
+           (1+ space)
+           (group "in")
+           (1+ space)
+           (group (1+ (or word ?_ ?.)))
+           (group (? (1+ space) "reverse"))
+           (1+ space)
+           (eval krpano-close-block))
+      (1 font-lock-variable-name-face) (2 font-lock-keyword-face)
+      (3 font-lock-variable-name-face) (4 font-lock-keyword-face)))))
+(defvar krpano-mode-syntax-table
+  (let ((krpano-mode-syntax-table (make-syntax-table)))
+    krpano-mode-syntax-table)
+  "Syntax table for krpano-mode.")
+;;; Auto-close tags
+(defvar krpano-closable-tags
+  '("autoescape" "blocktrans" "block" "cache"
+    "comment" "filter" "for" "ifchanged"
+    "ifequal" "ifnotequal" "if" "spaceless"
+    "with"))
+;;; Non-auto close tags
+(defvar krpano-nonclosable-tags
+  '("cycle" "debug" "empty" "extends" "firstof" "include"
+    "load" "now" "regroup" "ssi" "templatetag"
+    "url" "widthratio"))
+(defvar krpano-all-tags
+  (append krpano-closable-tags krpano-nonclosable-tags))
+(defvar krpano-tag-re
+  (concat
+   krpano-open-block
+   "\\s *\\(end\\)?\\("
+   (mapconcat 'identity krpano-closable-tags "\\|")
+   "\\)[^%]*"
+   krpano-close-block))
+;;;###autoload
+(define-derived-mode krpano-mode nxml-mode "krpano"
+  "Major mode for editing Django html templates (.djhtml).
+\\{krpano-mode-map}"
+  :group 'krpano
+  ;; it mainly from nxml-mode font lock setting
+  (set (make-local-variable 'font-lock-defaults)
+       '((krpano-font-lock-keywords)
+         nil t nil nil
+         (font-lock-syntactic-keywords
+          . nxml-font-lock-keywords))))
+(add-hook 'krpano-mode-hook (lambda () (setq indent-tabs-mode nil)))
+(defun krpano-find-open-tag ()
+  "Return open tag for closed template tag.
+If tags are unbalanced, raise error."
+  (if (search-backward-regexp krpano-tag-re nil t)
+      (if (match-string 1) ; If it's an end tag
+          (if (not (string= (match-string 2) (krpano-find-open-tag)))
+              (error "Unmatched Django tag")
+            (krpano-find-open-tag))
+        (match-string 2)) ; Otherwise, return the match
+    nil))
+(defun krpano-close-tag ()
+  "Close the previously opened template tag."
+  (interactive)
+  (let ((open-tag (save-excursion (krpano-find-open-tag))))
+    (if open-tag
+        (insert
+         (format "%s end%s %s"
+                 krpano-open-block open-tag krpano-close-block))
+      (error "Nothing to close"))))
+(define-skeleton krpano-closing-template
+  "Insert a generic template with a closing tag." nil
+  krpano-open-block " " str " " krpano-close-block
+  _
+  krpano-open-block " " "end" str " " krpano-close-block)
+(define-skeleton krpano-nonclosing-template
+  "Insert a generic template without a closing tag." nil
+  krpano-open-block " " str " " krpano-close-block)
+(defun krpano-make-opening-tag (tag)
+  (format "%s %s %s"
+          krpano-open-block
+          tag
+          krpano-close-block))
+(defun krpano-make-closing-tag (tag)
+  (krpano-make-opening-tag
+   (concat "end" tag)))
+;;;; Skeletons for inserting tags.
+;; TODO: regroup tag. This has a more complicated syntax.
+;; TODO: url tag. Maybe this should read URLs from the URLconf?
+;; TODO: auto-complete filters.
+(define-skeleton krpano-autoescape-template
+  "Insert \"autoescape\" template." nil
+  (let ((on-or-off (if (y-or-n-p "autoescape on? ")
+                       "on" "off")))
+    (format "%s autoescape %s %s"
+            krpano-open-block
+            on-or-off
+            krpano-close-block)))
+(define-skeleton krpano-for-template
+  "Insert \"for\" template." nil
+  (format "%s for %s in %s %s"
+          krpano-open-block
+          (read-string "item: ")
+          (read-string "array: ")
+          krpano-close-block) ?\n
+          _ ?\n
+          (when (y-or-n-p "\"empty\" clause? ")
+            (krpano-make-opening-tag "empty")) ?\n
+            (krpano-make-closing-tag "for"))
+(define-skeleton krpano-if-template
+  "Insert \"if\" template." nil
+  (format "%s if %s "
+          krpano-open-block
+          (setq v1 (skeleton-read "condition: ")))
+  (if (string= "" v1) -1)
+  krpano-close-block ?\n
+  _ ?\n
+  (when (y-or-n-p "\"else\" clause? ")
+    (krpano-make-opening-tag "else")) ?\n
+    (krpano-make-closing-tag "if"))
+(define-skeleton krpano-ifequal-template
+  "Insert \"ifequal\" template." nil
+  (format "%s ifequal %s %s %s "
+          krpano-open-block
+          (read-string "variable 1: ")
+          (read-string "variable 2: ")
+          krpano-close-block) ?\n
+          _ ?\n
+          (when (y-or-n-p "\"else\" clause? ")
+            (krpano-make-opening-tag "else")) ?\n
+            (krpano-make-closing-tag "ifequal"))
+(define-skeleton krpano-ifnotequal-template
+  "Insert \"ifnotequal\" template." nil
+  (format "%s ifnotequal %s %s %s "
+          krpano-open-block
+          (read-string "variable 1: ")
+          (read-string "variable 2: ")
+          krpano-close-block) ?\n
+          _ ?\n
+          (when (y-or-n-p "\"else\" clause? ")
+            (krpano-make-opening-tag "else")) ?\n
+            (krpano-make-closing-tag "ifnotequal"))
+(define-skeleton krpano-include-template
+  "Insert \"include\" template." nil
+  (format "%s include " krpano-open-block)
+  (read-string "template: ")
+  " " krpano-close-block)
+(define-skeleton krpano-load-template
+  "Insert \"load\" template." nil
+  (format "%s load " krpano-open-block)
+  (read-string "module: ")
+  " " krpano-close-block)
+(define-skeleton krpano-now-template
+  "Insert \"now\" template." nil
+  (format "%s now " krpano-open-block)
+  "\"" (read-string "format string: ") "\""
+  " " krpano-close-block)
+(define-skeleton krpano-ssi-template
+  "Insert \"ssi\" template." nil
+  (format "%s ssi " krpano-open-block)
+  (read-string "file: ")
+  " "
+  (if (y-or-n-p "parsed? ")
+      "parsed ")
+  krpano-close-block)
+(define-skeleton krpano-templatetag-template
+  "Insert \"templatetag\" template." nil
+  (format "%s templatetag " krpano-open-block)
+  (completing-read "template tag (TAB for completion): "
+                   '("openblock" "closeblock" "openvariable"
+                     "closevariable" "openbrace" "closebrace"
+                     "opencomment" "closecomment") nil t)
+  " "
+  krpano-close-block)
+(define-skeleton krpano-widthratio-template
+  "Insert \"widthratio\" template." nil
+  (format "%s widthratio %s %s %s %s" krpano-open-block
+          (read-string "given value: ")
+          (read-string "max value: ")
+          (read-string "constant: ")
+          krpano-close-block))
+(define-skeleton krpano-with-template
+  "Insert \"with\" template." nil
+  (format "%s with %s as %s %s"
+          krpano-open-block
+          (read-string "variable: ")
+          (read-string "alias: ")
+          krpano-close-block)
+  _
+  (krpano-make-closing-tag "with"))
+(define-skeleton krpano-block-template
+  "Insert \"block\" template." nil
+  (let ((block-name (read-string "block: ")))
+    (format "%s block %s %s"
+            krpano-open-block
+            block-name
+            krpano-close-block)) ?\n
+            _ ?\n
+            (krpano-make-closing-tag "block"))
+(define-skeleton krpano-cycle-template
+  "Insert \"cycle\" template." nil
+  (format "%s cycle " krpano-open-block)
+  ("item: " str " ") -1
+  " as "
+  (setq v1 (skeleton-read "name: "))
+  (if (string= "" v1) -4) " " krpano-close-block)
+(define-skeleton krpano-extends-template
+  "Insert \"extends\" template." nil
+  (format "%s extends " krpano-open-block)
+  (read-string "parent: ")
+  " " krpano-close-block)
+(define-skeleton krpano-filter-template
+  "Insert \"filter\" template." nil
+  (format "%s filter " krpano-open-block)
+  ("filter: " str "|") -1
+  " " krpano-close-block)
+(define-skeleton krpano-firstof-template
+  "Insert \"firstof\" template." nil
+  (format "%s firstof " krpano-open-block)
+  ("item: " str " ") -1
+  " \"" (setq v1 (skeleton-read "fallback value: ")) "\""
+  (if (string= "" v1) -3)
+  " " krpano-close-block)
+(defun krpano-insert-tag ()
+  "Prompts the user for a tag, and inserts opening and closing tags."
+  (interactive)
+  (let ((tag (completing-read "Tag (TAB for completion): " krpano-all-tags)))
+    (cond ((string= tag "autoescape")
+           (krpano-autoescape-template))
+          ((string= tag "cycle")
+           (krpano-cycle-template))
+          ((string= tag "extends")
+           (krpano-extends-template))
+          ((string= tag "filter")
+           (krpano-filter-template))
+          ((string= tag "firstof")
+           (krpano-firstof-template))
+          ((string= tag "for")
+           (krpano-for-template))
+          ((string= tag "if")
+           (krpano-if-template))
+          ((string= tag "ifequal")
+           (krpano-ifequal-template))
+          ((string= tag "ifnotequal")
+           (krpano-ifnotequal-template))
+          ((string= tag "include")
+           (krpano-include-template))
+          ((string= tag "load")
+           (krpano-load-template))
+          ((string= tag "now")
+           (krpano-now-template))
+          ((string= tag "ssi")
+           (krpano-ssi-template))
+          ((string= tag "templatetag")
+           (krpano-templatetag-template))
+          ((string= tag "widthratio")
+           (krpano-widthratio-template))
+          ((string= tag "with")
+           (krpano-with-template))
+          ((string= tag "block")
+           (krpano-block-template))
+          ((member tag krpano-closable-tags)
+           (krpano-closing-template tag))
+          (t
+           (krpano-nonclosing-template tag)))))
+(easy-menu-define krpano-menu krpano-mode-map "Krpano menu"
+  '("Krpano"
+    ["Insert Tag" krpano-insert-tag t]
+    ["Auto-close Tag" krpano-close-tag t]
+    ("Tag Templates"
+     ["autoescape" krpano-autoescape-template t]
+     ["block" krpano-block-template t]
+     ["cycle" krpano-cycle-template t]
+     ["extends" krpano-extends-template t]
+     ["filter" krpano-filter-template t]
+     ["firstof" krpano-firstof-template t]
+     ["for" krpano-for-template t]
+     ["if" krpano-if-template t]
+     ["ifequal" krpano-ifequal-template t]
+     ["ifnotequal" krpano-ifnotequal-template t]
+     ["include" krpano-include-template t]
+     ["load" krpano-load-template t]
+     ["now" krpano-now-template t]
+     ["ssi" krpano-ssi-template t]
+     ["templatetag" krpano-templatetag-template t]
+     ["widthratio" krpano-widthratio-template t]
+     ["with" krpano-with-template t])))
+(easy-menu-add krpano-menu krpano-mode-map)
+;; A part from http://garage.pimentech.net/libcommonDjango_django_emacs/
+;; Modified a little
+(defun django-insert-trans (from to &optional buffer)
+  (interactive "*r")
+  (save-excursion
+    (save-restriction
+      (narrow-to-region from to)
+      (goto-char from)
+      (iso-iso2sgml from to)
+      (insert "{% trans \"")
+      (goto-char (point-max))
+      (insert "\" %}")
+      (point-max))))
+(define-key krpano-mode-map (kbd "C-t") 'django-insert-trans)
+;;;###autoload
+(add-to-list 'auto-mode-alist '("\\.xml$" . krpano-mode))
+;; This part ends here
+(provide 'krpano-mode)

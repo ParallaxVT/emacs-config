@@ -1,0 +1,95 @@
+ ;;; krpano.el --- Major mode to edit Krpano XML files
+
+;; Copyright (C) 2001  Free Software Foundation, Inc.
+
+;; Author: RafaelGP
+;; Keywords: krpano
+
+;; This file is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 2, or (at your option)
+;; any later version.
+
+;; This file is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; see the file COPYING.  If not, write to
+;; the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+;; Boston, MA 02111-1307, USA.
+
+ ;;; Commentary:
+
+;;
+
+ ;;; Code:
+
+(defvar krpano-events
+  '("reservedword1"
+    "reservedword2"))
+
+(defvar krpano-keywords
+  '("add" "sub" "mul" "div" "set" "delayedcall"))
+
+;; I'd probably put in a default that you want, as opposed to nil
+(defvar krpano-tab-width 4 "Width of a tab for KRPANO mode")
+
+;; Two small edits.
+;; First is to put an extra set of parens () around the list
+;; which is the format that font-lock-defaults wants
+;; Second, you used ' (quote) at the outermost level where you wanted ` (backquote)
+;; you were very close
+(defvar krpano-font-lock-defaults
+  `((
+     ;; stuff between "
+     ("\\b\\(\\w+\\)\\b=" . font-lock-variable-name-face)
+     (":\\|,\\|;\\|{\\|}\\|=>\\|@\\|$\\|=" . font-lock-keyword-face)
+     ("\"[^\"]+\"" . font-lock-string-face)
+     ;;("\"\\.\\*\\?" . font-lock-string-face)
+     ;; ; : , ; { } =>  @ $ = are all special elements
+     ;;("\\(<!--\\.*\\)" . font-lock-comment-face)
+     ( ,(regexp-opt krpano-keywords 'words) . font-lock-builtin-face)
+     ( ,(regexp-opt krpano-events 'words) . font-lock-constant-face)
+     )))
+
+(define-derived-mode krpano-mode nxml-mode "KRPANO script"
+  "KRPANO mode is a major mode for editing KRPANO  files"
+
+
+  ;; you again used quote when you had '((krpano-hilite))
+  ;; I just updated the variable to have the proper nesting (as noted above)
+  ;; and use the value directly here
+  (setq font-lock-defaults krpano-font-lock-defaults)
+
+  ;; when there's an override, use it
+  ;; otherwise it gets the default value
+  (when krpano-tab-width
+    (setq tab-width krpano-tab-width))
+
+  ;; for comments
+  ;; overriding these vars gets you what (I think) you want
+  ;; they're made buffer local when you set them
+  (setq comment-start "<!--")
+  (setq comment-end "-->")
+
+  (modify-syntax-entry ?# "< b" krpano-mode-syntax-table)
+  (modify-syntax-entry ?\n "> b" krpano-mode-syntax-table)
+  ;;A gnu-correct program will have some sort of hook call here.
+
+  (font-lock-add-keywords nil '(("<[a-zA-Z]+" . 'krpano-face-1)))
+  (font-lock-add-keywords nil '(("</[a-zA-Z]+>" . 'krpano-face-1)))
+  ;; (font-lock-add-keywords nil '(("(\S+)\s*=" . 'krpano-face-2)))
+  ;; (font-lock-add-keywords nil '(("\b\\|(\w+\\|)\b=" . 'krpano-face-2)))
+  )
+
+(defface krpano-face-1
+  '((t (:foreground "SteelBLue1")))
+  "red")
+
+(defface krpano-face-2
+  '((t (:foreground "Red")))
+  "red")
+(provide 'krpano)
+ ;;; krpano.el ends here
