@@ -324,6 +324,7 @@
 ;; Loading Helm like :init (helm-mode) adds 5 seconds to the start up time
 (use-package helm
   :ensure t
+  :defer t
   :commands (helm-buffers-list
              helm-colors
              helm-find-files
