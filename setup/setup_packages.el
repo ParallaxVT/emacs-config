@@ -134,6 +134,7 @@
 
 (use-package dired+
   :ensure t
+  :defer 3
   :config
   (progn
     ;; Show files and directories details
