@@ -529,11 +529,10 @@
 
 (use-package popwin
   :ensure t
-  :commands popwin-mode
-  ;;:idle (popwin-mode 1)
-  :defer t
+  :defer 4
   :config
   (progn
+    (popwin-mode t)
     (push '("*helm*" :height 20) popwin:special-display-config)
     (push '("^\*helm .+\*$" :regexp t :height 20) popwin:special-display-config)
     (push '("*Compile-Log*" :height 20 :noselect t) popwin:special-display-config)))
