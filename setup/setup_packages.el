@@ -539,6 +539,7 @@
   :config
   (progn
     (popwin-mode t)
+    (push '("*Help*" :height 20) popwin:special-display-config)
     (push '("*helm*" :height 20) popwin:special-display-config)
     (push '("^\*helm .+\*$" :regexp t :height 20) popwin:special-display-config)
     (push '("*Compile-Log*" :height 20 :noselect t) popwin:special-display-config)))
