@@ -360,7 +360,8 @@
       :ensure t
       :defer t
       :commands (helm-ag)
-      :config (when (string-equal system-type "windows-nt") (add-to-list 'exec-path "~/Ag")))
+      :if window-system
+      :config (add-to-list 'exec-path "~/Ag"))
     (use-package helm-descbinds
       :ensure t
       :defer t
