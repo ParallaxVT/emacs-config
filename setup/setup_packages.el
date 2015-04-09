@@ -586,7 +586,6 @@
 
 ;; Use 'pre-load' option to load it before evil
 (use-package smart-mode-line
-  ;;:pre-load
   :ensure t
   :init (sml/setup)
   :config
