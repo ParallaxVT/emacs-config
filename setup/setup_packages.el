@@ -32,6 +32,9 @@
     (define-key emacs-lisp-mode-map (kbd "C-c v") 'eval-buffer)
     (bind-key "C-M-g"                             'gforces-config)
     (bind-key "C-x C-c"                           'suspend-frame)
+    (bind-key "C-h f"                             (with-ido-completion describe-function))
+    (bind-key "C-h v"                             (with-ido-completion describe-variable))
+    (bind-key "C-h s"                             (with-ido-completion info-lookup-symbol))
     (bind-key "C-x C-S-C"                         'save-buffers-kill-terminal)))
 
 ;; Hooks
@@ -420,6 +423,8 @@
     (use-package ido-vertical-mode
       :ensure t
       :config (ido-vertical-mode))
+    (use-package ido-occasional
+      :ensure t)
     ;; Use flx-ido for better flex matching between words
     (use-package flx-ido
       :ensure t
