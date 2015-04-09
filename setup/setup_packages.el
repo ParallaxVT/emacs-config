@@ -651,6 +651,7 @@
   :ensure t
   :if (not noninteractive)
   :diminish yas-minor-mode
+  :defer 4
   :commands (yas-minor-mode yas-expand)
   :mode ("/\\.emacs\\.d/snippets/" . snippet-mode)
   :init
