@@ -198,7 +198,7 @@
           "3" '(lambda () (interactive)(split-window-horizontally)(other-window 1))
           "a" '(lambda () (interactive)(find-file "~/org/agenda.org"))
           "A" 'org-agenda
-          "b" 'ido-display-buffer
+          "b" 'ido-switch-buffer
           "B" 'ido-choose-from-bookmark
           "c" 'ace-jump-char-mode
           "C" 'cleanup-buffer
@@ -462,7 +462,7 @@
        (ido-completing-read "Jump to bookmark: " (bookmark-all-names))))
     )
   :bind (("C-x f" . ido-find-file)
-         ("C-x C-b" . ido-display-buffer)
+         ("C-x C-b" . ido-switch-buffer)
          ("C-x C-f" . ido-recentf)))
 
 (use-package krpano
