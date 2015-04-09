@@ -402,21 +402,14 @@
   :init (ido-mode 1)
   :config
   (progn
-    (setq
-     ;; Create a new buffer if no buffer matches substring
-     ido-create-new-buffer 'always
-     ;; Enable fuzzy search
-     ido-enable-flex-matching t
-     ;; Uses ido everywhere
-     ido-everywhere t
-     ;; Enphasize files with the specified extensions
-     ido-file-extensions-order '(".xml" ".html" ".css" ".ps1" ".sh" ".el" ".php" ".org")
-     ;; Don't highlight first match
-     ido-use-faces nil
-     ;; Find file at point using ido
-     ido-use-filename-at-point 'guess
-     ;; Change ido-last file location
-     ido-save-directory-list-file "~/.emacs.d/misc/ido.last")
+    (setq ido-create-new-buffer 'always) ;; Create a new buffer if no buffer matches substring
+    (setq ido-enable-flex-matching t) ;; Enable fuzzy search
+    (setq ido-everywhere t) ;; Uses ido everywhere
+    (setq ido-file-extensions-order '(".xml" ".html" ".css" ".ps1" ".sh" ".el" ".php" ".org")) ;; Enphasize files with the specified extensions
+    (setq ido-save-directory-list-file "~/.emacs.d/misc/ido.last") ;; Change ido-last file location
+    (setq ido-max-prospects 50)
+    (setq ido-use-faces t) ;; Don't highlight first match
+    (setq ido-use-filename-at-point 'guess) ;; Find file at point using ido
     (recentf-mode t)
     (define-key ido-file-completion-map "\C-v" 'ido-exit-minibuffer)
     (define-key ido-file-completion-map "\C-w" 'ido-up-directory)
