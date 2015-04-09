@@ -415,7 +415,15 @@
     (define-key ido-file-completion-map "\C-w" 'ido-up-directory)
     (use-package ido-vertical-mode
       :ensure t
-      :config (ido-vertical-mode))
+      :config
+      (progn (ido-vertical-mode)
+             (set-face-attribute 'ido-vertical-first-match-face nil
+                                 :foreground "green yellow")
+             (set-face-attribute 'ido-vertical-only-match-face nil
+                                 :foreground "deep pink")
+             (set-face-attribute 'ido-vertical-match-face nil
+                                 :foreground "deep pink")
+             ))
     (use-package ido-occasional
       :ensure t)
     ;; Use flx-ido for better flex matching between words
