@@ -118,6 +118,7 @@
   :diminish company-mode
   :bind (("M-RET" . company-complete))
   :init (global-company-mode)
+  :defer t
   :config
   (progn
     ;; Complete by request instead of waiting
