@@ -214,6 +214,7 @@
           "l" 'ace-jump-line-mode
           "L" 'align-regexp
           "O" 'helm-occur
+          "p" 'ido-yank
           "q" 'org-set-tags-command
           "r" 'ido-recentf
           "s" 'smart-switch-to-previous-buffer
@@ -455,6 +456,10 @@
       (interactive)
       (bookmark-jump
        (ido-completing-read "Jump to bookmark: " (bookmark-all-names))))
+    (defun ido-yank ()
+      "Select a kill to yank with `ido-completing-read'."
+      (interactive)
+      (insert-for-yank (ido-completing-read "Select kill: " kill-ring)))
     )
   :bind (("C-x f" . ido-find-file)
          ("C-x C-b" . ido-switch-buffer)
