@@ -399,7 +399,7 @@
 
 (use-package ido
   :ensure t
-  :init (ido-mode)
+  :init (ido-mode 1)
   :config
   (progn
     (setq
