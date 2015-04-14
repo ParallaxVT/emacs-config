@@ -255,7 +255,7 @@
 ;; Abbrev
 ;;------------------------------------------------------------------
 (setq-default abbrev-mode t)
-(setq abbrev-file-name (concat misc-dir "~/abbrev_defs"))
+(setq abbrev-file-name (concat misc-dir "abbrev_defs"))
 (setq save-abbrevs t)
 (when (file-exists-p abbrev-file-name)
   (quietly-read-abbrev-file))
