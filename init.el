@@ -299,7 +299,7 @@
         grep-program "C:\\msys64\\usr\\bin\\grep.exe"
         xargs-program "C:\\msys64\\usr\\bin\\xargs.exe"
         shell-file-name "C:\\msys64\\mingw64\\libexec\\emacs\\24.4\\x86_64-w64-mingw32\\cmdproxy.exe")
-  (add-to-list 'exec-path "C:\\msys64\\usr\\bin")
+  (add-to-list 'exec-path "C:\\msys64\\usr\\bin\\gzip.exe")
 
   (defadvice shell-quote-argument (after windows-nt-special-quote (argument) activate)
     "Add special quotes to ARGUMENT in case the system type is 'windows-nt."
