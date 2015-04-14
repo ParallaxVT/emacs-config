@@ -11,10 +11,20 @@
 ;; Enter in debug mode if there is an error
 ;; (setq debug-on-error t)
 
-(defvar dotfiles-dir "~/.emacs.d/"
-  "The root dir of my emacs files in Linux.")
-;;    (defvar elpa-dir "~/.emacs.d/elpa/"
-;;      "The directory for elpa packages in Linux.")
+(defconst win32-p (eq system-type 'windows-nt) "Windows OS.")
+(defconst cygwin-p (eq system-type 'cygwin))
+(defconst linux-p  (or (eq system-type 'gnu/linux)  (eq system-type 'linux)))
+
+(when linux-p
+  (defvar dotfiles-dir "/media/c/User/rafael/AppData/Roaming/.emacs.d/"
+    "The root dir of my emacs files in Linux.")
+  (defvar elpa-dir "/media/c/User/rafael/AppData/Roaming/.emacs.d/elpa/"
+    "The directory for elpa packages in Linux."))
+(when win32-p
+  (defvar dotfiles-dir "~/.emacs.d/"
+    "The root dir of my emacs files in Windows.")
+  (defvar elpa-dir "~/.emacs.d/elpa/"
+    "The directory for elpa packages in Windows."))
 
 (defvar settings-dir (expand-file-name "setup/" dotfiles-dir)
   "The directory for emacs functionality.")
@@ -113,10 +123,6 @@
 (defvar custom-safe-themes t)
 ;; Font
 ;; =================================================================
-
-(defconst win32-p (eq system-type 'windows-nt) "Windows OS.")
-(defconst cygwin-p (eq system-type 'cygwin))
-(defconst linux-p  (or (eq system-type 'gnu/linux)  (eq system-type 'linux)))
 
 (defvar vsc-little-font "")
 
