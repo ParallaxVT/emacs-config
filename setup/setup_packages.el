@@ -198,13 +198,13 @@
           "3" '(lambda () (interactive)(split-window-horizontally)(other-window 1))
           "a" '(lambda () (interactive)(find-file "~/org/agenda.org"))
           "A" 'org-agenda
-          "b" 'ido-switch-buffer
-          "B" 'ido-choose-from-bookmark
+          "b" 'helm-buffers-list
+          "B" 'helm-bookmarks
           "c" 'ace-jump-char-mode
           "C" 'cleanup-buffer
           "d" 'md/duplicate-down
           "D" 'dired-jump
-          "e" 'ido-find-file
+          "e" 'helm-find-files
           "E" 'eval-buffer
           "g" '(lambda () (interactive)(setq current-prefix-arg '(4))(helm-ag))
           "h" 'helm-apropos
@@ -216,7 +216,7 @@
           "O" 'helm-occur
           "p" 'ido-yank
           "q" 'org-set-tags-command
-          "r" 'ido-recentf
+          "r" 'helm-recentf
           "s" 'smart-switch-to-previous-buffer
           "t" 'comment-dwim-line
           "x" 'smex
@@ -328,7 +328,6 @@
 ;; Loading Helm like :init (helm-mode) adds 5 seconds to the start up time
 (use-package helm
   :ensure t
-  :defer t
   :commands (helm-buffers-list
              helm-colors
              helm-find-files
@@ -342,11 +341,6 @@
              helm-projectile
              helm-M-x
              helm-occur)
-  :bind (("C-x f" . helm-recentf)
-         ("C-x C-b" . helm-buffers-list)
-         ("C-x C-f" . helm-find-files)
-         ("C-c h" . helm-mini)
-         ("C-c o" . helm-occur))
   :config
   (progn
     (require 'helm-config)
@@ -461,9 +455,10 @@
       (interactive)
       (insert-for-yank (ido-completing-read "Select kill: " kill-ring)))
     )
-  :bind (("C-x f" . ido-find-file)
+  :bind (("C-x B" . ido-choose-from-bookmark)
          ("C-x C-b" . ido-switch-buffer)
-         ("C-x C-f" . ido-recentf)))
+         ("C-x C-f" . ido-find-file)
+         ("C-x f" . ido-recentf)))
 
 (use-package krpano
   :disabled t
