@@ -81,6 +81,7 @@
   :commands (ace-window))
 
 (use-package auto-complete
+  :disabled true
   :ensure t
   :commands (auto-complete)
   :init
