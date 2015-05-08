@@ -133,7 +133,7 @@
   (setq vsc-little-font "Bitstream Vera Sans Mono-11"))
 
 (when win32-p
-  (setq vsc-little-font "Bitstream Vera Sans Mono-10.5"))
+  (setq vsc-little-font "Source Code Pro-10.5"))
 
 ;; basic deffault appearance
 (add-to-list 'default-frame-alist (cons 'font vsc-little-font))
