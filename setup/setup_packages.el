@@ -220,7 +220,7 @@
           "r" 'helm-recentf
           "s" 'smart-switch-to-previous-buffer
           "t" 'comment-dwim-line
-          "x" 'smex
+          "x" 'helm-M-x
           "w" 'save-buffer
           "W" 'whack-whitespace
           "z" 'ace-window
