@@ -12,19 +12,21 @@
 ;; (setq debug-on-error t)
 
 (defconst win32-p (eq system-type 'windows-nt) "Windows OS.")
-(defconst cygwin-p (eq system-type 'cygwin))
-(defconst linux-p  (or (eq system-type 'gnu/linux)  (eq system-type 'linux)))
-
-(when linux-p
-  (defvar dotfiles-dir "/media/c/User/rafael/AppData/Roaming/.emacs.d/"
-    "The root dir of my emacs files in Linux.")
-  (defvar elpa-dir "/media/c/User/rafael/AppData/Roaming/.emacs.d/elpa/"
-    "The directory for elpa packages in Linux."))
-(when win32-p
-  (defvar dotfiles-dir "~/.emacs.d/"
-    "The root dir of my emacs files in Windows.")
-  (defvar elpa-dir "~/.emacs.d/elpa/"
-    "The directory for elpa packages in Windows."))
+(defconst virtualbox-p (string-equal system-name "debian") "Virtualbox Machine")
+(defconst debian-p (string-equal system-name "debian.local") "Debian Laptop")
+(defconst linux-p (eq system-name 'gnu/linux))
+(defconst cygwin-p (eq system-name 'cygwin))
+;; (when virtualbox-p
+;; (defvar dotfiles-dir "/media/c/User/rafael/AppData/Roaming/.emacs.d/"
+;; "The root dir of my emacs files in Linux."))
+;; (defvar elpa-dir "/media/c/User/rafael/AppData/Roaming/.emacs.d/elpa/"
+;; "The directory for elpa packages in Linux."))
+;; (or (when win32-p (when debian-p
+(defvar dotfiles-dir "~/.emacs.d/"
+  "The root dir of my emacs files in Windows.")
+(defvar elpa-dir "~/.emacs.d/elpa/"
+  "The directory for elpa packages in Windows.")
+;; )))
 
 (defvar settings-dir (expand-file-name "setup/" dotfiles-dir)
   "The directory for emacs functionality.")
@@ -35,6 +37,13 @@
 (defvar backup-dir (expand-file-name "backup/" dotfiles-dir))
 (defvar autosave-dir (expand-file-name "autosave/" dotfiles-dir))
 (defvar misc-dir (expand-file-name "misc/" dotfiles-dir))
+(when win32-p (defvar org-dir "~/org/"
+                "org directory in Windows and my life laptop"))
+(when debian-p (defvar org-dir "~/org/"
+                "org directory in Windows and my life laptop"))
+(when virtualbox-p (defvar org-dir "/media/c/User/rafael/AppData/Roaming/org/"
+                     "org directory in my Virtual Box Debian"))
+
 
 ;; Clean exec-path
 (setq exec-path '(""))
@@ -72,9 +81,9 @@
 
 ;; Bookmarks file location
 (make-directory misc-dir t) ; Create directory if doesn't exists already
-(defvar bookmark-file "~/.emacs.d/misc/bookmarks")
-(defvar bookmark-default-file "~/.emacs.d/misc/bookmarks")
-(defvar bmkp-default-bookmark-file "~/.emacs.d/misc/bookmarks")
+(defvar bookmark-file (expand-file-name "misc/bookmarks/" dotfiles-dir))
+(defvar bookmark-default-file (expand-file-name "misc/bookmarks" dotfiles-dir))
+(defvar bmkp-default-bookmark-file (expand-file-name "misc/bookmarks" dotfiles-dir))
 (defvar bmkp-last-as-first-bookmark-file nil)
 
 ;;------------------------------------------------------------------

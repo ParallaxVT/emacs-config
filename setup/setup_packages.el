@@ -92,9 +92,9 @@
   :config
   (progn
     (ac-config-default)
-    (add-to-list 'ac-dictionary-directories "~/.emacs.d/misc/ac-dict")
+    (add-to-list 'ac-dictionary-directories (expand-file-name "misc/ac-dict" dotfiles-dir))
     (setq ac-auto-start 'nil
-          ac-comphist-file  "~/.emacs.d/misc/ac-comphist.dat"
+          ac-comphist-file (expand-file-name "misc/ac-comphist.dat" dotfiles-dir)
           ac-ignore-case t ;; ignore case
           ac-stop-words '("/" "//" "/*" "//*" "///" "////")
           ac-trigger-key "M-="
@@ -197,7 +197,7 @@
           "1" 'delete-other-windows
           "2" '(lambda () (interactive)(split-window-vertically)(other-window 1))
           "3" '(lambda () (interactive)(split-window-horizontally)(other-window 1))
-          "a" '(lambda () (interactive)(find-file "~/org/agenda.org"))
+          "a" '(lambda () (interactive)(find-file (expand-file-name "agenda.org" org-dir)))
           "A" 'org-agenda
           "b" 'helm-buffers-list
           "B" 'helm-bookmarks
@@ -402,7 +402,7 @@
     (setq ido-enable-flex-matching t) ;; Enable fuzzy search
     (setq ido-everywhere t) ;; Uses ido everywhere
     (setq ido-file-extensions-order '(".xml" ".html" ".css" ".ps1" ".sh" ".el" ".php" ".org")) ;; Enphasize files with the specified extensions
-    (setq ido-save-directory-list-file "~/.emacs.d/misc/ido.last") ;; Change ido-last file location
+    (setq ido-save-directory-list-file (expand-file-name "misc/ido.last" dotfiles-dir)) ;; Change ido-last file location
     (setq ido-max-prospects 50)
     (setq ido-use-faces t) ;; Don't highlight first match
     (setq ido-use-filename-at-point 'guess) ;; Find file at point using ido
@@ -472,7 +472,7 @@
 (use-package multiple-cursors
   :ensure t
   :defer t
-  :config (defvar mc/list-file "~/misc/.mc-lists.el")
+  :config (defvar mc/list-file (expand-file-name "misc/.mc-lists.el" dotfiles-dir))
   :bind (("C->" . mc/mark-next-like-this)
          ("C-<" . mc/unmark-next-like-this)
          ("C-'" . mc/mark-all-like-this)
@@ -508,24 +508,9 @@
     (setq org-startup-indented t)
     (setq calendar-week-start-day 1)
     (setq org-time-stamp-rounding-minutes (quote (0 1))) ;; Change timestamps by multiples of 1
-    (cond
-     ((string-equal system-type "gnu/linux") ; linux
-      (progn
-        (defvar orgfiles-dir "/media/sf_c/Users/Rafael/AppData/Roaming/org/"
-          "The root dir of my emacs files in Linux.")
-        ;;    (defvar elpa-dir "~/.emacs.d/elpa/"
-        ;;      "The directory for elpa packages in Linux.")
-        ))
-     ((string-equal system-type "windows-nt") ; Microsoft Windows
-      (progn
-        (defvar orgfiles-dir "~/org/"
-          "The root dir of my emacs files in Windows.")
-        ;;    (defvar elpa-dir (expand-file-name "elpa/" dotfiles-dir)
-        ;;      "The directory for elpa packages in Windows.")
-        )))
     (setq org-agenda-files (list
-                            (concat orgfiles-dir "agenda.org")
-                            (concat orgfiles-dir "gforces.org"))))
+                            (expand-file-name "agenda.org" org-dir)
+                            (expand-file-name "gforces.org" org-dir))))
   :bind (("C-c a" . org-agenda)
          ("C-c l" . org-store-link)))
 
