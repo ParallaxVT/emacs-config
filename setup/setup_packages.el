@@ -400,7 +400,7 @@
   (progn
     (setq ido-create-new-buffer 'always) ;; Create a new buffer if no buffer matches substring
     (setq ido-enable-flex-matching t) ;; Enable fuzzy search
-    (setq ido-everywhere t) ;; Uses ido everywhere
+    ;; (setq ido-everywhere t) ;; Uses ido everywhere
     (setq ido-file-extensions-order '(".xml" ".html" ".css" ".ps1" ".sh" ".el" ".php" ".org")) ;; Enphasize files with the specified extensions
     (setq ido-save-directory-list-file (expand-file-name "misc/ido.last" dotfiles-dir)) ;; Change ido-last file location
     (setq ido-max-prospects 50)
