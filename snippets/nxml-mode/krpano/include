@@ -1,5 +1,0 @@
-# contributor: Rafaelguerrapaz
-# name: include
-# key: inc
-# --
-<include url="%SWFPATH%/include/$0/index.xml" />

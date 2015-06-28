@@ -1,5 +1,0 @@
-# contributor: Rafaelguerrapaz
-# name: content
-# key: con
-# --
-<include url="%SWFPATH%/content/$0.xml" />

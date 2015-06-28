@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: link-favicon
-# key: link-favicon
-# --
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />$0

@@ -1,5 +1,0 @@
-# contributor: Rafaelguerrapaz
-# name: plugin
-# key: pl
-# --
-plugin[$1].$2,$0
